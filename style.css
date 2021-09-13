@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+canvas {
+  display: block;
+}
+
+body {
+  background-color(255,200,255);
+}
+
+p {
+  color: rgb(0,0,255);
+}
+
+h1 {
+  font-size: 40px;
+}
