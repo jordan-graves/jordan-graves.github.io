@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="p5.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+  <div id=gears>
+    Control
+    <div id="gearImagesSpeakers"></div>
+    LFO
+    <div id="gearImagesLFO"></div>
+    <br>
+    Gain
+    <div id="gearImagesGain"></div>
+    <br>
+    Oscillators
+    <div id="gearImagesOsc"></div>
+    <br>
+
+
+
+  </div>
+  </div>
+  <div id=canvas>
+    <script src="sketch.js"></script>
+    <div id="oldControls">
+      LFO Type:
+      <select id="lfoType" onchange="changeLfoType()">
+        <option value="sine">Sine</option>
+        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="sawtooth">Sawtooth</option>
+      </select>
+
+      LFO Frequency:
+      <select id="lfoFrequency" onchange="changeLfoFrequency()">
+        <option value="0.1">0.1</option>
+        <option value="1">1</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+
+      LFO Gain:
+      <select id="lfoGain" onchange="changeLfoGain()">
+        <option value="10">10</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="300">300</option>
+      </select>
+
+      <br><br>
+
+      Oscillator Type:
+      <select id="OscType" onchange="changeOscType()">
+        <option value="sine">Sine</option>
+        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="sawtooth">Sawtooth</option>
+      </select>
+
+      Oscillator Frequency:
+      <select id="OscFrequency" onchange="changeOscFrequency()">
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="300">300</option>
+        <option value="500">500</option>
+      </select>
+
+      <br><br>
+
+      VCA LFO Type:
+      <select id="vcalfoType" onchange="changeVcaLfoType()">
+        <option value="sine">Sine</option>
+        <option value="square">Square</option>
+        <option value="triangle">Triangle</option>
+        <option value="sawtooth">Sawtooth</option>
+      </select>
+
+      VCA LFO Frequency:
+      <select id="vcalfoFrequency" onchange="changeVcaLfoFrequency()">
+        <option value="0.1">0.1</option>
+        <option value="1">1</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <!---
+       VCA LFO Gain:
+        <select id="vcalfoGain" onchange="changeVcaLfoGain()">
+      <option value="10">10</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="300">300</option>
+    </select>
+--->
+    <div id="dropZone">
+      <div class="geardrops" id="gd11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd15" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd16" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd17" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd18" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <br>
+      <div class="gearoffset"></div>
+      <div class="geardrops" id="gd21" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd22" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd23" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd24" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd25" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd26" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd27" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd28" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <br>
+      <div class="geardrops" id="gd31" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd32" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd33" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd34" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd35" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd36" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd37" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd38" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <br>
+      <div class="gearoffset"></div>
+      <div class="geardrops" id="gd41" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd42" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd43" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd44" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd45" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd46" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd47" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd48" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <br>
+      <div class="geardrops" id="gd51" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd52" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd53" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd54" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd55" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd56" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd57" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd58" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <br>
+      <div class="gearoffset"></div>
+      <div class="geardrops" id="gd61" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd62" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd63" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd64" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd65" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd66" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd67" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd68" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <br>
+      <div class="geardrops" id="gd71" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd72" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd73" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd74" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd75" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd76" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd77" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd78" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <br>
+      <div class="gearoffset"></div>
+      <div class="geardrops" id="gd81" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd82" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd83" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd84" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd85" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd86" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd87" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="geardrops" id="gd88" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+      <br>
+    </div>
+  </div>
+
+</body>
+<div id="gd01"></div>
+<div id="gd02"></div>
+<div id="gd03"></div>
+<div id="gd04"></div>
+<div id="gd05"></div>
+<div id="gd06"></div>
+<div id="gd07"></div>
+<div id="gd08"></div>
+<div id="gd09"></div>
+<div id="gd00"></div>
+<div id="gd91"></div>
+<div id="gd92"></div>
+<div id="gd93"></div>
+<div id="gd94"></div>
+<div id="gd95"></div>
+<div id="gd96"></div>
+<div id="gd97"></div>
+<div id="gd98"></div>
+<div id="gd99"></div>
+<div id="gd90"></div>
+
+<div id="gd10"></div>
+<div id="gd20"></div>
+<div id="gd30"></div>
+<div id="gd40"></div>
+<div id="gd50"></div>
+<div id="gd60"></div>
+<div id="gd70"></div>
+<div id="gd80"></div>
+<div id="gd90"></div>
+<div id="gd00"></div>
+
+<div id="gd19"></div>
+<div id="gd29"></div>
+<div id="gd39"></div>
+<div id="gd49"></div>
+<div id="gd59"></div>
+<div id="gd69"></div>
+<div id="gd79"></div>
+<div id="gd89"></div>
+<div id="gd99"></div>
+<div id="gd09"></div>
+
+</html>

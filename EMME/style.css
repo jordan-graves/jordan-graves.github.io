@@ -1,0 +1,95 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+canvas {
+  display: block;
+  overflow: scroll;
+}
+
+#gears {
+  display: block;
+  position: absolute;
+  background: rgba(220,220,220,0.8);
+  width: 296px;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  height: 100vh;
+  vertical-align: bottom;
+  overflow-y: scroll;
+  color: black;
+}
+
+#canvas {
+display: inline-block;
+position: absolute;
+width: 100vw;
+background: rgb(200,200,200);
+padding: 0px;
+height: 100vh; 
+overflow: scroll;
+}
+
+#dropZone {
+  width: 1600px;
+  height: 1000px;
+  z-index: 0;
+  left: 300px;
+  position: relative;
+}
+
+.geardrops {
+width: 182px;
+height:162px;
+display: inline-block;
+overflow: visible;
+position: relative;
+vertical-align: bottom;
+transform-origin: 100px 100px;
+}
+
+.gearoffset {
+  width: 88px;
+  height:0px;
+  background: rgb(0,0,0);
+  display: inline-block;
+}
+
+
+img {
+  width:200px;
+}
+
+#gearImagesLFO img, #gearImagesOsc img, #gearImagesGain img, #gearImagesSpeakers img {
+  width: 140px;
+}
+#oldControls {
+  display: none;
+}
+
+.forwards img {
+  animation: rotation 10s infinite linear;
+}
+
+.backwards img {
+  animation: rotationback 10s infinite linear !important;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationback {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
