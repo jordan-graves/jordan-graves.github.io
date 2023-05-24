@@ -1,0 +1,116 @@
+{
+    "projects": [
+        {
+            "name": "Community Garden",
+            "filters": "art research software",
+            "info": "Community Garden is an immersive, digital installation where participants are invited to draw and plant a flower via a customized Garden website. <br>With a simple swipe, the flower appears in a publicly projected field of flowers.",
+            "link": "/community-garden-1",
+            "img": "cg.jpg"
+        },
+        {
+            "name": "Gathering Light",
+            "filters": "art education software",
+            "info": "Gathering Light is a permanent interactive LED installation installed at Holy Innocents' Episcopal School. This work was installed in 2019 and has since been used in various courses to enhance Computer Science and Art education.",
+            "link": "/hies",
+            "img": "gl.JPG"
+        },
+        {
+            "name": "Repeat Offfender",
+            "filters": "art",
+            "info": "Repeat Offfender was my brand of digitally produced products from 2014 to 2019. Over 80 boutiques and museum gift shops carried my line of 3D Printed Jewelry including shopSCAD, Renwick Gallery, Pennsylvania Academy of Fine Arts, High Museum of Art, FIDM Museum, and the Henry Ford Museum.  In 2018, Repeat Offfender expanded to produce knitwear, including a made-to-order custom sweater generator. ",
+            "link": "/custom-knit",
+            "img": "ro.JPG"
+        },
+        {
+            "name": "eLOOMinate",
+            "filters": "research",
+            "info": "",
+            "link": "/eloominate",
+            "img": "el.jpg"
+        },
+        {
+            "name": "SpiroSynth",
+            "filters": "research",
+            "info": "",
+            "link": "/spirosynth",
+            "img": "SpiroSynth.jpg"
+        },
+        {
+            "name": "light-reflect.io/n",
+            "filters": "art",
+            "info": "light-reflect.io/n is a permanent interactive LED installation installed at The HUB Augusta.",
+            "link": "/augusta-process",
+            "img": "lr1.jpg"
+        },
+        {
+            "name": "Essential Workers",
+            "filters": "software research",
+            "info": "",
+            "link": "/essentialworkers",
+            "img": "ew.png"
+        },
+        {
+            "name": "Code Crafters",
+            "filters": "softare education research",
+            "info": "",
+            "link": "/codecrafters",
+            "img": "cc.jpg"
+        },
+        {
+            "name": "5931 @ The Shops Buckhead Atlanta",
+            "filters": "art",
+            "info": "",
+            "link": "/theshops",
+            "img": "ts1.jpg"
+        },
+        {
+            "name": "5044 @ Tech Square Labs",
+            "filters": "art",
+            "info": "",
+            "link": "/techsquare",
+            "img": "techsquare.jpg"
+        },
+        {
+            "name": "SCAD Alumni Atelier Residency",
+            "filters": "art",
+            "info": "",
+            "link": "/scad-alumni-atelier-spring-2016-residency",
+            "img": "scad.jpg"
+        },
+        {
+            "name": "Live Knitting",
+            "filters": "art software",
+            "info": "",
+            "link": "/interactive-knitting",
+            "img": "lk.png"
+        },
+        {
+            "name": "Knit Canvas and Clothing",
+            "filters": "art",
+            "info": "",
+            "link": "/knitting",
+            "img": "knit.JPG"
+        },
+        {
+            "name": "Gear Synth",
+            "filters": "research software",
+            "info": "",
+            "link": "/gearsynth",
+            "img": "gs.png"
+        },
+        {
+            "name": "Robotic Fabrication",
+            "filters": "research",
+            "info": "",
+            "link": "/robotic-fabrication",
+            "img": "rf.jpg"
+        },
+        {
+            "name": "What The Flock",
+            "filters": "research",
+            "info": "",
+            "link": "/whattheflock",
+            "img": "wtf.jpg"
+        }
+    ]
+}
