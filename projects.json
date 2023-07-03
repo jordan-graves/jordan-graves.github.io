@@ -15,6 +15,13 @@
             "img": "gl.JPG"
         },
         {
+            "name": "Coding for Art Curriculum",
+            "filters": "education",
+            "info": "Projects in JavaScript, Java, and Arduino for High School and Middle School students that teach Computer Science concepts through making art.",
+            "link": "/teaching",
+            "img": "cfa.png"
+        },
+        {
             "name": "Repeat Offfender",
             "filters": "art",
             "info": "Repeat Offfender was my brand of digitally produced products from 2014 to 2019. Over 80 boutiques and museum gift shops carried my line of 3D Printed Jewelry including shopSCAD, Renwick Gallery, Pennsylvania Academy of Fine Arts, High Museum of Art, FIDM Museum, and the Henry Ford Museum.  In 2018, Repeat Offfender expanded to produce knitwear, including a made-to-order custom sweater generator. ",
@@ -24,14 +31,14 @@
         {
             "name": "eLOOMinate",
             "filters": "research",
-            "info": "",
+            "info": "eLoominate is a Computer-Aided Design software and novel tool that embeds individually-addressable LEDs into a circular knitting loom to provide row-by-row patterning instruction for Fair Isle knitting.",
             "link": "/eloominate",
             "img": "el.jpg"
         },
         {
             "name": "SpiroSynth",
             "filters": "research",
-            "info": "",
+            "info": "SpiroSynth is a novel interface for musical performance that allows user to explore arpeggios with the assistance of Spirograph-inspired acrylic guides.",
             "link": "/spirosynth",
             "img": "SpiroSynth.jpg"
         },
@@ -45,70 +52,70 @@
         {
             "name": "Essential Workers",
             "filters": "software research",
-            "info": "",
+            "info": "Essential Workers is a cooperative game about a community working together to overcome the COVID-19 pandemic. Players must balance their personal safety against the necessity of keeping society running. If anyone loses, everyone loses.",
             "link": "/essentialworkers",
             "img": "ew.png"
         },
         {
             "name": "Code Crafters",
             "filters": "softare education research",
-            "info": "",
+            "info": "Quilt design generation software for remote Code Crafters workshops, which aim to broaden public awareness of computational thinking and build links between computer science and quilting. The online software has been designed to increase the sense of community by providing opportunities for the types of social interactions that take place in colocated quilting workshops.",
             "link": "/codecrafters",
             "img": "cc.jpg"
         },
         {
             "name": "5931 @ The Shops Buckhead Atlanta",
             "filters": "art",
-            "info": "",
+            "info": "A temporary LED installation installed from July 2017 to February 2019 at The Shops Buckhead Atlanta. ",
             "link": "/theshops",
             "img": "ts1.jpg"
         },
         {
             "name": "5044 @ Tech Square Labs",
             "filters": "art",
-            "info": "",
+            "info": "A temporary LED installation installed from September 2017 to October 2019 at Tech Square Labs in Atlanta, GA.",
             "link": "/techsquare",
             "img": "techsquare.jpg"
         },
         {
             "name": "SCAD Alumni Atelier Residency",
             "filters": "art",
-            "info": "",
+            "info": "Work completed during my residency at the SCAD Alumni Atelier in Spring 2016. During this residency, I created sculpture with digital fabrication tools and physical computing and electronics.",
             "link": "/scad-alumni-atelier-spring-2016-residency",
             "img": "scad.jpg"
         },
         {
             "name": "Live Knitting",
             "filters": "art software",
-            "info": "",
+            "info": "A livestream project that allowed an online audience to be participants and collaborators, using online tools I developed to design knit patterns on a collaborative canvas and watch it be knit in real time. ",
             "link": "/interactive-knitting",
             "img": "lk.png"
         },
         {
             "name": "Knit Canvas and Clothing",
             "filters": "art",
-            "info": "",
+            "info": "Work produced by hand on my Passap E6000 knitting machine. The clothing and canvases feature patterns that are designed with code.",
             "link": "/knitting",
             "img": "knit.JPG"
         },
         {
             "name": "Gear Synth",
             "filters": "research software",
-            "info": "",
+            "info": "Digital prototype to explore a novel interface for modular sound synthesis and rotating gears to create looping melodies.",
             "link": "/gearsynth",
             "img": "gs.png"
         },
         {
             "name": "Robotic Fabrication",
             "filters": "research",
-            "info": "",
+            "info": "Using Rhino and Grasshopper to develop a parametric pavilion to be constructed out of cross-laminated timber cut with a chainsaw on a KUKA Robot. This parametric system would help automate the programming of cut paths for each unique block. ",
             "link": "/robotic-fabrication",
             "img": "rf.jpg"
         },
         {
             "name": "What The Flock",
             "filters": "research",
-            "info": "",
+            "info": " What The Flock? is an online game for Active Breaks for children in primary and elementary school. Children collaboratively create migratory bird flock formations by controlling a bird character through bodily movement captured by their webcam. ",
             "link": "/whattheflock",
             "img": "wtf.jpg"
         }
