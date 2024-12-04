@@ -50,7 +50,7 @@ padding-bottom: 70px;
   justify-content: left;
   align-items: center;
   height: 3vw;
-  height: max(5vw,35px);
+  height: max(3vw,25px);
 }
 
 #title a {
@@ -118,6 +118,17 @@ font-style: normal;
   padding: 5vw;
   width: 90%;
   max-width: 800px;
+transition: 0s !important;
+
+}
+
+#projectInfo1 {
+  padding-top: 0px !important;
+  text-align: left;
+  display: block;
+  padding: 5vw;
+  width: 90%;
+  
 transition: 0s !important;
 
 }
@@ -293,7 +304,7 @@ padding-top: 0px;
 }
 
 .preview img {
-  width: fit-content;
+  text-align: center;
   height: fit-content;
   max-height: 360px;
   max-width: 100%;
@@ -458,4 +469,107 @@ h1 {
   }
 
   
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Spacing between product cards */
+    padding: 16px;
+    justify-content: space-between; /* Adjusts spacing evenly */
+  }
+  
+  .product-card {
+    flex: 1 1 calc(33.33% - 16px); /* 3 items per row on desktop */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    border: none;
+    padding: 16px;
+    text-align: center;
+
+    transition: transform 0.3s ease; /* Optional hover effect */
+  }
+  
+  
+  .product-card img {
+    max-width: 80%; /* Ensures images fit inside the card */
+    height: auto;
+  }
+  
+  .product-card h2 {
+    font-family: "obviously", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 8px 0;
+  
+  }
+  
+  .product-card h3 {
+    font-family: "obviously", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+   
+  }
+
+  .product-card a {
+    color: #eb594f;
+    text-decoration: none;
+  }
+
  
+  
+/* Responsive styling for medium screens (2 items per row) */
+@media (max-width: 1024px) {
+  .product-card {
+    flex: 1 1 calc(50% - 16px); /* 2 items per row */
+  }
+}
+
+/* Responsive styling for smaller screens (1 item per row) */
+@media (max-width: 768px) {
+  .product-card {
+    flex: 1 1 100%; /* 1 item per row */
+  }
+
+  #openingWrapper {
+    max-height: 50vh;
+  }
+
+
+  #opening{
+    max-height: 50vh;
+    top: -5vh;
+    position: relative;
+  }
+
+ 
+}
+
+
+@media (max-width: 500px) {
+  #title a {
+    font-size: 12px !important;
+    top: 6px;
+    position: relative;
+  }
+
+  #buttons a {
+    font-size: 16px !important;
+    top: -6px;
+    position: relative;
+  }
+
+
+ 
+}
+
+
+.product-details1 {
+  max-width: 100vh !important;
+}
+
+@media (min-width: 768px) {
+.product-details__sidebar {
+width: calc(100% - 65vh) !important;
+}
+.product-details__gallery , .details-gallery {
+  max-width: 65vh !important;
+}
+}

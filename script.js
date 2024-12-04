@@ -85,10 +85,10 @@ document.getElementById("filterResearch").classList.add("selectedFilter");
       p[j].innerHTML = "<div class=\"info reveal\">\
       <h1>"+json.projects[i].name+"</h1> \
       <h2>"+json.projects[i].info+"</h2>\
-      <a href=\""+json.projects[i].link+"\">View Project</a>\
+      <a href=\""+json.projects[i].link+"\">View Project\
     </div>\
     <div class=\"preview reveal\">\
-      <img src=\""+json.projects[i].img+"\">\
+      <img src=\""+json.projects[i].img+"\"></a>\
     </div>";
     p[j].style.display= "";
     if (t[j+1] != null)
@@ -116,10 +116,10 @@ console.log(j);
           p[j].innerHTML = "<div class=\"info reveal\">\
           <h1>"+json.projects[i].name+"</h1> \
           <h2>"+json.projects[i].info+"</h2>\
-          <a href=\""+json.projects[i].link+"\">View Project</a>\
+          <a href=\""+json.projects[i].link+"\">View Project\
         </div>\
         <div class=\"preview reveal\">\
-          <img src=\""+json.projects[i].img+"\">\
+          <img src=\""+json.projects[i].img+"\"></a>\
         </div>";
         p[j].style.display= "";
         if (t[j+1] != null)
@@ -143,7 +143,12 @@ console.log(j);
 function loadAbout() {
   document.getElementById("contact").innerHTML = "<h1>About Jordan</h1>\
   <p>\
-  Jordan Graves is an Atlanta-based artist and designer making art with code in a variety of media, including jewelry, textiles, and interactive installations. She graduated from the Savannah College of Art and Design with a BFA in Motion Media Design. She is currently pursuing a PhD in Digital Media at Georgia Tech where her research includes the relationship between crafting and computer science education, novel interfaces for digital and personal fabrication, and creative social interactions through digital media.\
+    Jordan Oleson-Graves is an Atlanta-based artist and designer making art with code in a variety of media,\
+        including jewelry, textiles, and interactive installations. She graduated from the Savannah College of Art and\
+        Design with a BFA in Motion Media Design and Georgia Tech with an MS in Digital Media, where her research\
+        included the relationship between crafting and computer science education, novel interfaces for digital and\
+        personal fabrication, and creative social interactions through digital media. She is currently pursusing an MFA\
+        in Painting at the Savannah College of Art and Design.\
       </p>\
   <br><br>\
   <div id = \"links\">\
@@ -151,6 +156,29 @@ function loadAbout() {
   </div>";
 }
 
+function loadMenu() {
+   document.getElementById("menubar").innerHTML = '\
+  <div id="title">\
+  <a style=font-weight:600 href="/#opening">Jordan Oleson-Graves</a>\
+</div>\
+<div id="buttons">\
+  <a href="../">Home</a>\
+  <a href="../#contact">About</a>\
+  <a href="../shop">Shop</a>\
+  <a href="../shop#!/~/cart" style ="position: relative;top:5px;"><span class=""><svg width="16" height="30" viewBox="0 0 16 20"\
+        xmlns="http://www.w3.org/2000/svg">\
+        <g fill="none" fill-rule="evenodd">\
+          <path\
+            d="M1 5v13.006c0 .548.446.994.994.994h12.012c.548 0 .994-.446.994-.994V5H1zm15-1v14.006c0 1.1-.895 1.994-1.994 1.994H1.994C.894 20 0 19.105 0 18.006V4h16z"\
+            fill="currentColor" fill-rule="nonzero"></path>\
+          <path\
+            d="M5 7s-.005.5-.504.5C3.996 7.5 4 7 4 7V4c0-2.21 1.79-4 4-4s4 1.79 4 4v3s-.002.5-.5.5S11 7 11 7V4c0-1.657-1.343-3-3-3S5 2.343 5\ 4v3z"\
+            fill="currentColor"></path>\
+        </g>\
+      </svg></span><!----></a>\
+</div>';
+
+}
 
 
       function addTransitions() {
