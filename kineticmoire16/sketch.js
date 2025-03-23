@@ -26,7 +26,7 @@ function draw() {
   if (frameRate() > 0) {
     angle += 360 / 60 / (frameRate());
   }
-  console.log(angle);
+  console.log(angle/3);
   fill(185, 255, 20);
   fill(255);
   // fill(0);
