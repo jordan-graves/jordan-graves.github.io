@@ -41,7 +41,7 @@ function draw() {
 
   push();
   translate(width / 2, height / 2);
-  rotate(radians((angle )))
+  rotate(radians((angle / 2)))
   translate(-0, -0);
   spiral(color("#0377fc"))
 
@@ -72,8 +72,8 @@ function draw() {
   push();
   beginShape();
   translate(width / 2, height / 2);
-  rotate(radians(angle/2))
-  translate(-0, -0);
+  rotate(radians(angle))
+  translate(-2, -2);
   spiral(color("#24e3c3"));
   //spiral(color("#f12530"));
 
@@ -108,8 +108,8 @@ function spiral(c) {
   c1.noFill();
   // console.log(frameCount);
   for (let i = 0; i < 6300/2; i += 0.5) {
-    let r = i / 5.9 + (max(0, i / 250) * cos(radians(i / 20 + mouseY1))) * sin(radians(i * 4 * 5))
-      + (max(0, i / 600) * cos(radians(i / 10 + mouseY1))) * sin(radians(i * 4 * 4));
+    let r = i / 5.9 + (max(0, i / 350) * cos(radians(i / 10 + mouseY1))) * sin(radians(i * 4 * 5))
+      + (max(0, i / 300) * cos(radians(i / 7 + mouseY1))) * sin(radians(i * 4 * 6));
     let x = 2400 / 2 - r * cos(radians(i * 4));
     let y = 2400 / 2 + 0 + r * sin(radians(i * 4));
     c1.vertex(x, y);
