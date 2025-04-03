@@ -84,7 +84,10 @@ spiral(color("#000000"));
 pop();
 
 push();
-stroke(0,0,0);
+blendMode(NORMAL);
+stroke(40,40,200);
+//stroke(230,20,0);
+stroke(250,190,30);
 strokeWeight(75)
 ellipse(width/2,height/2,1225/2+50,1225/2+50);
 pop();

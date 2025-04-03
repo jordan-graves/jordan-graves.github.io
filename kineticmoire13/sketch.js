@@ -1,4 +1,4 @@
-let angle = 37;
+let angle = 0;
 //37
 //32
 
@@ -12,7 +12,7 @@ function setup() {
  // spiral(color(0,0,0));
  // c1.save("spiral.svg");
   pixelDensity(3);
- // noLoop();
+  //noLoop();
 }
 
 function draw() {
@@ -84,7 +84,10 @@ spiral(color("#000000"));
 pop();
 
   push();
-  stroke(0,0,0);
+  blendMode(NORMAL);
+stroke(40,40,200);
+//stroke(230,20,0);
+//stroke(230,180,0);
   strokeWeight(75)
   ellipse(width/2,height/2,1225,1225);
 

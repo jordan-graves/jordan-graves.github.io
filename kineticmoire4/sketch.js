@@ -87,8 +87,11 @@ function draw() {
   pop();
   
   push();
-  stroke(0,0,0);
-  strokeWeight(75)
+  blendMode(NORMAL);
+  stroke(40,40,200);
+  stroke(230,20,0);
+  stroke(250,190,0);  
+   strokeWeight(75)
   ellipse(width/2,height/2,1225,1225);
 
   pop();
