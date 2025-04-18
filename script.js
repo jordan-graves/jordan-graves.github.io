@@ -152,7 +152,7 @@ console.log(j);
             </p>\
         <br><br>\
         <div id = \"links\">\
-        <a href=\"mailto:jordan@jordangrav.es\"> Email Me</a> <a   target=\"_blank\" href = \"../about\">CV</a> <a  target=\"_blank\" href=\"https://www.instagram.com/repeatofffender\">Instagram</a>\
+        <a href=\"mailto:jordan@jordangrav.es\"> Email Me</a> <a   target=\"_blank\" href = \"../about\">CV</a> <a  target=\"_blank\" href=\"https://www.instagram.com/jordanolesongraves\">Instagram</a>\
         </div>";
       }
       
