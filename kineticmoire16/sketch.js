@@ -1,4 +1,4 @@
-let angle = 37;
+let angle = 0;
 //37
 //32
 
@@ -12,7 +12,7 @@ function setup() {
   // spiral(color(0,0,0));
   // c1.save("spiral.svg");
   pixelDensity(3);
-  // noLoop();
+   //noLoop();
 }
 
 function draw() {

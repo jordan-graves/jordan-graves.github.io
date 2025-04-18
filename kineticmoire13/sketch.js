@@ -80,7 +80,7 @@ pop();
  translate(width/2+0,height/2+0);
 
 rotate(radians((0)));
-spiral(color("#000000"));
+//spiral(color("#000000"));
 pop();
 
   push();
@@ -95,7 +95,7 @@ stroke(40,40,200);
   
  // ellipse(width/2,height/2,2124,2124);
 //  save("RBW295.svg");
-//  noLoop();
+  noLoop();
   
   rect(50,50,1000,1250);
   noStroke();

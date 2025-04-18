@@ -90,9 +90,8 @@ function draw() {
   stroke(0,0,0);
   strokeWeight(75)
   ellipse(width/2,height/2,1225,1225);
-
   pop();
-  
+
  // ellipse(width/2,height/2,2124,2124);
 //  save("RBW295.svg");
 //  noLoop();

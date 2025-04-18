@@ -222,6 +222,21 @@ a:hover {
  margin-bottom: -3px;
 }
 
+.projects1 {
+  padding-top: 72px;
+  
+  width: 80%;
+  display: inline-flex;
+  justify-content: space-around;
+  overflow-y: hidden;
+  transition: 2s;
+  padding-bottom: 0px;
+ text-align: left;
+ margin-bottom: -3px;
+ padding-inline: 10%;
+
+}
+
 #project1 {
   
 }
@@ -246,6 +261,18 @@ padding-top: 0px;
 
 .info {
   width: 45%;
+  display: inline-block;
+  opacity: 0;
+  transition: 1s ease;
+  position: relative;
+  left: -200px;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+
+.info1 {
+  width: 100%;
   display: inline-block;
   opacity: 0;
   transition: 1s ease;
@@ -493,7 +520,7 @@ h1 {
     height: auto;
   }
   
-  .product-card h2 {
+  .product-card h2, #gallery h2 {
     font-family: "obviously", sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -501,14 +528,14 @@ h1 {
   
   }
   
-  .product-card h3 {
+  .product-card h3, #gallery h3 {
     font-family: "obviously", sans-serif;
     font-weight: 400;
     font-size: 16px;
    
   }
 
-  .product-card a {
+  .product-card a,#gallery a {
     color: #eb594f;
     text-decoration: none;
   }
