@@ -142,17 +142,11 @@ function unfilterProjects() {
 
 function loadAbout() {
   document.getElementById("contact").innerHTML =
-    //<h1>About Jordan</h1>\
-    // <p>\
-    //   Jordan Oleson-Graves is an Atlanta-based artist and designer making art with code in a variety of media,\
-    //       including jewelry, textiles, and interactive installations. She graduated from the Savannah College of Art and\
-    //       Design with a BFA in Motion Media Design and Georgia Tech with an MS in Digital Media, where her research\
-    //       included the relationship between crafting and computer science education, novel interfaces for digital and\
-    //       personal fabrication, and creative social interactions through digital media. She is currently pursusing an MFA\
-    //       in Painting at the Savannah College of Art and Design.\
-    //     </p>\
-    // <br><br>\
-    "<div id = \"links\">\
+    "<h1>About Jordan</h1>\
+    <p>\
+      Jordan Oleson-Graves is an artist and designer based in Atlanta whose work blends code with physical materials, spanning jewelry, textiles, and interactive installations. Originally trained in Motion Media Design at SCAD, she shifted her focus from commercial design to experimental art after discovering abstract animation. Her creative path has included everything from 3D printed jewelry to large-scale LED installations and code-generated knitwear. Jordan holds an MS in Digital Media from Georgia Tech, where her research explored the intersection of crafting, computer science, and digital fabrication. Now pursuing her MFA in Painting at SCAD, she also teaches high school computer science, helping students bring their own ideas to life through code.\
+        </p>\
+    <br><br>\<div id = \"links\">\
         <a href=\"mailto:jordan@jordangrav.es\"> Email Me</a> <a   target=\"_blank\" href = \"../about\">CV</a> <a  target=\"_blank\" href=\"https://www.instagram.com/jordanolesongraves\">Instagram</a>\
         </div>";
 }
