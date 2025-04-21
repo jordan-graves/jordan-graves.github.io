@@ -520,7 +520,7 @@ h1 {
     height: auto;
   }
   
-  .product-card h2, #gallery h2 {
+  .product-card h2, #gallery h2, .modal-content h2 {
     font-family: "obviously", sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -528,18 +528,22 @@ h1 {
   
   }
   
-  .product-card h3, #gallery h3 {
+  .product-card h3, #gallery h3, .modal-content p {
     font-family: "obviously", sans-serif;
     font-weight: 400;
     font-size: 16px;
    
   }
 
-  .product-card a,#gallery a {
+  .product-card a,#gallery a, .modal-content h2 {
     color: #eb594f;
     text-decoration: none;
   }
 
+  .modal-des p {
+    font-size: 14px !important;
+  }
+  
  
   
 /* Responsive styling for medium screens (2 items per row) */
