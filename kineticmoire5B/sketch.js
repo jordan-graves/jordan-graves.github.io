@@ -29,9 +29,9 @@ function draw() {
   console.log(angle);
   fill(185,255,20);
   fill(255);
- // fill(0);
+ // fill();
   noStroke();
-  ellipse(width/2,height/2,2124,2124);
+  ellipse(width/2,height/2,1250,1250);
   
   noFill();
   
@@ -39,27 +39,32 @@ function draw() {
   noStroke();
   c1.strokeWeight(10);
 
-      push();
-  translate(width/2,height/2);
-  rotate(radians((angle/2)))
-    translate(-4,-4);
-  //spiral(color("#3255a4"))
-  
-   //spiral(color("#000000"));
 
+  push();
+  translate(width/2,height/2);
+  rotate(radians(angle/2+0))
+  translate(0,0);
+  spiral1(color("#ff00dd"));
   pop();
   
+  
 
-      push();
-  translate(width/2,height/2);
-  rotate(radians(angle+180))
-  translate(-4,-4);
-  spiral(color("#f12530"));
-// spiral(color("#000000"));
-  pop();
+  push();
+  beginShape();
+translate(width/2,height/2);
+rotate(radians(angle/3))
+translate(0,0);
+spiral1(color("#ffdd00"));
+pop();
+  
+
+
+
   
  //   blendMode(NORMAL);
   
+ c1.strokeWeight(5);
+
 
   push();
     beginShape();
@@ -67,34 +72,20 @@ function draw() {
  
 
   rotate(radians((0)));
-  spiral(color("#3255a4"));
+  spiral(color("#000000"));
   pop();
 
-  
-  
-    push();
-    beginShape();
-  translate(width/2,height/2);
-  rotate(radians(angle))
-  translate(-6,-6);
-  spiral(color("#ffe800"));
- //   spiral(color("#62a8e5"))
- //spiral(color("#000000"));
-
-  
-  //spiral(color("#00838A"));
-
-  pop();
   
   push();
   blendMode(NORMAL);
   stroke(40,40,200);
   stroke(230,20,0);
-  stroke(250,190,0);  
-   strokeWeight(75)
+  //stroke(230,180,0);
+    strokeWeight(75)
   ellipse(width/2,height/2,1225,1225);
 
   pop();
+
   
  // ellipse(width/2,height/2,2124,2124);
 //  save("RBW295.svg");
@@ -106,6 +97,8 @@ function draw() {
 
 }
 
+
+
 function spiral(c) {
 //  blendMode(MULTIPLY);
 c1.clear();
@@ -116,8 +109,8 @@ c1.clear();
   c1.noFill();
  // console.log(frameCount);
   for (let i=0; i<6300; i+=0.5) {
-    let r = i/5.9+(max(0,i/250)*cos(radians(i/12+mouseY1)))*sin(radians(i*4*3))
-    +(max(0,i/250)*cos(radians(i/20+mouseY1)))*sin(radians(i*4*2));
+    let r = i/6+(max(0,i/430)*cos(radians(i/8+mouseY1)))*cos(radians(i*4*8))
+    +(max(0,i/400)*cos(radians(i/9+mouseY1)))*sin(radians(i*4*9));
     let x = 2400/2-r*cos(radians(i*4));
     let y = 2400/2+0+r*sin(radians(i*4));
     c1.vertex(x,y);
@@ -126,6 +119,27 @@ c1.clear();
  // ellipse(0,400,20,20);
   image(c1,-1400/2,-1400/2,2800/2,2800/2);
 }
+
+function spiral1(c) {
+  //  blendMode(MULTIPLY);
+  c1.clear();
+     let mouseX1= 52;
+    let mouseY1 = 21;
+     c1.beginShape();
+    c1.stroke(c);
+    c1.noFill();
+   // console.log(frameCount);
+    for (let i=0; i<6300; i+=0.5) {
+      let r = i/6+(max(0,i/360)*cos(radians(i/8+mouseY1)))*sin(radians(i*4*7))
+      +(max(0,i/290)*cos(radians(i/9+mouseY1)))*sin(radians(i*4*8));
+      let x = 2400/2-r*cos(radians(i*4));
+      let y = 2400/2+0+r*sin(radians(i*4));
+      c1.vertex(x,y);
+    }
+      c1.endShape();
+   // ellipse(0,400,20,20);
+    image(c1,-1400/2,-1400/2,2800/2,2800/2);
+  }
 
 function mouseClicked() {
   save("cornflower.png");

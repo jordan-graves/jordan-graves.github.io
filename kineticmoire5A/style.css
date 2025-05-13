@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+  width: auto !important; /* Scale dynamically */
+  height: 100% !important; /* Maintain aspect ratio */
+}
+
+#container {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

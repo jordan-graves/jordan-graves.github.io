@@ -1,4 +1,4 @@
-let angle = 37;
+let angle = 0;
 //37
 //32
 

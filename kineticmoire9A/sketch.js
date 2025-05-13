@@ -1,4 +1,4 @@
-let angle = 37;
+let angle = 0;
 //37
 //32
 
@@ -12,7 +12,7 @@ function setup() {
   // spiral(color(0,0,0));
   // c1.save("spiral.svg");
   pixelDensity(3);
-   noLoop();
+  // noLoop();
 }
 
 function draw() {
@@ -37,35 +37,30 @@ function draw() {
 
   stroke(0);
   noStroke();
-  c1.strokeWeight(8);
+  c1.strokeWeight(10);
+
+
+
 
   push();
   translate(width / 2, height / 2);
-  rotate(radians((angle / 2+0)))
+  rotate(radians((angle / 3)))
   translate(-0, -0);
-  spiral(color("#ff88ff"))
-
-
+  spiral(color("#0077FF"))
   pop();
 
 
-  push();
-  translate(width / 2, height / 2);
-  rotate(radians(angle / 2))
-  translate(-10, -10);
-  spiral(color("#24e3c3"));
 
-  pop();
 
   //   blendMode(NORMAL);
 
-
   push();
-  beginShape();
-  translate(width / 2 + 0, height / 2 + 0);
-  rotate(radians((0)));
-  spiral(color("#000099"));
+  translate(width / 2, height / 2);
+  rotate(radians(angle/2))
+  translate(10, 0);
+  spiral(color("#ffff00"));
   pop();
+
 
 
 
@@ -73,28 +68,32 @@ function draw() {
   beginShape();
   translate(width / 2, height / 2);
   rotate(radians(angle/2))
-  translate(-2, -2);
-  spiral(color("#ff0000"));
-  //spiral(color("#f12530"));
-
-
-  //spiral(color("#00838A"));
-
+  translate(0, 0);
+  spiral(color("#FF00CC"));
   pop();
+
+
+
+  c1.strokeWeight(5);
 
   push();
-  blendMode(NORMAL);
-  stroke(40,40,200);
-  //stroke(230,20,0);
-  //stroke(230,180,0);
-  strokeWeight(75)
-  ellipse(width/2,height/2,1225,1225);
-
+  beginShape();
+  translate(width / 2 + 0, height / 2 + 0);
+  rotate(radians((0)));
+  spiral(color("#000000"));
   pop();
+
 
   // ellipse(width/2,height/2,2124,2124);
   //  save("RBW295.svg");
   //  noLoop();
+
+  push();
+  stroke(0, 0, 0);
+  strokeWeight(75)
+  ellipse(width / 2, height / 2, 1225, 1225);
+  pop();
+
 
   rect(50, 50, 1000, 1250);
   noStroke();
@@ -111,9 +110,9 @@ function spiral(c) {
   c1.stroke(c);
   c1.noFill();
   // console.log(frameCount);
-  for (let i = 0; i < 6300; i += 0.5) {
-    let r = i / 5.9 + (max(0, i / 450) * cos(radians(i / 20 + mouseY1))) * sin(radians(i * 4 * 2))
-      + (max(0, i / 300) * cos(radians(i / 15 + mouseY1))) * sin(radians(i * 4 * 4));
+  for (let i = 0; i < 6200; i += 0.5) {
+    let r = i / 6 + (max(0, i / 190) * cos(radians(i / 15 + mouseY1))) * sin(radians(i * 4 * 4))
+      + (max(0, i /300) * cos(radians(i / 30 + mouseY1))) * sin(radians(i * 4 * 5));
     let x = 2400 / 2 - r * cos(radians(i * 4));
     let y = 2400 / 2 + 0 + r * sin(radians(i * 4));
     c1.vertex(x, y);
