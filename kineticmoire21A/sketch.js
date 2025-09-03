@@ -29,7 +29,7 @@ function draw() {
   console.log(angle);
   fill(185,255,20);
   fill("#008888");
- // fill(0);
+  fill(0);
   noStroke();
   ellipse(width/2,height/2,1250/2,1250/2);
   

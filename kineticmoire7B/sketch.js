@@ -28,7 +28,7 @@ function draw() {
 }
   console.log(angle);
   fill(185,255,20);
-  fill(0,50,255);
+  fill(50,100,255);
  // fill(0);
   noStroke();
   ellipse(width/2,height/2,2324/2,2324/2);
@@ -37,7 +37,7 @@ function draw() {
   
   stroke(0);
   noStroke();
-  c1.strokeWeight(6);
+  c1.strokeWeight(7);
 
   
   push();
@@ -52,7 +52,7 @@ function draw() {
   translate(width/2,height/2);
   rotate(radians(angle/2))
   translate(-4,-4);
-  spiral(color("#88ff00"));
+  spiral(color("#aaff00"));
   pop();
   
  //   blendMode(NORMAL);
@@ -76,8 +76,8 @@ pop();
   blendMode(NORMAL);
   stroke(40,40,200);
   stroke(230,20,0);
-  stroke(230,180,0);
-  stroke(0);
+  //stroke(230,180,0);
+ // stroke(0);
   strokeWeight(75)
   ellipse(width/2,height/2,1225,1225);
   pop();
