@@ -19,12 +19,13 @@ colors = [
   { name: "Black", value: color(0, 0, 0) },
   { name: "Red", value: color(255, 0, 0) },
   { name: "Yellow", value: color(255, 255, 0) },
-  { name: "Blue", value: color(0, 0, 255) },
-  { name: "Magenta", value: color(255, 0, 255) },
-  { name: "Lime", value: color(0, 255, 0) },
-  { name: "Cyan", value: color(0, 255, 255) },
-  { name: "Orange", value: color(255, 165, 0) },
-  { name: "Purple", value: color(128, 0, 128) }
+  { name: "Blue", value: color(43, 0, 255) },
+  { name: "Coral", value: color(255, 117, 85) },
+  { name: "Green", value: color(2, 160, 76) },
+  { name: "Cyan", value: color(84, 255, 185) },
+ // { name: "Orange", value: color(255, 109, 0) },
+  { name: "Turq", value: color(0, 126, 113) },
+  { name: "Purple", value: color(33, 0, 104) }
 ];
 
   // --- Create dropdowns ---
@@ -193,11 +194,11 @@ function updateValues() {
   p3 = int(selP3.value());
   p4 = int(selP4.value());
 
-    s1 = int(selS1.value());
+  s1 = int(selS1.value());
   s2 = int(selS2.value());
   s3 = int(selS3.value());
   s4 = int(selS4.value());
-    s5 = int(selS5.value());
+  s5 = int(selS5.value());
   s6 = int(selS6.value());
   s7 = int(selS7.value());
   s8 = int(selS8.value());
@@ -245,7 +246,7 @@ function spiral3D(c) {
   //pg.background(255,0,0);
   pg.noFill();
   pg.stroke(c);
-  pg.strokeWeight(7);
+  pg.strokeWeight(5);
   pg.push();
   pg.translate(pg.width/2,pg.height/2);
   pg.beginShape();
@@ -504,7 +505,7 @@ if (size.value()=="ornament offset") {
 
   pg.noFill();
   pg.stroke(color4);
-  pg.strokeWeight(7);
+  pg.strokeWeight(4);
   pg.push();
   pg.translate(4200,600);
 

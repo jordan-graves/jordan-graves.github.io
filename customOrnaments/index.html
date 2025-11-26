@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <title>Ornament Designer</title>
+  </head>
+  <body>
+    <div id="designer">
+     <h1>Build an Ornament!</h1>
+         <div id="canvas-container"></div>
+
+    <div id="main-container">
+     
+      
+      <div id="pattern-section" class="control-section">
+        <h3>Select Pattern:</h3>
+        <div id="pattern-buttons" class="button-row">
+          <button id="patternA-btn" class="pattern-button" data-pattern="Pattern A">Pattern A</button>
+          <button id="patternB-btn" class="pattern-button" data-pattern="Pattern B">Pattern B</button>
+          <button id="patternC-btn" class="pattern-button" data-pattern="Pattern C">Pattern C</button>
+        </div>
+      </div>
+
+      <div id="color1-section" class="control-section">
+        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Background:</h3>
+        <div id="color-row-1" class="button-row color-row">
+          </div>
+      </div>
+
+      <div id="color2-section" class="control-section">
+        <h3 class="color-title">Secondary Color:</h3>
+        <div id="color-row-2" class="button-row color-row">
+          </div>
+      </div>
+
+      <div id="color3-section" class="control-section">
+        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Primary Color:</h3>
+        <div id="color-row-3" class="button-row color-row">
+          </div>
+      </div>
+      
+      <div id="randomize-section" class="control-section">
+        <button id="random-btn" class="randomButton">Try a Random Combination!</button>
+      </div>
+
+    </div>
+    
+    
+    <script src="sketch.js"></script>
+    </div>
+  </body>
+</html>
