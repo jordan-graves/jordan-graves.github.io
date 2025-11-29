@@ -1,17 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/addons/p5.sound.min.js"></script>
-       
-  <script src="https://unpkg.com/p5.js-svg@1.6.0"></script>
+<head>
+  <meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
 
-  </head>
-  <body>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/addons/p5.sound.min.js"></script>
+     <script src="https://unpkg.com/p5.js-svg@1.6.0"></script>
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8" />
+  <title>Ornament Designer</title>
+</head>
+
+<body>
+  <div id="designer">
+    <h1>Design your Own!</h1>
+    <div id="canvas-container"></div>
+
+    <div id="main-container">
+
+        <div id="color1-section" class="control-section">
+        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Background:</h3>
+        <div id="color-row-1" class="button-row color-row">
+        </div>
+      </div>
+
+      <div id="color2-section" class="control-section">
+        <h3 class="color-title">Secondary Color:</h3>
+        <div id="color-row-2" class="button-row color-row">
+        </div>
+      </div>
+
+      <div id="color3-section" class="control-section">
+        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tertiary Color:</h3>
+        <div id="color-row-3" class="button-row color-row">
+        </div>
+      </div>
+
+      <div id="color4-section" class="control-section">
+        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Primary Color:</h3>
+        <div id="color-row-4" class="button-row color-row">
+        </div>
+      </div>
+
+      <div id="pattern-section" class="control-section">
+
+        <div id="slidersLeft" class="">
+          <div id="freq1">
+            <h3 class="color-title">Wave 1 Frequency:</h3>
+          </div>
+          <div id="freq3">
+            <h3 class="color-title">Wave 1 Strength:</h3>
+          </div>
+          <div id="freq5">
+            <h3 class="color-title">Wave 1 Complexity:</h3>
+          </div>
+
+
+
+        </div>
+        <div id="slidersRight" class="">
+          <div id="freq2">
+            <h3 class="color-title">Wave 2 Frequency:</h3>
+          </div>
+          <div id="freq4">
+            <h3 class="color-title">Wave 2 Strength:</h3>
+          </div>
+          <div id="freq6">
+            <h3 class="color-title">Wave 2 Complexity:</h3>
+          </div>
+
+
+        </div>
+      </div>
+
+    
+
+      <div id="randomize-section" class="control-section">
+        <button id="random-btn" class="randomButton">Try a Random Combination!</button>
+      </div>
+
+    </div>
+
+
     <script src="sketch.js"></script>
-  </body>
+  </div>
+</body>
+
 </html>

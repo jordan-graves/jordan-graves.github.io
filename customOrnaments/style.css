@@ -139,7 +139,7 @@ button {
 /* 📱 MEDIA QUERY FOR TABLETS (Screen size 768px to 1024px) */
 /* Scales down elements to feel less oversized on an iPad */
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1440px) {
 
   body {
   min-height: 100vh; /* Set height equal to the full viewport height */
@@ -202,8 +202,87 @@ button {
       display: inline;
    
       text-align: center;
+      
       /* justify-self: center; is not used in Flexbox, remove it if it was there */
     }
+
+    #color1-section, #color2-section, #color3-section {
+  flex-wrap: nowrap; 
+}
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  body {
+  min-height: 100vh; /* Set height equal to the full viewport height */
+  display: flex; /* Enable Flexbox on the body */
+  flex-direction: column; /* Stack children (like the h1 and #designer) vertically */
+  justify-content: center; /* Vertically center content (the #designer) */
+  align-items: center; /* Horizontally center content (the #designer) */
+}
+
+  #designer {
+
+        max-width: 1800px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        align-self: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        transform: scale(calc( 100vw / 1440px));
+    }
+
+    h1 {
+      font-size: 60px;
+      width: 100vw;
+      display: block;
+    }
+
+    h3{
+      font-size: 24px;
+    }
+
+     button, .randomButton {
+      font-size: 18px;
+    }
+
+
+
+#canvas-container {
+  left: 0px;
+  width: 40%;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+   max-height: 400px;
+}
+
+   #canvas-container canvas {
+        /* Scales the canvas and its contents down to 80% of its original size (600px -> 480px) */
+        width: 100% !important;
+        height: 100% !important;
+        /* Ensures the scaled element remains centered */
+        margin: 0 auto; 
+    }
+
+#main-container {
+      order: 2;
+      left: 40%;
+      width: 60%;
+      display: inline;
+   
+      text-align: center;
+      
+      /* justify-self: center; is not used in Flexbox, remove it if it was there */
+    }
+
+    #color1-section, #color2-section, #color3-section {
+  flex-wrap: nowrap; 
+}
 }
 
 @media screen and (min-width:768px) and (max-width: 1024px) {

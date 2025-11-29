@@ -8,25 +8,34 @@ let pg2;
 let colors;
 let masked;  // final masked image
 let size;
+let sizeValue;
+
+let currentColor1 = "Red";
+let currentColor2 = "Yellow";
+let currentColor3 = "Blue";
+let currentColor4= "Black";
+
+let choices, numbers, morenumbers, evenmorenumbers;
 
 function setup() {
-  createCanvas(800, 800, WEBGL);
+  let canvas = createCanvas(800, 800, WEBGL);
+    canvas.parent('canvas-container'); // Attach the canvas to the HTML div
   pixelDensity(2);
 
 
-colors = [
-  { name: "White", value: color(255, 255, 255) },
-  { name: "Black", value: color(0, 0, 0) },
-  { name: "Red", value: color(255, 0, 0) },
-  { name: "Yellow", value: color(255, 255, 0) },
-  { name: "Blue", value: color(43, 0, 255) },
-  { name: "Coral", value: color(255, 117, 85) },
-  { name: "Green", value: color(2, 160, 76) },
-  { name: "Cyan", value: color(84, 255, 185) },
- // { name: "Orange", value: color(255, 109, 0) },
-  { name: "Turq", value: color(0, 126, 113) },
-  { name: "Purple", value: color(33, 0, 104) }
-];
+  colors = [
+    { name: "Red", value: color(255, 0, 0) },
+    { name: "Yellow", value: color(255, 255, 0) },
+    { name: "Blue", value: color(33, 80, 255) },
+    { name: "Blue-Purple", value: color(63, 0, 255) },
+    { name: "Coral", value: color(255, 117, 85) },
+    { name: "Green", value: color(2, 160, 76) },
+    { name: "Mint", value: color(84, 255, 185) },
+    { name: "Turquoise", value: color(25, 127, 138) },
+    { name: "White", value: color(255, 255, 255) },
+    { name: "Black", value: color(50, 50, 50) },
+  ];
+
 
   // --- Create dropdowns ---
   sel1 = createSelect();
@@ -50,11 +59,10 @@ colors = [
   sel3.changed(() => color3 = getSelectedColor(sel3, colors));
   sel4.changed(() => color4 = getSelectedColor(sel4, colors));
 
-  // initialize color variables
-  color1 = getSelectedColor(sel1, colors);
-  color2 = getSelectedColor(sel2, colors);
-  color3 = getSelectedColor(sel3, colors);
-  color4 = getSelectedColor(sel4, colors);
+  color1 = getSelectedColor(currentColor1);
+  color2 = getSelectedColor(currentColor2);
+  color3 = getSelectedColor(currentColor3);
+  color4 = getSelectedColor(currentColor4);
 
   const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
 
@@ -71,7 +79,8 @@ colors = [
   selP1.selected(3);
   selP2.selected(4);
   selP3.selected(4);
-  selP4.selected(3);
+  selP4.selected(4);
+
 
   // --- Update variables whenever selection changes ---
 [selP1, selP2, selP3, selP4].forEach(sel => {
@@ -81,7 +90,8 @@ colors = [
     });
   });
 
-    const morenumbers = [150,250,350,450,550,650,750,850,950,1050,1450,1550];
+   choices = [1,2,3,4,5];
+     morenumbers = [750,650,450,250,150,100];
 
   selS1 = createSelect();
   selS2 = createSelect();
@@ -89,14 +99,14 @@ colors = [
   selS4 = createSelect();
 
   [selS1, selS2, selS3, selS4].forEach(sel => {
-    morenumbers.forEach(n => sel.option(n));
+    choices.forEach(n => sel.option(n));
   });
 
   // --- Set default values ---
-  selS1.selected(250);
-  selS2.selected(150);
-  selS3.selected(1450);
-  selS4.selected(1550);
+  selS1.selected(3);
+  selS2.selected(4);
+  selS3.selected(2);
+  selS4.selected(2);
 
   // --- Update variables whenever selection changes ---
 [selS1, selS2, selS3, selS4].forEach(sel => {
@@ -106,7 +116,7 @@ colors = [
     });
   });
 
-   const evenmorenumbers = [10,20,30,40,50,60,70,80,90,100];
+   evenmorenumbers = [50,40,20,10,8,5];
 
   selS5 = createSelect();
   selS6 = createSelect();
@@ -114,14 +124,14 @@ colors = [
   selS8 = createSelect();
 
   [selS5, selS6, selS7, selS8].forEach(sel => {
-    evenmorenumbers.forEach(n => sel.option(n));
+    choices.forEach(n => sel.option(n));
   });
 
   // --- Set default values ---
-  selS5.selected(10);
-  selS6.selected(10);
-  selS7.selected(100);
-  selS8.selected(100);
+  selS5.selected(3);
+  selS6.selected(3);
+  selS7.selected(1);
+  selS8.selected(1);
 
   // --- Update variables whenever selection changes ---
 [selS5, selS6, selS7, selS8].forEach(sel => {
@@ -131,26 +141,34 @@ colors = [
     });
   });
 
+    selP1.parent("freq1");
+ selP2.parent("freq2");
+ selS1.parent("freq3");
+ selS2.parent("freq4");
+ selS5.parent("freq5");
+ selS6.parent("freq6");
+
   // initialize variables
   p1 = int(selP1.value());
   p2 = int(selP2.value());
   p3 = int(selP3.value());
   p4 = int(selP4.value());
 
-  s1 = int(selS1.value());
-  s2 = int(selS2.value());
-  s3 = int(selS3.value());
-  s4 = int(selS4.value());
-  s5 = int(selS5.value());
-  s6 = int(selS6.value());
-  s7 = int(selS7.value());
-  s8 = int(selS8.value());
+  s1 = morenumbers[int(selS1.value())];
+  s2 = morenumbers[int(selS2.value())];
+  s3 = morenumbers[int(selS3.value())];
+  s4 = morenumbers[int(selS4.value())];
+  s5 = evenmorenumbers[int(selS5.value())];
+  s6 = evenmorenumbers[int(selS6.value())];
+  s7 = evenmorenumbers[int(selS7.value())];
+  s8 = evenmorenumbers[int(selS8.value())];
 
     size = createSelect();
     size.option("9inch")
     size.option("ornament centered")
     size.option("ornament offset")
 size.changed(drawSpirals);
+sizeValue = "9inch";
 
   //  pg = createGraphics(1200, 1200, SVG);
     pg = createGraphics(1200, 1200);
@@ -185,6 +203,89 @@ size.changed(drawSpirals);
   
   let b = createButton("Random");
   b.mousePressed(randomizeDropdowns);
+  
+  sel1.hide();
+  sel2.hide();
+  sel3.hide();
+  sel4.hide();
+  selP3.hide();
+  selP4.hide();
+   selS3.hide();
+  selS4.hide();
+   selS7.hide();
+  selS8.hide();
+  size.hide();
+  b.hide();
+
+    createColorButtons(colors, '#color-row-1', 1, currentColor1);
+  createColorButtons(colors, '#color-row-2', 2, currentColor2);
+  createColorButtons(colors, '#color-row-3', 3, currentColor3);
+  createColorButtons(colors, '#color-row-4', 4, currentColor4);
+
+  let randomizeButton = select('#random-btn');
+  if (randomizeButton) {
+    randomizeButton.mousePressed(randomizeDropdowns);
+  }
+
+}
+
+function createColorButtons(colorList, parentId, colorIndex, initialColorName) {
+  let parentDiv = select(parentId);
+  if (!parentDiv) return;
+
+  colorList.forEach(c => {
+    // Create the button using p5's createElement, but append it to the HTML parent
+    let button = createElement('button');
+    button.style('background-color', c.value.toString());
+    button.attribute('data-color-name', c.name);
+    button.attribute('data-color-part', colorIndex);
+    button.class('color-button');
+    
+    // Highlight the initial selection
+    if (c.name === initialColorName) {
+      button.class('color-button selected');
+    }
+
+    button.mousePressed(() => setColor(c.name, colorIndex));
+    parentDiv.child(button); // Attach the button to the HTML div
+  });
+}
+
+/**
+ * Updates the color selection for a specific part and updates the display.
+ */
+function setColor(name, colorIndex) {
+  // 1. Update the global tracking variable
+  if (colorIndex === 1) {
+    currentColor1 = name;
+  } else if (colorIndex === 2) {
+    currentColor2 = name;
+  } else if (colorIndex === 3) {
+    currentColor3 = name;
+  } else if (colorIndex === 4) {
+    currentColor4 = name;
+  }
+
+  // 2. Update the color variables
+  color1 = getSelectedColor(currentColor1);
+  color2 = getSelectedColor(currentColor2);
+  color3 = getSelectedColor(currentColor3);
+  color4 = getSelectedColor(currentColor4);
+
+  // 3. Update button styling (highlight the selected one, unhighlight others)
+  let buttons = selectAll(`.color-button[data-color-part="${colorIndex}"]`);
+  buttons.forEach(btn => {
+    if (btn.attribute('data-color-name') === name) {
+      btn.class('color-button selected'); // CSS handles the highlight
+    } else {
+      btn.class('color-button');
+    }
+  });
+
+
+
+  // 4. Redraw the ornament
+ // drawSpirals();
 }
 
 function updateValues() {
@@ -194,23 +295,31 @@ function updateValues() {
   p3 = int(selP3.value());
   p4 = int(selP4.value());
 
-  s1 = int(selS1.value());
-  s2 = int(selS2.value());
-  s3 = int(selS3.value());
-  s4 = int(selS4.value());
-  s5 = int(selS5.value());
-  s6 = int(selS6.value());
-  s7 = int(selS7.value());
-  s8 = int(selS8.value());
+  s1 = morenumbers[int(selS1.value())];
+  s2 = morenumbers[int(selS2.value())];
+  s3 = morenumbers[int(selS3.value())];
+  s4 = morenumbers[int(selS4.value())];
+  s5 = evenmorenumbers[int(selS5.value())];
+  s6 = evenmorenumbers[int(selS6.value())];
+  s7 = evenmorenumbers[int(selS7.value())];
+  s8 = evenmorenumbers[int(selS8.value())];
 }
 
 function randomizeDropdowns() {
   // List all your dropdowns
-  let allDropdowns = [
+  // let allDropdowns = [
+  //   sel1, sel2, sel3, sel4,
+  //   selP1, selP2, selP3, selP4,
+  //   selS1, selS2, selS3, selS4,
+  //   selS5, selS6, selS7, selS8
+  // ];
+
+
+    let allDropdowns = [
     sel1, sel2, sel3, sel4,
-    selP1, selP2, selP3, selP4,
-    selS1, selS2, selS3, selS4,
-    selS5, selS6, selS7, selS8
+    selP1, selP2, 
+    selS1, selS2, 
+    selS5, selS6, 
   ];
 
   allDropdowns.forEach(sel => {
@@ -222,23 +331,42 @@ function randomizeDropdowns() {
     // Trigger .changed() if needed
 
   });
-  color1 = getSelectedColor(sel1, colors);
-  color2 = getSelectedColor(sel2, colors);
-  color3 = getSelectedColor(sel3, colors);
-  color4 = getSelectedColor(sel4, colors);
+
+  let colorOptions = colors.map(c => c.name);
+
+  let randomC1 = random(colorOptions);
+  setColor(randomC1, 1);
+
+  // 3. Randomize Color 2 (avoiding color 1 for diversity)
+  let randomC2 = random(colorOptions);
+  while (randomC2 === randomC1) {
+    randomC2 = random(colorOptions);
+  }
+  setColor(randomC2, 2);
+
+  // 4. Randomize Color 3
+  let randomC3 = random(colorOptions);
+  setColor(randomC3, 3);
+
+  let randomC4 = random(colorOptions);
+  setColor(randomC4, 4);
+
+  color1 = getSelectedColor(currentColor1);
+  color2 = getSelectedColor(currentColor2);
+  color3 = getSelectedColor(currentColor3);
+  color4 = getSelectedColor(currentColor4);
   updateValues();
   drawSpirals();
 }
 
 function drawSpirals() {
     spiral3D(color(255,255,255));
-   spiral3D1(color(255,255,255));
+  // spiral3D1(color(255,255,255));
 
 }
 
-function getSelectedColor(sel, colorOptions) {
-  let name = sel.value();
-  return colorOptions.find(c => c.name === name).value;
+function getSelectedColor(colorName) {
+  return colors.find(c => c.name === colorName).value;
 }
 
 function spiral3D(c) {
@@ -251,7 +379,7 @@ function spiral3D(c) {
   pg.translate(pg.width/2,pg.height/2);
   pg.beginShape();
   
-  for (let i = 0; i < 3150; i += 0.5) {
+  for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
       (max(0, i / s1) * cos(radians(i / s5 ))) * sin(radians(i * p1 * 4)) +
       (max(0, i / s2) * cos(radians(i / s6 ))) * sin(radians(i * p2 * 4));
@@ -265,10 +393,10 @@ function spiral3D(c) {
 
 let d1=520;
 let x1=0;
-if (size.value()=="ornament offset" || size.value()=="ornament centered") {
+if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
   d1 = 520/3;
 }
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
   x1=300;
 }
 pg.loadPixels();
@@ -295,7 +423,7 @@ function spiral3D1(c) {
   pg1.translate(pg.width/2,pg.height/2);
   pg1.beginShape();
   
-  for (let i = 0; i < 3150; i += 0.5) {
+  for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
       (max(0, i / s3) * cos(radians(i / s7 + 21))) * sin(radians(i * p3 * 4)) +
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
@@ -308,10 +436,10 @@ function spiral3D1(c) {
 
     let d1=520;
 let x1=0;
-if (size.value()=="ornament offset" || size.value()=="ornament centered") {
+if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
   d1 = 520/3;
 }
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
   x1=300;
 }
     pg1.loadPixels();
@@ -336,7 +464,7 @@ if (size.value()=="ornament offset") {
   pg2.translate(pg.width/2,pg.height/2);
   pg2.beginShape();
   
-  for (let i = 0; i < 3150; i += 0.5) {
+  for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
       (max(0, i / s3) * cos(radians(i / s7 + 21))) * sin(radians(i * p3 * 4)) +
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
@@ -348,10 +476,10 @@ if (size.value()=="ornament offset") {
     pg2.pop();
 
 
-if (size.value()=="ornament offset" || size.value()=="ornament centered") {
+if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
   d1 = 520/3;
 }
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
   x1=300;
 }
     pg2.loadPixels();
@@ -369,7 +497,7 @@ if (size.value()=="ornament offset") {
 function draw() {
   background(255);
   clear();
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
 translate(-200,0)
 }
   // Rotate on X-axis based on mouseX
@@ -381,16 +509,48 @@ translate(-200,0)
   rotateX(angleY); // Optional: you could also use mouseY here
 
     fill(color1);
-    if (size.value()=="ornament centered") {
+    if (sizeValue=="ornament centered") {
 ellipse(0,0,700/3,700/3);
 }
-else if (size.value()=="ornament offset") {
+else if (sizeValue=="ornament offset") {
 ellipse(200,0,700/3,700/3);
   
 } else {
-ellipse(0,0,700,700);
+ellipse(0,0,700,700,360);
 }
   
+
+  // Your existing 3D shape drawing (cylinders)
+  fill(0);
+
+  push();
+  rotate(-PI / 2 + PI/4);
+  translate(330, 0, 20);
+  rotateX(PI / 2);
+  cylinder(5, 45);
+  pop();
+
+  push();
+  rotate(-PI / 2 + PI * 3 / 4);
+  translate(330, 0, 20);
+  rotateX(PI / 2);
+  cylinder(5, 45);
+  pop();
+
+  push();
+  rotate(-PI / 2 + PI * 5 / 4);
+  translate(330, 0, 20);
+  rotateX(PI / 2);
+  cylinder(5, 45);
+  pop();
+
+    push();
+  rotate(-PI / 2 + PI * 7 / 4);
+  translate(330, 0, 20);
+  rotateX(PI / 2);
+  cylinder(5, 45);
+  pop();
+
   noFill();
 
   noStroke();
@@ -431,10 +591,10 @@ function spiral3DSVG() {
   let d1=520;
 let x1=0;
 
-  if (size.value()=="ornament offset" || size.value()=="ornament centered") {
+  if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
   d1 = 520/3;
 }
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
   x1=300;
 }
 
@@ -458,7 +618,7 @@ if (size.value()=="ornament offset") {
 
   pg.beginShape();
   
-  for (let i = 0; i < 3150; i += 0.5) {
+  for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
       (max(0, i / s3) * cos(radians(i / s7 + 21))) * sin(radians(i * p3 * 4)) +
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
@@ -484,7 +644,7 @@ if (size.value()=="ornament offset") {
 pg.ellipse(x1,0,d1*2,d1*2);   
   pg.beginShape();
   
-  for (let i = 0; i < 3150; i += 0.5) {
+  for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
       (max(0, i / s3) * cos(radians(i / s7 + 21))) * sin(radians(i * p3 * 4)) +
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
@@ -496,10 +656,10 @@ pg.ellipse(x1,0,d1*2,d1*2);
     pg.pop(); 
 
 
-if (size.value()=="ornament offset" || size.value()=="ornament centered") {
+if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
   d1 = 520/3;
 }
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
   x1=300;
 }
 
@@ -512,7 +672,7 @@ if (size.value()=="ornament offset") {
 pg.ellipse(x1,0,d1*2,d1*2);   
   pg.beginShape();
   
-  for (let i = 0; i < 3150; i += 0.5) {
+  for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
       (max(0, i / s1) * cos(radians(i / s5 ))) * sin(radians(i * p1 * 4)) +
       (max(0, i / s2) * cos(radians(i / s6 ))) * sin(radians(i * p2 * 4));
@@ -524,10 +684,10 @@ pg.ellipse(x1,0,d1*2,d1*2);
    pg.pop();
 
 
-if (size.value()=="ornament offset" || size.value()=="ornament centered") {
+if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
   d1 = 520/3;
 }
-if (size.value()=="ornament offset") {
+if (sizeValue=="ornament offset") {
   x1=300;
 }
  pg.save("test.svg");
