@@ -17,12 +17,12 @@ let onCart = false;
 
 function preload() {
   // Assuming these files exist in your sketch folder
-  front1 = loadImage("front1.png");
-  back1 = loadImage("back1.png");
-  front2 = loadImage("front2.png");
-  back2 = loadImage("back2.png");
-  front3 = loadImage("front3.png");
-  back3 = loadImage("back3.png");
+  front1 = loadImage("https://jordangraves.com/shop/front1.png");
+  back1 = loadImage("https://jordangraves.com/shop/back1.png");
+  front2 = loadImage("https://jordangraves.com/shop/front2.png");
+  back2 = loadImage("https://jordangraves.com/shop/back2.png");
+  front3 = loadImage("https://jordangraves.com/shop/front3.png");
+  back3 = loadImage("https://jordangraves.com/shop/back3.png");
   front = front1;
   back = back1;
   //  json = loadJSON("projects.json",);
