@@ -25,7 +25,8 @@ function preload() {
   back3 = loadImage("back3.png");
   front = front1;
   back = back1;
-    json = loadJSON("projects.json",);
+  //  json = loadJSON("projects.json",);
+  json = {};
 
 }
 
