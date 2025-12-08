@@ -1,19 +1,19 @@
 
-let color1, color2, color3, color4;
+let  sw_color1, sw_color2, sw_color3, sw_color4;
 let p1, p2, p3, p4, s1, s2, s3, s4, s5, s6, s7, s8;
 let sel1, sel2, sel3, sel4, selP1, selP2, selP3, selP4, selS1, selS2, selS3, selS4, selS5, selS6, selS7, selS8;
-let pg;
-let pg1;
-let pg2;
+let sw_pg;
+let sw_pg1;
+let sw_pg2;
 let colors;
 let masked;  // final masked image
 let size;
 let sizeValue;
 
-let currentColor1 = "Red";
-let currentColor2 = "Yellow";
-let currentColor3 = "Blue";
-let currentColor4= "Black";
+let currentsw_color1 = "Red";
+let currentsw_color2 = "Yellow";
+let currentsw_color3 = "Blue";
+let currentsw_color4= "Black";
 
 let choices, numbers, morenumbers, evenmorenumbers;
 
@@ -54,15 +54,15 @@ function setup() {
   sel4.selected("Black");
 
   // --- Update colors whenever selection changes ---
-  sel1.changed(() => color1 = getSelectedColor(sel1, colors));
-  sel2.changed(() => color2 = getSelectedColor(sel2, colors));
-  sel3.changed(() => color3 = getSelectedColor(sel3, colors));
-  sel4.changed(() => color4 = getSelectedColor(sel4, colors));
+  sel1.changed(() => sw_color1 = getSelectedColor(sel1, colors));
+  sel2.changed(() => sw_color2 = getSelectedColor(sel2, colors));
+  sel3.changed(() => sw_color3 = getSelectedColor(sel3, colors));
+  sel4.changed(() => sw_color4 = getSelectedColor(sel4, colors));
 
-  color1 = getSelectedColor(currentColor1);
-  color2 = getSelectedColor(currentColor2);
-  color3 = getSelectedColor(currentColor3);
-  color4 = getSelectedColor(currentColor4);
+  sw_color1 = getSelectedColor(currentsw_color1);
+  sw_color2 = getSelectedColor(currentsw_color2);
+  sw_color3 = getSelectedColor(currentsw_color3);
+  sw_color4 = getSelectedColor(currentsw_color4);
 
   const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
 
@@ -85,7 +85,7 @@ function setup() {
   // --- Update variables whenever selection changes ---
 [selP1, selP2, selP3, selP4].forEach(sel => {
     sel.changed(() => {
-      updateValues();
+      updateValuesSW();
       drawSpirals();
     });
   });
@@ -111,7 +111,7 @@ function setup() {
   // --- Update variables whenever selection changes ---
 [selS1, selS2, selS3, selS4].forEach(sel => {
     sel.changed(() => {
-      updateValues();
+      updateValuesSW();
       drawSpirals();
     });
   });
@@ -136,12 +136,12 @@ function setup() {
   // --- Update variables whenever selection changes ---
 [selS5, selS6, selS7, selS8].forEach(sel => {
     sel.changed(() => {
-      updateValues();
+      updateValuesSW();
       drawSpirals();
     });
   });
 
-    selP1.parent("freq1");
+ selP1.parent("freq1");
  selP2.parent("freq2");
  selS1.parent("freq3");
  selS2.parent("freq4");
@@ -170,27 +170,27 @@ function setup() {
 size.changed(drawSpirals);
 sizeValue = "9inch";
 
-  //  pg = createGraphics(1200, 1200, SVG);
-    pg = createGraphics(1200, 1200);
+  //  sw_pg = createGraphics(1200, 1200, SVG);
+    sw_pg = createGraphics(1200, 1200);
 
   //pg.pixelDensity(2);
-        pg.pixelDensity(1);
+        sw_pg.pixelDensity(1);
 
   spiral3D(color(255,255,255));
   
-    //pg1 = createGraphics(1200, 1200, SVG);
-      pg1 = createGraphics(1200, 1200);
+    //sw_pg1 = createGraphics(1200, 1200, SVG);
+      sw_pg1 = createGraphics(1200, 1200);
 
-            pg1.pixelDensity(1);
+            sw_pg1.pixelDensity(1);
 
-              pg2 = createGraphics(1200, 1200);
+             sw_pg2 = createGraphics(1200, 1200);
 
-            pg2.pixelDensity(1);
+           sw_pg2.pixelDensity(1);
 
- // pg1.pixelDensity(2);
+ // sw_pg1.pixelDensity(2);
   spiral3D1(color(255,255,255));
   //pg.save("frontlayer2.svg")
-  //pg1.save("backlayer2.svg")
+  //sw_pg1.save("backlayer2.svg")
 
   let maskImg = createGraphics(400, 400);
   maskImg.background(0);           // black = transparent
@@ -198,11 +198,11 @@ sizeValue = "9inch";
   maskImg.ellipse(200, 200, 200, 200);
 
   // Apply the mask
-  masked = pg.get();               // make a p5.Image from graphics buffer
+  masked = sw_pg.get();               // make a p5.Image from graphics buffer
   masked.mask(maskImg);            // mask it
   
   let b = createButton("Random");
-  b.mousePressed(randomizeDropdowns);
+  b.mousePressed(randomizeDropdownsSW);
   
   sel1.hide();
   sel2.hide();
@@ -217,19 +217,19 @@ sizeValue = "9inch";
   size.hide();
   b.hide();
 
-    createColorButtons(colors, '#color-row-1', 1, currentColor1);
-  createColorButtons(colors, '#color-row-2', 2, currentColor2);
-  createColorButtons(colors, '#color-row-3', 3, currentColor3);
-  createColorButtons(colors, '#color-row-4', 4, currentColor4);
+    createColorButtonsSW(colors, '#color-row-1', 1, currentsw_color1);
+  createColorButtonsSW(colors, '#color-row-2', 2, currentsw_color2);
+  createColorButtonsSW(colors, '#color-row-3', 3, currentsw_color3);
+  createColorButtonsSW(colors, '#color-row-4', 4, currentsw_color4);
 
-  let randomizeButton = select('#random-btn');
-  if (randomizeButton) {
-    randomizeButton.mousePressed(randomizeDropdowns);
+  let randomizeButtonSW = select('#random-btn');
+  if (randomizeButtonSW) {
+    randomizeButtonSW.mousePressed(randomizeDropdownsSW);
   }
 
 }
 
-function createColorButtons(colorList, parentId, colorIndex, initialColorName) {
+function createColorButtonsSW(colorList, parentId, colorIndex, initialColorName) {
   let parentDiv = select(parentId);
   if (!parentDiv) return;
 
@@ -246,7 +246,7 @@ function createColorButtons(colorList, parentId, colorIndex, initialColorName) {
       button.class('color-button selected');
     }
 
-    button.mousePressed(() => setColor(c.name, colorIndex));
+    button.mousePressed(() => setColorSW(c.name, colorIndex));
     parentDiv.child(button); // Attach the button to the HTML div
   });
 }
@@ -254,23 +254,23 @@ function createColorButtons(colorList, parentId, colorIndex, initialColorName) {
 /**
  * Updates the color selection for a specific part and updates the display.
  */
-function setColor(name, colorIndex) {
+function setColorSW(name, colorIndex) {
   // 1. Update the global tracking variable
   if (colorIndex === 1) {
-    currentColor1 = name;
+    currentsw_color1 = name;
   } else if (colorIndex === 2) {
-    currentColor2 = name;
+    currentsw_color2 = name;
   } else if (colorIndex === 3) {
-    currentColor3 = name;
+    currentsw_color3 = name;
   } else if (colorIndex === 4) {
-    currentColor4 = name;
+    currentsw_color4 = name;
   }
 
   // 2. Update the color variables
-  color1 = getSelectedColor(currentColor1);
-  color2 = getSelectedColor(currentColor2);
-  color3 = getSelectedColor(currentColor3);
-  color4 = getSelectedColor(currentColor4);
+  sw_color1 = getSelectedColor(currentsw_color1);
+  sw_color2 = getSelectedColor(currentsw_color2);
+  sw_color3 = getSelectedColor(currentsw_color3);
+  sw_color4 = getSelectedColor(currentsw_color4);
 
   // 3. Update button styling (highlight the selected one, unhighlight others)
   let buttons = selectAll(`.color-button[data-color-part="${colorIndex}"]`);
@@ -288,7 +288,7 @@ function setColor(name, colorIndex) {
  // drawSpirals();
 }
 
-function updateValues() {
+function updateValuesSW() {
 
   p1 = int(selP1.value());
   p2 = int(selP2.value());
@@ -305,7 +305,7 @@ function updateValues() {
   s8 = evenmorenumbers[int(selS8.value())];
 }
 
-function randomizeDropdowns() {
+function randomizeDropdownsSW() {
   // List all your dropdowns
   // let allDropdowns = [
   //   sel1, sel2, sel3, sel4,
@@ -335,27 +335,27 @@ function randomizeDropdowns() {
   let colorOptions = colors.map(c => c.name);
 
   let randomC1 = random(colorOptions);
-  setColor(randomC1, 1);
+  setColorSW(randomC1, 1);
 
   // 3. Randomize Color 2 (avoiding color 1 for diversity)
   let randomC2 = random(colorOptions);
   while (randomC2 === randomC1) {
     randomC2 = random(colorOptions);
   }
-  setColor(randomC2, 2);
+  setColorSW(randomC2, 2);
 
   // 4. Randomize Color 3
   let randomC3 = random(colorOptions);
-  setColor(randomC3, 3);
+  setColorSW(randomC3, 3);
 
   let randomC4 = random(colorOptions);
-  setColor(randomC4, 4);
+  setColorSW(randomC4, 4);
 
-  color1 = getSelectedColor(currentColor1);
-  color2 = getSelectedColor(currentColor2);
-  color3 = getSelectedColor(currentColor3);
-  color4 = getSelectedColor(currentColor4);
-  updateValues();
+  sw_color1 = getSelectedColor(currentsw_color1);
+  sw_color2 = getSelectedColor(currentsw_color2);
+  sw_color3 = getSelectedColor(currentsw_color3);
+  sw_color4 = getSelectedColor(currentsw_color4);
+  updateValuesSW();
   drawSpirals();
 }
 
@@ -370,14 +370,14 @@ function getSelectedColor(colorName) {
 }
 
 function spiral3D(c) {
-  pg.clear();
+  sw_pg.clear();
   //pg.background(255,0,0);
-  pg.noFill();
-  pg.stroke(c);
-  pg.strokeWeight(5);
-  pg.push();
-  pg.translate(pg.width/2,pg.height/2);
-  pg.beginShape();
+  sw_pg.noFill();
+  sw_pg.stroke(c);
+  sw_pg.strokeWeight(5);
+  sw_pg.push();
+  sw_pg.translate(sw_pg.width/2,sw_pg.height/2);
+  sw_pg.beginShape();
   
   for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
@@ -385,11 +385,11 @@ function spiral3D(c) {
       (max(0, i / s2) * cos(radians(i / s6 ))) * sin(radians(i * p2 * 4));
     let x = -r * cos(radians(i * 4));
     let y = r * sin(radians(i * 4));
-    pg.vertex(x, y);
+    sw_pg.vertex(x, y);
   }
-  pg.endShape();
+  sw_pg.endShape();
 
-   pg.pop();
+   sw_pg.pop();
 
 let d1=520;
 let x1=0;
@@ -399,29 +399,29 @@ if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
 if (sizeValue=="ornament offset") {
   x1=300;
 }
-pg.loadPixels();
-  for (let x = 0; x < pg.width; x++) {
-    for (let y = 0; y < pg.height; y++) {
-      let index = (x + y * pg.width) * 4;
+sw_pg.loadPixels();
+  for (let x = 0; x < sw_pg.width; x++) {
+    for (let y = 0; y < sw_pg.height; y++) {
+      let index = (x + y * sw_pg.width) * 4;
       let d = dist(x,y,600+x1,600);
       if (d > d1) {
-        pg.pixels[index + 3] = 0; // alpha channel
+        sw_pg.pixels[index + 3] = 0; // alpha channel
       }
     }
   }
-  pg.updatePixels();
+  sw_pg.updatePixels();
 }
 
 function spiral3D1(c) {
-  pg1.clear();
+  sw_pg1.clear();
   //pg.background(255,0,0);
-  pg1.noFill();
-  pg1.stroke(c);
-  pg1.strokeWeight(6);
-    pg1.push();
+  sw_pg1.noFill();
+  sw_pg1.stroke(c);
+  sw_pg1.strokeWeight(6);
+    sw_pg1.push();
 
-  pg1.translate(pg.width/2,pg.height/2);
-  pg1.beginShape();
+  sw_pg1.translate(sw_pg.width/2,sw_pg.height/2);
+  sw_pg1.beginShape();
   
   for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
@@ -429,10 +429,10 @@ function spiral3D1(c) {
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
     let x = -r * cos(radians(i * 4));
     let y = r * sin(radians(i * 4));
-    pg1.vertex(x, y);
+    sw_pg1.vertex(x, y);
   }
-  pg1.endShape();
-    pg1.pop();
+  sw_pg1.endShape();
+    sw_pg1.pop();
 
     let d1=520;
 let x1=0;
@@ -442,27 +442,27 @@ if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
 if (sizeValue=="ornament offset") {
   x1=300;
 }
-    pg1.loadPixels();
-  for (let x = 0; x < pg1.width; x++) {
-    for (let y = 0; y < pg1.height; y++) {
-      let index = (x + y * pg1.width) * 4;
+    sw_pg1.loadPixels();
+  for (let x = 0; x < sw_pg1.width; x++) {
+    for (let y = 0; y < sw_pg1.height; y++) {
+      let index = (x + y * sw_pg1.width) * 4;
       let d = dist(x,y,600+x1,600);
       if (d > d1) {
-        pg1.pixels[index + 3] = 0; // alpha channel
+        sw_pg1.pixels[index + 3] = 0; // alpha channel
       }
     }
   }
-  pg1.updatePixels(); 
+  sw_pg1.updatePixels(); 
 
-  pg2.clear();
+ sw_pg2.clear();
   //pg.background(255,0,0);
-  pg2.noFill();
-  pg2.stroke(c);
-  pg2.strokeWeight(6);
-    pg2.push();
+ sw_pg2.noFill();
+ sw_pg2.stroke(c);
+ sw_pg2.strokeWeight(6);
+   sw_pg2.push();
 
-  pg2.translate(pg.width/2,pg.height/2);
-  pg2.beginShape();
+ sw_pg2.translate(sw_pg.width/2,sw_pg.height/2);
+ sw_pg2.beginShape();
   
   for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
@@ -470,10 +470,10 @@ if (sizeValue=="ornament offset") {
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
     let x = -r * cos(radians(i * 4+120));
     let y = r * sin(radians(i * 4+120));
-    pg2.vertex(x, y);
+   sw_pg2.vertex(x, y);
   }
-  pg2.endShape();
-    pg2.pop();
+ sw_pg2.endShape();
+   sw_pg2.pop();
 
 
 if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
@@ -482,17 +482,17 @@ if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
 if (sizeValue=="ornament offset") {
   x1=300;
 }
-    pg2.loadPixels();
-  for (let x = 0; x < pg2.width; x++) {
-    for (let y = 0; y < pg2.height; y++) {
-      let index = (x + y * pg2.width) * 4;
+   sw_pg2.loadPixels();
+  for (let x = 0; x <sw_pg2.width; x++) {
+    for (let y = 0; y <sw_pg2.height; y++) {
+      let index = (x + y *sw_pg2.width) * 4;
       let d = dist(x,y,600+x1,600);
       if (d > d1) {
-        pg2.pixels[index + 3] = 0; // alpha channel
+       sw_pg2.pixels[index + 3] = 0; // alpha channel
       }
     }
   }
-  pg2.updatePixels(); 
+ sw_pg2.updatePixels(); 
 }
 function draw() {
   background(255);
@@ -508,7 +508,7 @@ translate(-200,0)
   rotateY(angleX);
   rotateX(angleY); // Optional: you could also use mouseY here
 
-    fill(color1);
+    fill(sw_color1);
     if (sizeValue=="ornament centered") {
 ellipse(0,0,700/3,700/3);
 }
@@ -554,16 +554,16 @@ ellipse(0,0,700,700,360);
   noFill();
 
   noStroke();
-  texture(pg1); // Apply the pg buffer as a texture
+  texture(sw_pg1); // Apply thesw_pg buffer as a texture
 
   push();
-  tint(color2);
+  tint(sw_color2);
   //rotate(2*PI/3);
   translate(0,0,0.1);
   plane(800, 800);
 
-    texture(pg2); // Apply the pg buffer as a texture
-  tint(color3);
+    texture(sw_pg2); // Apply thesw_pg buffer as a texture
+  tint(sw_color3);
  // rotate(2*PI/3);
   translate(0,0,0.1);
   plane(800, 800);
@@ -572,10 +572,10 @@ ellipse(0,0,700,700,360);
 
   pop();
   
-  texture(pg);
+  texture(sw_pg);
   push();
   translate(0,0,40);
-  tint(color4);
+  tint(sw_color4);
   //rotate(PI);
   plane(800, 800); // Width and height of the rectangle
   pop();
@@ -583,10 +583,10 @@ ellipse(0,0,700,700,360);
 
 function spiral3DSVG() {
 
-  let pg = createGraphics(4800, 1200, SVG);
+  let sw_pg = createGraphics(4800, 1200, SVG);
 
-  pg.fill(color1);
-  pg.noStroke();
+  sw_pg.fill(sw_color1);
+  sw_pg.noStroke();
 
   let d1=520;
 let x1=0;
@@ -598,25 +598,25 @@ if (sizeValue=="ornament offset") {
   x1=300;
 }
 
-    pg.push();
+    sw_pg.push();
 
-  pg.translate(600,600);
-  pg.ellipse(x1,0,d1*2,d1*2);   
+  sw_pg.translate(600,600);
+  sw_pg.ellipse(x1,0,d1*2,d1*2);   
 
-  pg.pop();
-
-
-  pg.noFill();
-  pg.stroke(color2);
-  pg.strokeWeight(6);
-    pg.push();
-
-  pg.translate(1800,600);
-
-   pg.ellipse(x1,0,d1*2,d1*2);   
+  sw_pg.pop();
 
 
-  pg.beginShape();
+  sw_pg.noFill();
+  sw_pg.stroke(sw_color2);
+  sw_pg.strokeWeight(6);
+    sw_pg.push();
+
+  sw_pg.translate(1800,600);
+
+   sw_pg.ellipse(x1,0,d1*2,d1*2);   
+
+
+  sw_pg.beginShape();
   
   for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
@@ -624,25 +624,25 @@ if (sizeValue=="ornament offset") {
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
     let x = -r * cos(radians(i * 4));
     let y = r * sin(radians(i * 4));
-    pg.vertex(x, y);
+    sw_pg.vertex(x, y);
   }
-  pg.endShape();
-    pg.pop();
+  sw_pg.endShape();
+    sw_pg.pop();
 
 
 
 
 
 
-  pg.noFill();
-  pg.stroke(color3);
-  pg.strokeWeight(6);
-    pg.push();
+  sw_pg.noFill();
+  sw_pg.stroke(sw_color3);
+  sw_pg.strokeWeight(6);
+    sw_pg.push();
 
-    pg.translate(3000,600);
+    sw_pg.translate(3000,600);
 
-pg.ellipse(x1,0,d1*2,d1*2);   
-  pg.beginShape();
+sw_pg.ellipse(x1,0,d1*2,d1*2);   
+  sw_pg.beginShape();
   
   for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
@@ -650,10 +650,10 @@ pg.ellipse(x1,0,d1*2,d1*2);
       (max(0, i / s4) * cos(radians(i / s8 + 21))) * sin(radians(i * p4 * 4));
     let x = -r * cos(radians(i * 4+120));
     let y = r * sin(radians(i * 4+120));
-    pg.vertex(x, y);
+    sw_pg.vertex(x, y);
   }
-  pg.endShape();
-    pg.pop(); 
+  sw_pg.endShape();
+    sw_pg.pop(); 
 
 
 if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
@@ -663,14 +663,14 @@ if (sizeValue=="ornament offset") {
   x1=300;
 }
 
-  pg.noFill();
-  pg.stroke(color4);
-  pg.strokeWeight(4);
-  pg.push();
-  pg.translate(4200,600);
+  sw_pg.noFill();
+  sw_pg.stroke(sw_color4);
+  sw_pg.strokeWeight(4);
+  sw_pg.push();
+  sw_pg.translate(4200,600);
 
-pg.ellipse(x1,0,d1*2,d1*2);   
-  pg.beginShape();
+sw_pg.ellipse(x1,0,d1*2,d1*2);   
+  sw_pg.beginShape();
   
   for (let i = 0; i < 3450; i += 0.5) {
     let r = i / 5.9 +
@@ -678,10 +678,10 @@ pg.ellipse(x1,0,d1*2,d1*2);
       (max(0, i / s2) * cos(radians(i / s6 ))) * sin(radians(i * p2 * 4));
     let x = -r * cos(radians(i * 4));
     let y = r * sin(radians(i * 4));
-    pg.vertex(x, y);
+    sw_pg.vertex(x, y);
   }
-  pg.endShape();
-   pg.pop();
+  sw_pg.endShape();
+   sw_pg.pop();
 
 
 if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
@@ -690,5 +690,5 @@ if (sizeValue=="ornament offset" || sizeValue=="ornament centered") {
 if (sizeValue=="ornament offset") {
   x1=300;
 }
- pg.save("test.svg");
+ sw_pg.save("test.svg");
 }
