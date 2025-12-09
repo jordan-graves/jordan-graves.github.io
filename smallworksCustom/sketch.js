@@ -86,7 +86,7 @@ function setup() {
 [selP1, selP2, selP3, selP4].forEach(sel => {
     sel.changed(() => {
       updateValuesSW();
-      drawSpirals();
+      drawSpiralsSW();
     });
   });
 
@@ -112,7 +112,7 @@ function setup() {
 [selS1, selS2, selS3, selS4].forEach(sel => {
     sel.changed(() => {
       updateValuesSW();
-      drawSpirals();
+      drawSpiralsSW();
     });
   });
 
@@ -137,7 +137,7 @@ function setup() {
 [selS5, selS6, selS7, selS8].forEach(sel => {
     sel.changed(() => {
       updateValuesSW();
-      drawSpirals();
+      drawSpiralsSW();
     });
   });
 
@@ -167,7 +167,7 @@ function setup() {
     size.option("9inch")
     size.option("ornament centered")
     size.option("ornament offset")
-size.changed(drawSpirals);
+size.changed(drawSpiralsSW);
 sizeValue = "9inch";
 
   //  sw_pg = createGraphics(1200, 1200, SVG);
@@ -285,7 +285,7 @@ function setColorSW(name, colorIndex) {
 
 
   // 4. Redraw the ornament
- // drawSpirals();
+ // drawSpiralsSW();
 }
 
 function updateValuesSW() {
@@ -303,6 +303,26 @@ function updateValuesSW() {
   s6 = evenmorenumbers[int(selS6.value())];
   s7 = evenmorenumbers[int(selS7.value())];
   s8 = evenmorenumbers[int(selS8.value())];
+
+
+    if (window.location.href.indexOf("801295206") != -1) {
+
+   document.getElementsByTagName("select")[6].value = currentsw_color1;
+   document.getElementsByTagName("select")[7].value = currentsw_color2;
+   document.getElementsByTagName("select")[8].value = currentsw_color3;
+   document.getElementsByTagName("select")[9].value = currentsw_color4;
+
+    document.getElementsByTagName("select")[10].value = document.getElementsByTagName("select")[0].value
+    document.getElementsByTagName("select")[11].value = document.getElementsByTagName("select")[1].value
+    document.getElementsByTagName("select")[12].value = document.getElementsByTagName("select")[2].value
+    document.getElementsByTagName("select")[13].value = document.getElementsByTagName("select")[3].value
+    document.getElementsByTagName("select")[14].value = document.getElementsByTagName("select")[4].value
+    document.getElementsByTagName("select")[15].value = document.getElementsByTagName("select")[5].value
+
+for (let i=6; i<16; i++) {
+ document.getElementsByTagName("select")[i].dispatchEvent(new Event('change', { bubbles: true }));
+}
+  } 
 }
 
 function randomizeDropdownsSW() {
@@ -356,10 +376,10 @@ function randomizeDropdownsSW() {
   sw_color3 = getSelectedColor(currentsw_color3);
   sw_color4 = getSelectedColor(currentsw_color4);
   updateValuesSW();
-  drawSpirals();
+  drawSpiralsSW();
 }
 
-function drawSpirals() {
+function drawSpiralsSW() {
     spiral3D(color(255,255,255));
   // spiral3D1(color(255,255,255));
 

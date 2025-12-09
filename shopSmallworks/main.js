@@ -1,19 +1,10 @@
-let color1, color2, color3;
-let front, back;
-let front1, back1, front2, back2, front3, back3;
-let pg, pg1;
-let colors;
-
-let cnv;
-let json;
-
-
 let  sw_color1, sw_color2, sw_color3, sw_color4;
 let p1, p2, p3, p4, s1, s2, s3, s4, s5, s6, s7, s8;
 let sel1, sel2, sel3, sel4, selP1, selP2, selP3, selP4, selS1, selS2, selS3, selS4, selS5, selS6, selS7, selS8;
 let sw_pg;
 let sw_pg1;
 let sw_pg2;
+let colors;
 let masked;  // final masked image
 let size;
 let sizeValue;
@@ -32,21 +23,19 @@ let currentColor2 = "Yellow";
 let currentColor3 = "Blue";
 let loadedOrnament = false;
 let onCart = false;
-let loadedSmallwork = false;
-let viewingOrnament = true;
 
 function preload() {
-  // Assuming these files exist in your sketch folder
-  front1 = loadImage("https://jordangraves.com/shop/front1.png");
-  back1 = loadImage("https://jordangraves.com/shop/back1.png");
-  front2 = loadImage("https://jordangraves.com/shop/front2.png");
-  back2 = loadImage("https://jordangraves.com/shop/back2.png");
-  front3 = loadImage("https://jordangraves.com/shop/front3.png");
-  back3 = loadImage("https://jordangraves.com/shop/back3.png");
-  front = front1;
-  back = back1;
-  //  json = loadJSON("projects.json",);
-  json = {};
+  // // Assuming these files exist in your sketch folder
+  // front1 = loadImage("https://jordangraves.com/shop/front1.png");
+  // back1 = loadImage("https://jordangraves.com/shop/back1.png");
+  // front2 = loadImage("https://jordangraves.com/shop/front2.png");
+  // back2 = loadImage("https://jordangraves.com/shop/back2.png");
+  // front3 = loadImage("https://jordangraves.com/shop/front3.png");
+  // back3 = loadImage("https://jordangraves.com/shop/back3.png");
+  // front = front1;
+  // back = back1;
+  // //  json = loadJSON("projects.json",);
+  // json = {};
 
 }
 
@@ -60,7 +49,6 @@ function setup() {
   canvas.parent('canvas-container'); // Attach the canvas to the HTML div
   pixelDensity(2);
 
-  // Define available colors
   colors = [
     { name: "Red", value: color(255, 0, 0) },
     { name: "Yellow", value: color(255, 255, 0) },
@@ -74,41 +62,7 @@ function setup() {
     { name: "Black", value: color(50, 50, 50) },
   ];
 
-  // Initialize graphics buffers
-  pg = createGraphics(1200, 1200);
-  pg.pixelDensity(1);
-  pg1 = createGraphics(1200, 1200);
-  pg1.pixelDensity(1);
 
-  // --- UI SETUP: Patterns (Attach listeners to existing HTML buttons) ---
-  let patternOptions = ["Pattern A", "Pattern B", "Pattern C"];
-  patternOptions.forEach(pName => {
-    let btn = select(`[data-pattern="${pName}"]`);
-    if (btn) {
-      btn.mousePressed(() => setPattern(pName, patternOptions));
-    }
-  });
-
-  // --- UI SETUP: Colors (Dynamically create buttons inside existing HTML divs) ---
-  createColorButtons(colors, '#color-row-1', 1, currentColor1);
-  createColorButtons(colors, '#color-row-2', 2, currentColor2);
-  createColorButtons(colors, '#color-row-3', 3, currentColor3);
-
-  // --- UI SETUP: Randomize Button ---
-  let randomizeButton = select('#random-btn');
-  if (randomizeButton) {
-    randomizeButton.mousePressed(randomizeSelections);
-  }
-
-  // Initialize colors and draw
-  color1 = getSelectedColor(currentColor1);
-  color2 = getSelectedColor(currentColor2);
-  color3 = getSelectedColor(currentColor3);
-  updateValues(); // Initial draw
-
-  setTimeout(checkUI,500);
-
-  //STUFF FOR SMALL WORKS
   // --- Create dropdowns ---
   sel1 = createSelect();
   sel2 = createSelect();
@@ -248,7 +202,7 @@ sizeValue = "9inch";
   //pg.pixelDensity(2);
         sw_pg.pixelDensity(1);
 
-  spiral3DSW(color(255,255,255));
+  spiral3D(color(255,255,255));
   
     //sw_pg1 = createGraphics(1200, 1200, SVG);
       sw_pg1 = createGraphics(1200, 1200);
@@ -260,7 +214,7 @@ sizeValue = "9inch";
            sw_pg2.pixelDensity(1);
 
  // sw_pg1.pixelDensity(2);
-  spiral3D1SW(color(255,255,255));
+  spiral3D1(color(255,255,255));
   //pg.save("frontlayer2.svg")
   //sw_pg1.save("backlayer2.svg")
 
@@ -289,15 +243,16 @@ sizeValue = "9inch";
   size.hide();
   b.hide();
 
-    createColorButtonsSW(colors, '#color-row-1-sw', 1, currentsw_color1);
-  createColorButtonsSW(colors, '#color-row-2-sw', 2, currentsw_color2);
-  createColorButtonsSW(colors, '#color-row-3-sw', 3, currentsw_color3);
-  createColorButtonsSW(colors, '#color-row-4-sw', 4, currentsw_color4);
+    createColorButtonsSW(colors, '#color-row-1', 1, currentsw_color1);
+  createColorButtonsSW(colors, '#color-row-2', 2, currentsw_color2);
+  createColorButtonsSW(colors, '#color-row-3', 3, currentsw_color3);
+  createColorButtonsSW(colors, '#color-row-4', 4, currentsw_color4);
 
-  let randomizeButtonSW = select('#random-btn-sw');
+  let randomizeButtonSW = select('#random-btn');
   if (randomizeButtonSW) {
     randomizeButtonSW.mousePressed(randomizeDropdownsSW);
   }
+  setTimeout(checkUI,500);
 }
 
 /**
@@ -321,28 +276,6 @@ function createColorButtons(colorList, parentId, colorIndex, initialColorName) {
     }
 
     button.mousePressed(() => setColor(c.name, colorIndex));
-    parentDiv.child(button); // Attach the button to the HTML div
-  });
-}
-
-function createColorButtonsSW(colorList, parentId, colorIndex, initialColorName) {
-  let parentDiv = select(parentId);
-  if (!parentDiv) return;
-
-  colorList.forEach(c => {
-    // Create the button using p5's createElement, but append it to the HTML parent
-    let button = createElement('button');
-    button.style('background-color', c.value.toString());
-    button.attribute('data-color-name', c.name);
-    button.attribute('data-color-part-sw', colorIndex);
-    button.class('color-button');
-    
-    // Highlight the initial selection
-    if (c.name === initialColorName) {
-      button.class('color-button selected');
-    }
-
-    button.mousePressed(() => setColorSW(c.name, colorIndex));
     parentDiv.child(button); // Attach the button to the HTML div
   });
 }
@@ -485,120 +418,9 @@ function spiral3D1() {
   pg1.image(front, 0, 0, pg.width, pg.width);
 }
 
-function updateValuesSW() {
-
-  p1 = int(selP1.value());
-  p2 = int(selP2.value());
-  p3 = int(selP3.value());
-  p4 = int(selP4.value());
-
-  s1 = morenumbers[int(selS1.value())];
-  s2 = morenumbers[int(selS2.value())];
-  s3 = morenumbers[int(selS3.value())];
-  s4 = morenumbers[int(selS4.value())];
-  s5 = evenmorenumbers[int(selS5.value())];
-  s6 = evenmorenumbers[int(selS6.value())];
-  s7 = evenmorenumbers[int(selS7.value())];
-  s8 = evenmorenumbers[int(selS8.value())];
-  
-}
-
-function randomizeDropdownsSW() {
-  // List all your dropdowns
-  // let allDropdowns = [
-  //   sel1, sel2, sel3, sel4,
-  //   selP1, selP2, selP3, selP4,
-  //   selS1, selS2, selS3, selS4,
-  //   selS5, selS6, selS7, selS8
-  // ];
-
-
-    let allDropdowns = [
-    sel1, sel2, sel3, sel4,
-    selP1, selP2, 
-    selS1, selS2, 
-    selS5, selS6, 
-  ];
-
-  allDropdowns.forEach(sel => {
-    if (!sel) return; // skip undefined dropdowns
-    let options = sel.elt.options; // native HTML options
-    let randomIndex = floor(random(options.length));
-    sel.selected(options[randomIndex].value);
-    
-    // Trigger .changed() if needed
-
-  });
-
-  let colorOptions = colors.map(c => c.name);
-
-  let randomC1 = random(colorOptions);
-  setColorSW(randomC1, 1);
-
-  // 3. Randomize Color 2 (avoiding color 1 for diversity)
-  let randomC2 = random(colorOptions);
-  while (randomC2 === randomC1) {
-    randomC2 = random(colorOptions);
-  }
-  setColorSW(randomC2, 2);
-
-  // 4. Randomize Color 3
-  let randomC3 = random(colorOptions);
-  setColorSW(randomC3, 3);
-
-  let randomC4 = random(colorOptions);
-  setColorSW(randomC4, 4);
-
-  sw_color1 = getSelectedColor(currentsw_color1);
-  sw_color2 = getSelectedColor(currentsw_color2);
-  sw_color3 = getSelectedColor(currentsw_color3);
-  sw_color4 = getSelectedColor(currentsw_color4);
-  updateValuesSW();
-  drawSpiralsSW();
-}
-
-function setColorSW(name, colorIndex) {
-  // 1. Update the global tracking variable
-  if (colorIndex === 1) {
-    currentsw_color1 = name;
-  } else if (colorIndex === 2) {
-    currentsw_color2 = name;
-  } else if (colorIndex === 3) {
-    currentsw_color3 = name;
-  } else if (colorIndex === 4) {
-    currentsw_color4 = name;
-  }
-
-  // 2. Update the color variables
-  sw_color1 = getSelectedColor(currentsw_color1);
-  sw_color2 = getSelectedColor(currentsw_color2);
-  sw_color3 = getSelectedColor(currentsw_color3);
-  sw_color4 = getSelectedColor(currentsw_color4);
-
-  // 3. Update button styling (highlight the selected one, unhighlight others)
-  let buttons = selectAll(`.color-button[data-color-part-sw="${colorIndex}"]`);
-  buttons.forEach(btn => {
-    if (btn.attribute('data-color-name') === name) {
-      btn.class('color-button selected'); // CSS handles the highlight
-    } else {
-      btn.class('color-button');
-    }
-  });
-
-
-
-  // 4. Redraw the ornament
- // drawSpirals();
-}
-
-function drawSpiralsSW() {
-    spiral3DSW(color(255,255,255));
-   spiral3D1SW(color(255,255,255));
-
-}
 function draw() {
 
-  if (viewingOrnament) {
+  
   
 
 try {
@@ -686,13 +508,173 @@ clear();
   translate(0, 0, 40);
   plane(400, 400);
   pop();
-  } else {
-    drawSW();
-  }
 }
 
 
-function spiral3DSW(c) {
+function createColorButtonsSW(colorList, parentId, colorIndex, initialColorName) {
+  let parentDiv = select(parentId);
+  if (!parentDiv) return;
+
+  colorList.forEach(c => {
+    // Create the button using p5's createElement, but append it to the HTML parent
+    let button = createElement('button');
+    button.style('background-color', c.value.toString());
+    button.attribute('data-color-name', c.name);
+    button.attribute('data-color-part', colorIndex);
+    button.class('color-button');
+    
+    // Highlight the initial selection
+    if (c.name === initialColorName) {
+      button.class('color-button selected');
+    }
+
+    button.mousePressed(() => setColorSW(c.name, colorIndex));
+    parentDiv.child(button); // Attach the button to the HTML div
+  });
+}
+
+/**
+ * Updates the color selection for a specific part and updates the display.
+ */
+function setColorSW(name, colorIndex) {
+  // 1. Update the global tracking variable
+  if (colorIndex === 1) {
+    currentsw_color1 = name;
+  } else if (colorIndex === 2) {
+    currentsw_color2 = name;
+  } else if (colorIndex === 3) {
+    currentsw_color3 = name;
+  } else if (colorIndex === 4) {
+    currentsw_color4 = name;
+  }
+
+  // 2. Update the color variables
+  sw_color1 = getSelectedColor(currentsw_color1);
+  sw_color2 = getSelectedColor(currentsw_color2);
+  sw_color3 = getSelectedColor(currentsw_color3);
+  sw_color4 = getSelectedColor(currentsw_color4);
+
+  // 3. Update button styling (highlight the selected one, unhighlight others)
+  let buttons = selectAll(`.color-button[data-color-part="${colorIndex}"]`);
+  buttons.forEach(btn => {
+    if (btn.attribute('data-color-name') === name) {
+      btn.class('color-button selected'); // CSS handles the highlight
+    } else {
+      btn.class('color-button');
+    }
+  });
+
+
+
+  // 4. Redraw the ornament
+ // drawSpiralsSW();
+}
+
+function updateValuesSW() {
+
+  p1 = int(selP1.value());
+  p2 = int(selP2.value());
+  p3 = int(selP3.value());
+  p4 = int(selP4.value());
+
+  s1 = morenumbers[int(selS1.value())];
+  s2 = morenumbers[int(selS2.value())];
+  s3 = morenumbers[int(selS3.value())];
+  s4 = morenumbers[int(selS4.value())];
+  s5 = evenmorenumbers[int(selS5.value())];
+  s6 = evenmorenumbers[int(selS6.value())];
+  s7 = evenmorenumbers[int(selS7.value())];
+  s8 = evenmorenumbers[int(selS8.value())];
+
+  setTimeout(updateUI,100);
+}
+
+function updateUI() {
+      if (window.location.href.indexOf("801295206") != -1 && loadedOrnament) {
+
+   document.getElementsByTagName("select")[6].value = currentsw_color1;
+   document.getElementsByTagName("select")[7].value = currentsw_color2;
+   document.getElementsByTagName("select")[8].value = currentsw_color3;
+   document.getElementsByTagName("select")[9].value = currentsw_color4;
+
+    document.getElementsByTagName("select")[10].value = document.getElementsByTagName("select")[0].value
+    document.getElementsByTagName("select")[11].value = document.getElementsByTagName("select")[1].value
+    document.getElementsByTagName("select")[12].value = document.getElementsByTagName("select")[2].value
+    document.getElementsByTagName("select")[13].value = document.getElementsByTagName("select")[3].value
+    document.getElementsByTagName("select")[14].value = document.getElementsByTagName("select")[4].value
+    document.getElementsByTagName("select")[15].value = document.getElementsByTagName("select")[5].value
+
+for (let i=6; i<16; i++) {
+ document.getElementsByTagName("select")[i].dispatchEvent(new Event('change', { bubbles: true }));
+}
+  } 
+}
+
+function randomizeDropdownsSW() {
+  // List all your dropdowns
+  // let allDropdowns = [
+  //   sel1, sel2, sel3, sel4,
+  //   selP1, selP2, selP3, selP4,
+  //   selS1, selS2, selS3, selS4,
+  //   selS5, selS6, selS7, selS8
+  // ];
+
+
+    let allDropdowns = [
+    sel1, sel2, sel3, sel4,
+    selP1, selP2, 
+    selS1, selS2, 
+    selS5, selS6, 
+  ];
+
+  allDropdowns.forEach(sel => {
+    if (!sel) return; // skip undefined dropdowns
+    let options = sel.elt.options; // native HTML options
+    let randomIndex = floor(random(options.length));
+    sel.selected(options[randomIndex].value);
+    
+    // Trigger .changed() if needed
+
+  });
+
+  let colorOptions = colors.map(c => c.name);
+
+  let randomC1 = random(colorOptions);
+  setColorSW(randomC1, 1);
+
+  // 3. Randomize Color 2 (avoiding color 1 for diversity)
+  let randomC2 = random(colorOptions);
+  while (randomC2 === randomC1) {
+    randomC2 = random(colorOptions);
+  }
+  setColorSW(randomC2, 2);
+
+  // 4. Randomize Color 3
+  let randomC3 = random(colorOptions);
+  setColorSW(randomC3, 3);
+
+  let randomC4 = random(colorOptions);
+  setColorSW(randomC4, 4);
+
+  sw_color1 = getSelectedColor(currentsw_color1);
+  sw_color2 = getSelectedColor(currentsw_color2);
+  sw_color3 = getSelectedColor(currentsw_color3);
+  sw_color4 = getSelectedColor(currentsw_color4);
+  updateValuesSW();
+  drawSpiralsSW();
+}
+
+function drawSpiralsSW() {
+    spiral3D(color(255,255,255));
+  // spiral3D1(color(255,255,255));
+
+}
+
+function getSelectedColor(colorName) {
+  return colors.find(c => c.name === colorName).value;
+}
+
+function spiral3D(c) {
   sw_pg.clear();
   //pg.background(255,0,0);
   sw_pg.noFill();
@@ -735,7 +717,7 @@ sw_pg.loadPixels();
   sw_pg.updatePixels();
 }
 
-function spiral3D1SW(c) {
+function spiral3D1(c) {
   sw_pg1.clear();
   //pg.background(255,0,0);
   sw_pg1.noFill();
@@ -817,7 +799,7 @@ if (sizeValue=="ornament offset") {
   }
  sw_pg2.updatePixels(); 
 }
-function drawSW() {
+function draw() {
   background(255);
   clear();
 if (sizeValue=="ornament offset") {
@@ -1016,6 +998,7 @@ if (sizeValue=="ornament offset") {
  sw_pg.save("test.svg");
 }
 
+
 function reveal() {
   if (document.getElementById("defaultCanvas0") != null &&
     document.getElementById("defaultCanvas0").getBoundingClientRect().bottom > document.getElementById("menubar").getBoundingClientRect().bottom) {
@@ -1041,6 +1024,7 @@ window.addEventListener("scroll", reveal);
 
 // To check the scroll position on page load
 reveal();
+
 
 
 function showMoreProjects() {
@@ -1204,14 +1188,11 @@ function ornamentUI(){
         setup();
     }
       document.getElementById("main-container").style.display = "block";
-      document.getElementById("main-container-sw").style.display = "block";
      document.getElementById("canvas-container").style.display = "flex";
     
      document.getElementsByClassName("details-gallery__wrap")[0].style.display = "none";
    document.getElementsByClassName("product-details__gallery")[0].appendChild(document.getElementById("canvas-container")); 
     document.getElementsByClassName("product-details__sidebar")[0].insertBefore(document.getElementById("main-container"),document.getElementsByClassName("product-details__sidebar")[0].childNodes[13]); 
-    document.getElementsByClassName("product-details__sidebar")[0].insertBefore(document.getElementById("main-container-sw"),document.getElementsByClassName("product-details__sidebar")[0].childNodes[13]); 
-
    
 }
 
@@ -1221,14 +1202,9 @@ function hideOrnamentUI() {
         resetUI();
          setup();
     }
-      if (! document.getElementById("main-container-sw")) {
-        resetUI();
-         setup();
-    }
     document.getElementById("main-container").style.display = "none";
-    document.getElementById("main-container-sw").style.display = "none";
      document.getElementById("canvas-container").style.display = "none";
-    document.getElementsByClassName("details-gallery__wrap")[0].style.display = "block";
+       document.getElementsByClassName("details-gallery__wrap")[0].style.display = "block";
    
 }
 
@@ -1237,29 +1213,12 @@ setTimeout(checkUI,500);
 }
 
 function checkUI() {
-  if (window.location.href.indexOf("801295206") != -1) {
-window.location.href = "/shopSmallWorks"
-  }
-        if (window.location.href.indexOf("799427750") != -1) {
+        if (window.location.href.indexOf("801295206") != -1) {
         if (!loadedOrnament) {
  ornamentUI();
-        }
  loadedOrnament = true;
- viewingOrnament = true;
  onCart = false;
-            document.getElementById("main-container-sw").style.display = "none";
-
-       
-        updateValues();
-    } else if (window.location.href.indexOf("801295206") != -1) {
-        if (!loadedOrnament) {
- ornamentUI();
         }
- loadedOrnament = true;
- viewingOrnament = false;
- onCart = false;
-            document.getElementById("main-container-sw").style.display = "none";
-
        
         updateValuesSW();
     } else {
@@ -1304,54 +1263,5 @@ function resetUI() {
                 <button id="random-btn" class="randomButton">Try a Random Combination!</button>\
               </div>\
             </div>\
-            <div id="main-container-sw">\
-        <div id="color1-section" class="control-section">\
-        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Background:</h3>\
-        <div id="color-row-1-sw" class="button-row color-row">\
-        </div>\
-      </div>\
-      <div id="color2-section" class="control-section">\
-        <h3 class="color-title">Secondary Color:</h3>\
-        <div id="color-row-2-sw" class="button-row color-row">\
-        </div>\
-      </div>\
-      <div id="color3-section" class="control-section">\
-        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tertiary Color:</h3>\
-        <div id="color-row-3-sw" class="button-row color-row">\
-        </div>\
-      </div>\
-      <div id="color4-section" class="control-section">\
-        <h3 class="color-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Primary Color:</h3>\
-        <div id="color-row-4-sw" class="button-row color-row">\
-        </div>\
-      </div>\
-      <div id="pattern-section" class="control-section">\
-        <div id="slidersLeft" class="">\
-          <div id="freq1">\
-            <h3 class="color-title">Wave 1 Frequency:</h3>\
-          </div>\
-          <div id="freq3">\
-            <h3 class="color-title">Wave 1 Strength:</h3>\
-          </div>\
-          <div id="freq5">\
-            <h3 class="color-title">Wave 1 Complexity:</h3>\
-          </div>\
-        </div>\
-        <div id="slidersRight" class="">\
-          <div id="freq2">\
-            <h3 class="color-title">Wave 2 Frequency:</h3>\
-          </div>\
-          <div id="freq4">\
-            <h3 class="color-title">Wave 2 Strength:</h3>\
-          </div>\
-          <div id="freq6">\
-            <h3 class="color-title">Wave 2 Complexity:</h3>\
-          </div>\
-        </div>\
-      </div>\
-      <div id="randomize-section-sw" class="control-section">\
-        <button id="random-btn-sw" class="randomButton">Try a Random Combination!</button>\
-      </div>\
-    </div>\
             '
 }

@@ -559,6 +559,11 @@ setTimeout(checkUI,500);
 }
 
 function checkUI() {
+
+    if (window.location.href.indexOf("801295206") != -1) {
+window.location.href = "/shopSmallWorks#!/Custom-Small-Work/p/801295206"
+  }
+  
         if (window.location.href.indexOf("799427750") != -1) {
         if (!loadedOrnament) {
  ornamentUI();
