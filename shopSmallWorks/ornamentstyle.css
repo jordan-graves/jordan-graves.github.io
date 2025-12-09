@@ -1,0 +1,397 @@
+/* --- BASE STYLES (Mobile/Default) --- */
+
+#main-container {
+  margin: 0;
+  padding: 0;
+  
+  display: block;
+  flex-direction: column;
+  align-items: center; 
+  /* Assuming the Comfortaa font link is in index.html or available */
+  font-family: "Comfortaa", sans-serif !important; 
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  width: 100% !important;
+}
+  #main-container h3 {
+        font-size: 16px !important;
+        margin-block: 0px;
+        margin-inline: 0px;
+        color: blue !important;
+    }
+
+    select {
+      margin: 15px !important;
+    }
+
+#designer {
+    /* The designer needs to span the full viewport height to contain the absolutely positioned children */
+    position: relative;
+    width: 100%;
+}
+
+/* --- Canvas and Main Container --- */
+#canvas-container {
+  order: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.free_shipping_icon_app {
+  display: none;
+}
+#canvas-container canvas {
+        /* Scales the canvas and its contents down to 80% of its original size (600px -> 480px) */
+        width: 100% !important;
+        height: auto !important;
+        /* Ensures the scaled element remains centered */
+        margin: 0 auto; 
+    }
+
+canvas {
+  display: block;
+}
+
+#main-container {
+  order: 2;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  justify-self: center;
+}
+
+/* --- Headings & Text --- */
+#main-container h1 {
+  font-size: 80px; /* Default large size */
+  color: blue;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.color-title {
+  /* This class is for h3 elements, no specific Flex property needed */
+}
+
+/* --- Section Layouts --- */
+
+/* Pattern Section (Centered) */
+#pattern-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin: 15px 0;
+}
+
+/* Color Sections (Centers the Title+Row block, aligns Title/Row vertically) */
+
+
+/* Button Row Alignment (KEY: Left-aligned column) */
+.button-row {
+  display: flex;
+  justify-content: flex-start; /* Forces content to the left of the row */
+  flex-wrap: wrap; 
+  margin: 5px; 
+}
+
+.color-row {
+  width: 100%; /* Default width (takes up available space) */
+  max-width: 550px; /* Defines the max column size on mobile */
+  flex-shrink: 0;
+}
+
+/* --- Button Styling --- */
+#main-container button {
+  padding: 10px !important;
+font-family: 'Comfortaa' !important;
+  border-radius: 50px !important;
+  border: 2px solid blue ;
+  font-size: 16px !important; /* Default large size */
+  cursor: pointer;
+  transition: background-color 0.1s, color 0.1s;
+  font-family: "Comfortaa",;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  
+}
+
+.pattern-button {
+  background-color: bisque;
+  color: blue;
+  margin: 5px 10px;
+  padding: 10px 20px;
+  
+}
+.pattern-button button {
+font-family: "Comfortaa", sans-serif !important;
+font-size: 12px;
+}
+ #pattern-buttons {
+      width: 100%;
+    display: flex;
+    justify-content: space-around;
+ }
+.color-button {
+  width: 25px !important; /* Default size */
+  height: 25px !important; 
+  margin: 4px !important; 
+  border: 2px solid #ccc !important;
+  border-radius: 50% !important;
+}
+
+
+.color-button.selected {
+  border: 4px solid black !important;
+}
+
+.randomButton {
+  background-color: blue !important;
+  color: bisque !important;
+  padding: 10px 20px;
+  font-size: 32px; /* Default large size */
+  font-weight: bold;
+  margin: 20px;
+}
+
+  #color1-section, #color2-section, #color3-section, #color4-section {
+    display: block;
+    justify-content: center; 
+    align-items: left; 
+    text-align: left;
+    margin: 15px 0;
+    
+    /* 🛑 Key Fix: Prevent the H3 and the whole .color-row from wrapping! 
+       Let the *buttons inside* the .color-row wrap if needed. */
+    flex-wrap: nowrap; /* Change from wrap to nowrap */ 
+    
+    /* Allow some padding/margin to pull the whole block off the edge */
+    padding: 0 5px; 
+}
+
+
+/* 📱 MEDIA QUERY FOR TABLETS (Screen size 768px to 1024px) */
+/* Scales down elements to feel less oversized on an iPad */
+
+@media screen and (min-width: 1440px) {
+
+  body {
+  min-height: 100vh; /* Set height equal to the full viewport height */
+  display: flex; /* Enable Flexbox on the body */
+  flex-direction: column; /* Stack children (like the h1 and #designer) vertically */
+  justify-content: center; /* Vertically center content (the #designer) */
+  align-items: center; /* Horizontally center content (the #designer) */
+}
+
+  #designer {
+
+        max-width: 1800px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        align-self: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main-container h1 {
+      font-size: 60px;
+      width: 100vw;
+      display: block;
+    }
+
+  
+
+     button, .randomButton {
+      font-size: 18px;
+    }
+
+
+
+
+
+#main-container {
+      order: 2;
+      left: 40%;
+      width: 60%;
+      display: inline;
+   
+      text-align: center;
+      
+      /* justify-self: center; is not used in Flexbox, remove it if it was there */
+    }
+
+   
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+
+  #main-container {
+  min-height: 100vh; /* Set height equal to the full viewport height */
+  display: flex; /* Enable Flexbox on the body */
+  flex-direction: column; /* Stack children (like the h1 and #designer) vertically */
+  justify-content: center; /* Vertically center content (the #designer) */
+  align-items: center; /* Horizontally center content (the #designer) */
+}
+
+  #designer {
+
+        max-width: 1800px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        align-self: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        transform: scale(calc( 100vw / 1440px));
+    }
+
+   #main-container  h1 {
+      font-size: 60px;
+      width: 100vw;
+      display: block;
+    }
+
+   
+
+     button, .randomButton {
+      font-size: 18px;
+    }
+
+
+
+
+
+#main-container {
+      order: 2;
+      left: 40%;
+      width: 60%;
+      display: inline;
+   
+      text-align: center;
+      
+      /* justify-self: center; is not used in Flexbox, remove it if it was there */
+    }
+
+   
+}
+
+@media screen and (min-width:768px) and (max-width: 1024px) {
+    
+    /* 1. Scale down Headings */
+    #main-container h1 {
+        font-size: 60px;
+    }
+  
+
+    /* 2. Scale down Buttons/Controls */
+    button {
+        padding: 8px;
+        font-size: 24px;
+    }
+    
+    .randomButton {
+      font-size: 24px;
+    }
+
+    /* 4. Adjust Color Row Column Width */
+    .color-row {
+        /* Defines the required width for the left-aligned column 
+           to look centered and proportional on the tablet */
+        width: 500px; 
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. Scale down Headings */
+   #main-container  h1 {
+        font-size: 24px;
+        margin-top: 0px;
+    }
+  
+
+    /* 2. Scale down Buttons/Controls */
+    button {
+        padding: 2px;
+        font-size: 18px;
+        margin: 0px;
+    }
+    
+    .randomButton {
+      font-size: 14px;
+    }
+
+
+
+ /* 🛑 FIX 1: Set a flexible max-width for the main container on phones */
+    #main-container {
+        order: 2;
+        width: 100%; /* Take up full width */
+        max-width: 650px; /* A reasonable max-width for controls, but we'll use 100% for alignment */
+        text-align: center;
+    }
+
+.color-row {
+    display: flex;
+    justify-content: flex-start;
+    
+    /* 🛑 Key Fix: Remove max-width constraint for this device size. 
+       Let the row naturally take the space it needs for the buttons. */
+    /* REMOVE THIS: max-width: 500px; */ 
+    width: auto; 
+}
+
+  
+
+
+
+    #pattern-buttons button {
+      font-size: 12px;
+      padding: 8px;
+    }
+}
+
+#freq1,
+#freq2,
+#freq3,
+#freq4,
+#freq5,
+#freq6 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: -10px !important;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+#pattern-section {
+  margin: 15px;
+}
+
+#slidersLeft,
+#slidersRight {
+  width: 100%;
+}
+
+#pattern-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 15px ;
+  justify-content: space-evenly;
+}
+#pattern-section {
+  margin: 15px;
+}
