@@ -1213,6 +1213,11 @@ setTimeout(checkUI,500);
 }
 
 function checkUI() {
+
+      if (window.location.href.indexOf("799427750") != -1) {
+window.location.href = "/shop/#!/Custom-Ornament/p/799427750"
+  }
+  
         if (window.location.href.indexOf("801295206") != -1) {
         if (!loadedOrnament) {
  ornamentUI();
