@@ -140,16 +140,16 @@ button:hover {
   /* CSS styles for devices with width between 768px and 1024px */
 
   body {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   #switchButtons button {
-  font-size: 24px;
-  margin-inline: 20px;
+  font-size: 18px;
+  margin-inline: 10px;
 }
 
 p {
-  font-size: 36px;
+  font-size: 28px;
   margin-bottom: 10px;
     margin-top: 0px;
   padding: 0px;
@@ -169,8 +169,8 @@ p {
 .row {
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
-  gap: 20px;
+  padding: 10px;
+  gap: 10px;
 }
 
 .section {
@@ -211,7 +211,7 @@ button {
   cursor: pointer;
   background: rgb(87, 85, 162);;
   transition: background 0.2s;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 button:hover {
@@ -235,7 +235,7 @@ button:hover {
   /* vertical centering */
 }
 #submitbuttons button {
- font-size: 36px;
+ font-size: 28px;
  width: 440px;
 }
 
