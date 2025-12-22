@@ -1,10 +1,354 @@
-html, body {
+body {
   margin: 0;
-  padding: 0;
+  font-family: "DynaPuff", sans-serif;
+  background: #24204f;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+button {
+  font-family: "DynaPuff", sans-serif;
+  color: white;
 }
 canvas {
   display: block;
+  justify-self: center;
+  align-self: center;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+z-index: -1;
 }
+
+#switchButtons {
+  z-index: 1;
+  
+  width: 100%;
+}
+
+#switchButtons button {
+  font-size: 12px;
+  margin-inline: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 5px;
+    margin-top: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+#starfishCanvas {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: -10%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}
+
+.section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.section-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.button-grid {
+  display: grid;
+  gap: 5px;
+}
+
+/* 3 buttons */
+.three-buttons {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 8 buttons 4x2 */
+.eight-buttons {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+/* 9 buttons in a single row, smaller */
+.nine-buttons {
+  grid-template-columns: repeat(9, 1fr);
+}
+
 button {
+  padding: 10px;
+  border-radius: 8px;
   border: none;
+  cursor: pointer;
+  background: rgb(87, 85, 162);;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: rgb(118, 116, 162);
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#bodythicknessbuttons img {
+  width: 50%;
+}
+
+.button-grid img {
+  justify-self: center;
+  /* horizontal centering */
+  align-self: center;
+  /* vertical centering */
+}
+#submitbuttons button {
+ font-size: 18px;
+ width: 220px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* CSS styles for devices with width between 768px and 1024px */
+
+  body {
+    font-size: 24px;
+  }
+
+  #switchButtons button {
+  font-size: 24px;
+  margin-inline: 20px;
+}
+
+p {
+  font-size: 36px;
+  margin-bottom: 10px;
+    margin-top: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+#starfishCanvas {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: -5%;
+  margin-top: 2%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+}
+
+.section {
+  flex: 1;
+  min-width: 400px;
+}
+
+.section-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button-grid {
+  display: grid;
+  gap: 10px;
+}
+
+/* 3 buttons */
+.three-buttons {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 8 buttons 4x2 */
+.eight-buttons {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+/* 9 buttons in a single row, smaller */
+.nine-buttons {
+  grid-template-columns: repeat(9, 1fr);
+}
+
+button {
+  padding: 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: rgb(87, 85, 162);;
+  transition: background 0.2s;
+  font-size: 24px;
+}
+
+button:hover {
+  background: rgb(118, 116, 162);
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#bodythicknessbuttons img {
+  width: 70%;
+}
+
+.button-grid img {
+  justify-self: center;
+  /* horizontal centering */
+  align-self: center;
+  /* vertical centering */
+}
+#submitbuttons button {
+ font-size: 36px;
+ width: 440px;
+}
+
+}
+
+@media only screen and (min-width: 1025px)  {
+  /* CSS styles for devices with width between 768px and 1024px */
+
+  body {
+    font-size: 24px;
+  }
+
+  #container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #switchButtons button {
+  font-size: 18px;
+  margin-inline: 10px;
+}
+
+p {
+  font-size: 28px;
+  margin-bottom: 10px;
+    margin-top: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+#starfishCanvas {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: -5%;
+  margin-top: 2%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+
+}
+
+.section {
+  flex: 1;
+  min-width: 400px;
+}
+
+.section-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button-grid {
+  display: grid;
+  gap: 10px;
+}
+
+/* 3 buttons */
+.three-buttons {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 8 buttons 4x2 */
+.eight-buttons {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+/* 9 buttons in a single row, smaller */
+.nine-buttons {
+  grid-template-columns: repeat(9, 1fr);
+}
+
+button {
+  padding: 10px;
+  border-radius: 8px;
+  min-height: 40px;
+  border: none;
+  cursor: pointer;
+  background: rgb(87, 85, 162);;
+  transition: background 0.2s;
+  font-size: 24px;
+}
+
+button:hover {
+  background: rgb(118, 116, 162);
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#bodythicknessbuttons img {
+  width: 70%;
+}
+
+.button-grid img {
+  justify-self: center;
+  /* horizontal centering */
+  align-self: center;
+  /* vertical centering */
+}
+#submitbuttons button {
+ font-size: 28px;
+ width: 340px;
+}
+
 }
