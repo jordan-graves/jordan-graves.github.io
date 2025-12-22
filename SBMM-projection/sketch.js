@@ -52,6 +52,7 @@ let diverAssets = [];
 let fishSounds= [];
 let backgroundSound;
 let mute = false;
+let fr;
 
 function preload() {
   firebase.initializeApp(firebaseConfig);
@@ -275,7 +276,10 @@ function draw() {
   //image(divers, 0, 0);
 
   fill(255);
-  text(int(frameRate()),30,30)
+  if (frameCount%60 == 0) {
+    fr = int(frameRate())
+  }
+  text(fr,30,30)
 }
 
 function gotData(data) {
