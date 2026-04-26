@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  background: rgb(150,150,150);
 }
 canvas {
   display: block;
@@ -8,5 +9,5 @@ canvas {
 }
 p {
   font-size: 24px;
-  background-color: white;
+  background-color:  rgb(150,150,150);
 }
