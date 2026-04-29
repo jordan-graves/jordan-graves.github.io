@@ -1,0 +1,96 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  background: rgb(50, 50, 50);
+  height: 100vh; /* Changed to 100vh to fill the screen */
+  overflow: hidden;
+  
+}
+
+#p5_loading, .p5-bar {
+  display: none !important;
+}
+
+canvas {
+  display: block;
+}
+
+/* Side Navigation for Student Buttons */
+#galleryButtons {
+  padding-top: 20px;
+  position: absolute;
+  left: 0%;
+  text-align: center;
+  width: 40%;
+  height: 100vh; /* Fill the full height of the page */
+  font-family: monospace;
+  font-size: 16px;
+  overflow-y: auto; /* Adds a scrollbar so you can see all 24 names */
+  background: rgba(0, 0, 0, 0.1); /* Subtle contrast for the menu */
+
+}
+
+#galleryButtons button {
+  font-family: monospace;
+  font-size: 14px; /* Slightly smaller to prevent text wrapping on long names */
+  height: auto;
+  min-height: 40px;
+  padding: 5px;
+  margin: 4px;
+  width: 90%; /* Responsive width */
+  max-width: 200px;
+  border-radius: 20px;
+  cursor: pointer;
+ 
+}
+
+/* Center Column: App Display */
+#gallery {
+  padding-top: 30px;
+  position: absolute;
+  left: 40%;
+  text-align: center;
+  width: 30%;
+  height: 100%;
+}
+
+#frame {
+  width: 392px;
+  height: 620px;
+  border: 4px solid #222; /* Added a border to look like a phone screen */
+  border-radius: 10px;
+}
+
+#galleryText {
+  font-family: monospace;
+  font-size: 18px; /* Slightly adjusted for long group names */
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+/* Right Column: QR and Description */
+#gallery2 {
+  padding-top: 50px;
+  padding-inline:20px;
+  position: absolute;
+  left: 70%;
+  text-align: center;
+  width: 30%;
+  height: 100vh;
+  font-family: monospace;
+  font-size: 15px;
+  overflow-y: auto; /* Allows reading long descriptions */
+}
+
+#qr {
+  height: 200px;
+  background: white; /* Helpful if your PNGs have transparent backgrounds */
+  padding: 5px;
+  border-radius: 5
+}
+
+#description {
+  padding-inline: 50px;
+  text-align: center;
+}

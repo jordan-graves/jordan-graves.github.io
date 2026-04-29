@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Slider with 5 Ticks (Number Line)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to better display the ticks and labels */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+        .slider-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* --- Ticks Fix: New CSS for cross-browser ticks structure --- */
+        
+        /* Ensures the slider and tick structure overlap correctly */
+        .range-wrapper {
+            position: relative;
+            /* Padding of 8px ensures ticks align with the 16px thumb's center */
+            padding: 0 8px; 
+            /* Added height to contain the input and ticks */
+            height: 45px; 
+        }
+
+        /* The container for the ticks, positioned behind the slider */
+        .tick-marks {
+            position: absolute;
+            /* Top is calculated to position the ticks vertically over the track center (10px margin + 2.5px track height) */
+            top: 12.5px; 
+            left: 8px; /* Matches range-wrapper padding */
+            right: 8px; /* Matches range-wrapper padding */
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% - 16px); /* 100% minus both paddings */
+            pointer-events: none; /* Crucial: Make sure ticks don't block the input */
+            z-index: 1; /* Behind the slider input */
+        }
+
+        .tick {
+            width: 4px; /* Thickness */
+            height: 25px; /* Taller */
+            background-color: #4b5563; /* Tick color */
+            /* Vertical adjustment to center the tick visually around the track line */
+            transform: translateY(-50%); 
+        }
+
+        /* The native range input */
+        #ticked-range {
+            width: 100%;
+            margin: 10px 0;
+            /* Reset default appearance */
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent; /* Needed to apply custom track styles */
+            z-index: 2; /* Ensure the slider thumb is above the ticks for interaction */
+            position: relative; /* Needed for z-index to work */
+        }
+        
+        /* --- CUSTOM TRACK STYLES --- */
+        
+        /* Webkit (Chrome/Safari) Track */
+        #ticked-range::-webkit-slider-runnable-track {
+            background-color: black; 
+            height: 5px; 
+            border-radius: 9999px; 
+        }
+        
+        /* Firefox Track */
+        #ticked-range::-moz-range-track {
+            background-color: black; 
+            height: 5px; 
+            border-radius: 9999px; 
+        }
+        
+        /* IE Track (less common but good for completeness) */
+        #ticked-range::-ms-track {
+            background-color: black;
+            height: 5px;
+            border-radius: 9999px;
+            color: transparent; 
+        }
+
+        /* --- THUMB ALIGNMENT FIX (Blue Indicator) --- */
+
+        /* Webkit (Chrome/Safari) Thumb */
+        #ticked-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 16px; 
+            width: 16px; 
+            background: #2563eb; 
+            cursor: pointer;
+            border-radius: 9999px; 
+            /* Vertical adjustment to center it on the new 5px track height */
+            margin-top: -5.5px; 
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Firefox Thumb */
+        #ticked-range::-moz-range-thumb {
+            height: 16px;
+            width: 16px;
+            background: #2563eb;
+            cursor: pointer;
+            border-radius: 9999px;
+            border: none;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="slider-container">
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">Discrete Value Selector</h2>
+
+    <div class="range-wrapper">
+        <input 
+            type="range" 
+            id="ticked-range" 
+            min="0" 
+            max="4" 
+            step="1" 
+            value="2" 
+            /* Removed list="tickmarks" */
+            class="w-full rounded-lg appearance-none cursor-pointer" 
+        >
+
+        <!-- NEW: Pure CSS structure for reliable, cross-browser tick marks -->
+        <div class="tick-marks">
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+            <div class="tick"></div>
+        </div>
+        <!-- Removed datalist -->
+    </div>
+
+    <p class="mt-4 text-center">
+        Current Value Index: 
+        <span id="current-value" class="font-bold text-blue-600">2</span>
+    </p>
+</div>
+
+<script>
+    const slider = document.getElementById('ticked-range');
+    const valueDisplay = document.getElementById('current-value');
+    
+    // Initial display
+    valueDisplay.textContent = slider.value;
+
+    slider.addEventListener('input', (event) => {
+        // Update display when slider moves
+        valueDisplay.textContent = event.target.value;
+    });
+</script>
+
+</body>
+</html>
