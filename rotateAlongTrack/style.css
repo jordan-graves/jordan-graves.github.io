@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+canvas {
+  display: block;
+  /* Forces the canvas to match the window's width */
+  width: 100vw !important; 
+  /* Maintains the aspect ratio so it doesn't squish vertically */
+  height: auto !important; 
+}
