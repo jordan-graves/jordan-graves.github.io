@@ -1,0 +1,189 @@
+[
+  {
+    "id": "project-4",
+    "title": "Interlace",
+    "description": [
+      "This series investigates structural light interference using layered Plexiglas sheets, programmed microcontrollers, and real-time custom shader projections.",
+      "Designed to slow down visual consumption, the artwork shifts its perceived depth and geometry as viewers move through the space, creating moiré fringe patterns that continuously transform with physical position."
+    ],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "small knit 1.webp",
+        "alt": "Small Knit 1",
+        "caption": "Interlaced v2.1"
+      },
+      {
+       "index": 1,
+        "src": "small knit 2.webp",
+        "alt": "Small Knit 2",
+        "caption": "Interlaced v2.2"
+      },
+      {
+       "index": 3,
+        "src": "small knit 3.webp",
+        "alt": "Small Knit 3",
+        "caption": "Interlaced v2.3"
+      }
+    ],
+    "archiveHeader": "Archive & Detail Documentation",
+    "archiveGrid": [
+      {
+        "src": "https://picsum.photos/800/600?random=10",
+        "alt": "Schematic Detail",
+        "caption": "Wiring schematic & acrylic mount details"
+      },
+      {
+        "src": "https://picsum.photos/800/600?random=11",
+        "alt": "Shader Output",
+        "caption": "Shader visual test output"
+      }
+    ]
+  },
+  {
+    "id": "project-2",
+    "title": "Static Moiré",
+    "description": [
+  "The Static Moiré series explores interference without mechanical motion, placing perception entirely in the hands of the viewer. Each work consists of two circular Plexiglas layers, nine inches in diameter, spaced approximately one inch apart. The back layer contains multiple applications of vinyl graphics, while the front layer gets applied a single layer of vinyl. These works vibrate when the viewer is still, but as the viewer shifts position, the moiré patterns evolve.",
+
+"Color functions structurally rather than expressively. High-contrast layers are necessary for interference to occur, while the front layer visually merges with the underlying color through proximity in hue, value, or saturation. Without motors or electronics, these works’ stillness amplifies optical vibration, slowing the experience and shifting responsibility for animation entirely onto the viewer’s perception.",
+
+"To complement this series, I have created a user interface that allows individuals to cocreate in this process and explore the possibility space of the generative system I’ve created. I have abstracted the numerical values in the formula into levels of frequency, strength, and complexity. With the user interface, the algorithm is more explicitly present here, allowing viewers an alternative way to understand how the patterns are constructed and transformed."
+
+],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "static moire 1.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.1"
+      },
+       {
+        "index": 1,
+        "src": "static moire 2.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.2"
+      },
+       {
+        "index": 2,
+        "src": "static moire 3.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.3"
+      },
+       {
+        "index": 3,
+        "src": "static moire 4.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.4"
+      },
+       {
+        "index": 4,
+        "src": "static moire 5.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.5"
+      },
+       {
+        "index": 5,
+        "src": "static moire 6.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.6"
+      }
+    ],
+    "archiveHeader": "Fabrication & Technical Studies",
+    "archiveGrid": [
+      {
+        "src": "https://picsum.photos/800/600?random=12",
+        "alt": "Knitting Test",
+        "caption": "Machine-knitting tension tests"
+      },
+      {
+        "src": "https://picsum.photos/800/600?random=13",
+        "alt": "Stepper Array Rig",
+        "caption": "Stepper motor array mounting rig"
+      }
+    ]
+  },
+  {
+    "id": "project-3",
+    "title": "Kinetic Moiré",
+    "description": [
+      "This series investigates structural light interference using layered Plexiglas sheets, programmed microcontrollers, and real-time custom shader projections.",
+      "Designed to slow down visual consumption, the artwork shifts its perceived depth and geometry as viewers move through the space, creating moiré fringe patterns that continuously transform with physical position."
+    ],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "kinetic 1.webp",
+        "alt": "Small Knit 1",
+        "caption": "Kinetic Moiré v2.1"
+      },
+      {
+        "index": 1,
+        "src": "kinetic 2.webp",
+        "alt": "Small Knit 1",
+        "caption": "Kinetic Moiré v2.1"
+      },
+      {
+        "index": 2,
+        "src": "kinetic 3.webp",
+        "alt": "Small Knit 1",
+        "caption": "Kinetic Moiré v2.1"
+      },
+      {
+        "index": 3,
+        "src": "kinetic 4.webp",
+        "alt": "Small Knit 1",
+        "caption": "Kinetic Moiré v2.1"
+      },
+      {
+        "index": 4,
+        "src": "kinetic 5.webp",
+        "alt": "Small Knit 1",
+        "caption": "Kinetic Moiré v2.1"
+      }
+    
+    ],
+    "archiveHeader": "Archive & Detail Documentation",
+    "archiveGrid": [
+      {
+        "src": "https://picsum.photos/800/600?random=10",
+        "alt": "Schematic Detail",
+        "caption": "Wiring schematic & acrylic mount details"
+      },
+      {
+        "src": "https://picsum.photos/800/600?random=11",
+        "alt": "Shader Output",
+        "caption": "Shader visual test output"
+      }
+    ]
+  },
+  {
+    "id": "project-4",
+    "title": "Potential Moiré",
+    "description": [
+      "Kinetic Formations combines technical textile production with physical computing mechanisms to build dynamic, responsive surfaces.",
+      "Utilizing high-tension Tamm Estilo yarn stretched across custom canvas frames, the installation uses motorized stepper arrays to actuate structural waves across the surface in response to ambient movement."
+    ],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "static moire 1.webp",
+        "alt": "Static Form 01",
+        "caption": "Static Moiré v2.1"
+      }
+    ],
+    "archiveHeader": "Fabrication & Technical Studies",
+    "archiveGrid": [
+      {
+        "src": "https://picsum.photos/800/600?random=12",
+        "alt": "Knitting Test",
+        "caption": "Machine-knitting tension tests"
+      },
+      {
+        "src": "https://picsum.photos/800/600?random=13",
+        "alt": "Stepper Array Rig",
+        "caption": "Stepper motor array mounting rig"
+      }
+    ]
+  }
+]

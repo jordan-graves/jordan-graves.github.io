@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan Oleson-Graves</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Hanken Grotesk Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. Global Resets & Design Tokens
+       ========================================================================== */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --text-muted: #666666;
+      --border-color: #e5e5e5;
+      
+      /* Vibrant Alternating Header Colors */
+     
+      --header-red-bg: repeating-linear-gradient(
+    -85deg,
+    #E63946,
+    #E63946 10px,
+    #C92A3700 10px,
+    #C92A3700 20px
+  );
+
+      --header-blue-bg: repeating-linear-gradient(
+    -85deg,
+    #0357cd,
+    #0357cd 10px,
+    #044eb600 10px,
+    #044eb600 20px
+  );
+
+       --header-red-bg-small: repeating-linear-gradient(
+    -85deg,
+    #E63946,
+    #E63946 5px,
+    #C92A3700 5px,
+    #C92A3700 10px
+  );
+
+      --header-blue-bg-small: repeating-linear-gradient(
+    -85deg,
+    #0357cd,
+    #0357cd 5px,
+    #044eb600 5px,
+    #044eb600 10px
+  );
+
+       --header-teal-bg: repeating-linear-gradient(
+    -85deg,
+    #039c8a,
+    #039c8a 10px,
+    #C92A3700 10px,
+    #C92A3700 20px
+  );
+
+      --header-black-bg: repeating-linear-gradient(
+    -85deg,
+    #000000,
+    #000000 10px,
+    #044eb600 10px,
+    #044eb600 20px
+  );
+
+       --header-teal-bg-small: repeating-linear-gradient(
+    -85deg,
+    #039c8a,
+    #039c8a 5px,
+    #C92A3700 5px,
+    #C92A3700 10px
+  );
+
+      --header-black-bg-small: repeating-linear-gradient(
+    -85deg,
+    #000000,
+    #000000 5px,
+    #044eb600 5px,
+    #044eb600 10px
+  );
+       --red-bg: repeating-linear-gradient(
+    -45deg,
+    #E63946,
+    #E63946 10px,
+    #C92A3700 10px,
+    #C92A3700 20px
+  );
+
+      --header-text-light: #ffffff;
+      
+      --nav-height: 55px;
+      --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--text-color);
+      line-height: 1.45;
+      overflow-x: hidden;
+background-color: white;
+    }
+
+ #bg {
+  /* Position & Full-Screen Sizing */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: -webkit-fill-available;
+  z-index: -1;
+  display: block;
+  pointer-events: none;
+
+  /* 1. Solid White Base Background */
+
+  /* 2. Hardware Acceleration for Smooth Mobile Scrolling */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* 3. Gradient Layer Masked to the Lines */
+#bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* The Gradient that colors the lines */
+  background: linear-gradient(0deg, #039c8a 30%, rgb(0, 0, 98) 50%, rgb(255, 98, 98) 70%);
+
+  /* Use lines2.png as the mask (Webkit vendor prefixes required for Safari/iOS) */
+  -webkit-mask-image: url("lines.png");
+  mask-image: url("lines.png");
+
+
+}
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       2. Intro Hero Section
+       ========================================================================== */
+    .intro-header {
+      min-height: 30vh;
+      padding: 6rem 5% 4rem 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+      /* border-bottom: 1px solid var(--border-color);  */
+      background: var(--header-blue-bg);
+    }
+
+    #intro-background {
+        min-height: 30vh;
+              padding: 6rem 5% 4rem 5%;
+
+      position: absolute;
+      top: 0px;
+      left: 0px;  
+      z-index: -2;
+      background-color: #000000;
+   width: 100%;
+    }
+
+    .intro-title {
+      font-size: clamp(2.0rem, 5.5vw, 4.5rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+            
+
+       color: white;
+  
+      text-transform: uppercase;
+    }
+
+    .intro-bio {
+      max-width: 780px;
+      font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+       color: white;
+      line-height: 1.35;
+      font-weight: 700; /* Bold Intro Copy */
+      letter-spacing: -0.01em;
+    }
+
+    /* ==========================================================================
+       3. Sticky Navigation Bar
+       ========================================================================== */
+    nav.sticky-nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      z-index: 1000;
+      background-color: black;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+    }
+
+    .nav-logo {
+      font-size: clamp(1rem, 1.4vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    nav a {
+      font-size: clamp(1rem, 1.4vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 3px;
+      color: white;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       4. Main Content Layout
+       ========================================================================== */
+    main {
+     
+    }
+
+    .project-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+     border-bottom: 1px solid gray; 
+      padding: 0;
+      min-height: 70vh;
+      position: relative;
+    }
+
+    /* Bold Alternating Header Column - Extends Full Height of Section */
+    .project-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 25%;
+      z-index: 10;
+      color: var(--header-text-light);
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Sticky Container Within Full-Height Column */
+    .project-info-sticky {
+      position: sticky;
+      top: var(--nav-height);
+      padding: 4rem 3rem 4rem 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Red Header Accent */
+    .project-section[data-theme="red"] .project-info {
+      background: var(--header-red-bg);
+    }
+
+    /* Blue Header Accent */
+    .project-section[data-theme="blue"] .project-info {
+      background: var(--header-blue-bg);
+    }
+
+        .project-section[data-theme="teal"] .project-info {
+      background: var(--header-teal-bg);
+    }
+
+    /* Blue Header Accent */
+    .project-section[data-theme="black"] .project-info {
+      background: var(--header-black-bg);
+    }
+
+    .project-info h2 {
+      font-size: clamp(2.0rem, 2.5vw, 4.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background-color: white;
+      color: black;
+      padding: 5px;
+      width: fit-content;
+    }
+
+    .view-series-trigger {
+      display: inline-block;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      align-self: flex-start;
+      margin-top: 0.5rem;
+    }
+
+    .view-series-trigger:hover {
+      opacity: 0.8;
+    }
+
+    .expand-prompt {
+               background-color: white;
+      color: black;
+              padding: 5px;
+      font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+text-decoration: underline;
+  text-decoration-color: black;
+  text-underline-offset: 3px; /* Move the underline UP into the text */
+       margin: 0px;
+    }
+
+    .project-gallery-container {
+      width: 75%;
+      margin-left: 25%;
+      padding: 4rem 0 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+    }
+
+    /* Horizontal Scroll Track */
+    .project-gallery-wrapper {
+      width: 100%;
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: w-resize; 
+      scroll-snap-type: x mandatory;
+    }
+
+    .project-gallery-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .project-gallery-track {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 500px;
+      background-color: #ffffff;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      scroll-snap-align: start;
+    }
+
+    .gallery-item.loaded {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .gallery-item-image-wrapper {
+      width: 100%;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+    }
+
+    .gallery-item img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Captions Below Image */
+    .gallery-item-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      text-align: left;
+      width: 100%;
+      letter-spacing: 0.01em;
+    }
+
+    .gallery-spacer {
+      flex: 0 0 50vw;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       5. Expanded Vertical Layout State
+       ========================================================================== */
+    .project-section.expanded .project-gallery-wrapper {
+      overflow-x: visible;
+      overflow-y: visible;
+      cursor: default !important;
+      scroll-snap-type: none;
+    }
+
+    .project-section.expanded .project-gallery-track {
+      flex-direction: column;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    .project-section.expanded .gallery-item {
+      width: 100%;
+      transform: none;
+      scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+    }
+
+    .project-section.expanded .gallery-item-image-wrapper {
+      height: auto;
+      justify-content: flex-start;
+    }
+
+    .project-section.expanded .gallery-item img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .project-section.expanded .gallery-spacer {
+      display: none;
+    }
+
+    /* Details Area */
+    .series-expansion {
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.7s var(--transition-smooth), opacity 0.5s var(--transition-smooth), padding 0.5s ease;
+      background-color: #ffffff;
+      padding: 0 5% 0 38%;
+    }
+
+    .project-section.expanded .series-expansion {
+      max-height: 3500px;
+      opacity: 1;
+      padding: 3.5rem 5% 4.5rem 38%;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .series-expansion-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      background-color: #ffffff;
+    }
+
+    .series-long-description p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .extra-images-header {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .extra-images-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .grid-item {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background-color: #ffffff;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .grid-item-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       6. Footer Section
+       ========================================================================== */
+    footer.site-footer {
+      padding: 5rem 5% 4rem 5%;
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      color: white
+    }
+
+    .footer-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: white
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .footer-link {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid white;
+      padding-bottom: 4px;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.6;
+    }
+
+    /* ==========================================================================
+       7. Mobile Layout & Nav Adjustments
+       ========================================================================== */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 0.85rem;
+      }
+
+
+#bg {
+  /* Position & Sizing */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Use 100% instead of 100vw to avoid iOS scrollbar layout shifts */
+  height: 100%; /* Uses full viewport height */
+  
+  /* Safari/iOS Viewport Stretch Fix */
+  height: -webkit-fill-available;
+  
+  /* Layering */
+  z-index: -1;
+  display: block;
+
+  /* Background Styling */
+  background-blend-mode: lighten;
+
+  /* Force iOS GPU Compositing (prevents repaints and flicker on scroll) */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  pointer-events: none; /* Allows click/touch events to pass through to content */
+}
+
+
+/* 3. Gradient Layer Masked to the Lines */
+#bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* The Gradient that colors the lines */
+  background: linear-gradient(0deg, rgb(3, 156, 138) 30%, rgb(0, 0, 98) 50%, rgb(255, 98, 98) 70%);
+
+  /* Use lines2.png as the mask (Webkit vendor prefixes required for Safari/iOS) */
+  -webkit-mask-image: url("lines2.png");
+  mask-image: url("lines2.png");
+
+
+}
+
+      nav a {
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+      }
+
+      .project-section {
+        flex-direction: column;
+      }
+
+      .project-info {
+        position: sticky;
+        top: var(--nav-height);
+        width: 100%;
+        height: auto;
+        z-index: 20;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        
+      }
+
+      .project-info-sticky {
+        padding: 1.25rem 5%;
+      
+        display: block;
+    
+      }
+
+      .project-info h2 {
+        font-size: 1.1rem;
+        margin: 0px;
+      }
+
+      .project-gallery-container {
+        width: 100%;
+        margin-left: 0;
+        padding: 2rem 5%;
+      }
+
+      .gallery-item {
+        width: 82vw;
+      }
+
+      .gallery-item-image-wrapper {
+        height: 50vh;
+      }
+
+      .series-expansion {
+        padding: 0 5%;
+      }
+
+      .project-section.expanded .series-expansion {
+        padding: 2.5rem 5% 3.5rem 5%;
+      }
+
+      .extra-images-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer.site-footer {
+        padding: 4rem 5% 3rem 5%;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+      }
+
+
+    /* Red Header Accent */
+    .project-section[data-theme="red"] .project-info {
+      background: var(--header-red-bg-small);
+    }
+
+    /* Blue Header Accent */
+    .project-section[data-theme="blue"] .project-info {
+      background: var(--header-blue-bg-small);
+    }
+
+      .project-section[data-theme="teal"] .project-info {
+      background: var(--header-teal-bg-small);
+    }
+
+    /* Blue Header Accent */
+    .project-section[data-theme="black"] .project-info {
+      background: var(--header-black-bg-small);
+    }
+    .intro-header {
+              background: var(--header-blue-bg-small);
+
+    }
+    }
+
+    @supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+  </style>
+</head>
+<body>
+<div id="bg"></div>
+  <!-- Top Hero Header -->
+
+  <!-- 
+   <div id="intro-background">  <h1 class="intro-title"><span style="color:black">Hello, I’m Jordan! </span><br><br><span style="color:black">I’m an artist, designer & educator based in Atlanta, GA.</span></h1>
+    <p class="intro-bio">
+      
+    </p></div>
+  <header class="intro-header">
+    
+    <h1 class="intro-title"><span style="background:black;padding-inline:0px">Hello, I’m Jordan! </span><br><br><span style="background:black;padding-inline:0px">I’m an artist, designer & educator based in Atlanta, GA.</span></h1>
+    <p class="intro-bio">
+      
+    </p>
+  </header>
+-->
+  <!-- Sticky Navigation Bar -->
+  <nav class="sticky-nav">
+    <div class="nav-logo"><a href="#">JORDAN OLESON-GRAVES</a></div>
+    <ul>
+      <li><a href="#work" class="active">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/shop">Shop</a></li>
+    </ul>
+  </nav>
+
+  <!-- Dynamic Content Target -->
+  <main id="work"></main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" id="contact">
+    <span class="footer-label">Get in Touch</span>
+    <div class="footer-links">
+      <a href="mailto:jordan@jordangrav.es" class="footer-link">jordan@jordangrav.es</a>
+      <a href="https://instagram.com/jordanolesongraves" target="_blank" rel="noopener" class="footer-link">@jordanolesongraves</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript Rendering & Interactions -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // SVG Navigation Cursors
+      const leftArrowSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M20 6 L10 16 L20 26' stroke='%23111111' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>`;
+      const rightArrowSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M12 6 L22 16 L12 26' stroke='%23111111' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>`;
+
+      const activeIndices = new Map();
+
+      // ==========================================================================
+      // 1. JSON Data Loader & Dynamic DOM Builder
+      // ==========================================================================
+      async function loadProjects() {
+        try {
+          const response = await fetch('projects.json');
+          if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+          const projects = await response.json();
+          renderProjects(projects);
+          initializeGalleryInteractions();
+        } catch (error) {
+          console.warn('Fetching projects.json directly failed. Loading fallback dataset.', error);
+          renderProjects(getFallbackData());
+          initializeGalleryInteractions();
+        }
+      }
+
+      function renderProjects(projects) {
+        const container = document.getElementById('work');
+        
+        container.innerHTML = projects.map((proj, idx) => {
+          let theme = idx % 2 === 0 ? 'red' : 'blue';
+
+          switch (idx % 4) {
+  case 0:
+    theme = 'red';
+    break;
+  case 1:
+    theme = 'blue';
+    break;
+    case 2:
+    theme = 'black';
+    break;
+  default:
+theme = 'teal';
+}
+
+          return `
+            <section class="project-section" id="${proj.id}" data-theme="${theme}">
+              <div class="project-info">
+                <div class="project-info-sticky">
+                  <h2>${proj.title}</h2>
+                  <div class="view-series-trigger">
+                    <span class="expand-prompt">View Series +</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-gallery-container">
+                <div class="project-gallery-wrapper">
+                  <div class="project-gallery-track">
+                    ${proj.mainGallery.map(item => `
+                      <div class="gallery-item" data-index="${item.index}">
+                        <div class="gallery-item-image-wrapper">
+                          <img data-src="${item.src}" alt="${item.alt}" />
+                        </div>
+                        <div class="gallery-item-caption">${item.caption}</div>
+                      </div>
+                    `).join('')}
+                    <div class="gallery-spacer"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="series-expansion">
+                <div class="series-expansion-inner">
+                  <div class="series-long-description">
+                    ${proj.description.map(p => `<p>${p}</p>`).join('')}
+                  </div>
+
+                  <div class="extra-images-section">
+                    <div class="extra-images-header">${proj.archiveHeader}</div>
+                    <div class="extra-images-grid">
+                      ${proj.archiveGrid.map(img => `
+                        <div class="grid-item">
+                          <img src="${img.src}" alt="${img.alt}" />
+                          <span class="grid-item-caption">${img.caption}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          `;
+        }).join('');
+      }
+
+      // ==========================================================================
+      // 2. Interactive Logic
+      // ==========================================================================
+      function initializeGalleryInteractions() {
+        // Expand/Collapse Series Trigger
+        document.querySelectorAll('.view-series-trigger').forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            const section = trigger.closest('.project-section');
+            const prompt = trigger.querySelector('.expand-prompt');
+            const isOpening = !section.classList.contains('expanded');
+
+            if (isOpening) {
+              const currentIdx = activeIndices.get(section.id) || "0";
+              const targetItem = section.querySelector(`.gallery-item[data-index="${currentIdx}"]`);
+
+              section.classList.add('expanded');
+              prompt.textContent = 'Close Series −';
+
+              if (targetItem) {
+                setTimeout(() => {
+                  targetItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+              }
+            } else {
+              section.classList.remove('expanded');
+              prompt.textContent = 'View Series +';
+            }
+          });
+        });
+
+        // Track Navigation Mouse Cursors & Clicks
+        document.querySelectorAll('.project-gallery-wrapper').forEach(wrapper => {
+          wrapper.addEventListener('mousemove', (e) => {
+            const section = wrapper.closest('.project-section');
+            if (section.classList.contains('expanded')) return;
+
+            const rect = wrapper.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+
+            if (mouseX < rect.width / 2) {
+              wrapper.style.cursor = `url("${leftArrowSVG}") 16 16, w-resize`;
+            } else {
+              wrapper.style.cursor = `url("${rightArrowSVG}") 16 16, e-resize`;
+            }
+          });
+
+          wrapper.addEventListener('click', (e) => {
+            const section = wrapper.closest('.project-section');
+            if (section.classList.contains('expanded')) return;
+
+            const rect = wrapper.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const items = Array.from(wrapper.querySelectorAll('.gallery-item'));
+            if (!items.length) return;
+
+            const currentScrollLeft = wrapper.scrollLeft;
+
+            if (mouseX >= rect.width / 2) {
+              const nextItem = items.find(item => item.offsetLeft > currentScrollLeft + 10);
+              if (nextItem) {
+                wrapper.scrollTo({ left: nextItem.offsetLeft, behavior: 'smooth' });
+              }
+            } else {
+              const prevItem = items.slice().reverse().find(item => item.offsetLeft < currentScrollLeft - 10);
+              if (prevItem) {
+                wrapper.scrollTo({ left: prevItem.offsetLeft, behavior: 'smooth' });
+              } else {
+                wrapper.scrollTo({ left: 0, behavior: 'smooth' });
+              }
+            }
+          });
+        });
+
+        // Active Item Intersection Observer
+        document.querySelectorAll('.project-section').forEach(section => {
+          const items = section.querySelectorAll('.gallery-item');
+          const wrapper = section.querySelector('.project-gallery-wrapper');
+
+          const activeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting && !section.classList.contains('expanded')) {
+                const activeIndex = entry.target.getAttribute('data-index');
+                activeIndices.set(section.id, activeIndex);
+              }
+            });
+          }, {
+            root: wrapper,
+            threshold: 0.5
+          });
+
+          items.forEach(item => activeObserver.observe(item));
+        });
+
+        // Lazy-Loading Observer
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const item = entry.target;
+              const img = item.querySelector('img');
+
+              if (img && img.dataset.src) {
+                img.src = img.dataset.src;
+                img.onload = () => item.classList.add('loaded');
+              } else {
+                item.classList.add('loaded');
+              }
+              observer.unobserve(item);
+            }
+          });
+        }, {
+          rootMargin: '100px',
+          threshold: 0.05
+        });
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          imageObserver.observe(item);
+        });
+      }
+
+      // Fallback Data
+      function getFallbackData() {
+        return [
+          {
+            id: "project-1",
+            title: "01. Refraction Series",
+            description: [
+              "This series investigates structural light interference using layered Plexiglas sheets, programmed microcontrollers, and real-time custom shader projections.",
+              "Designed to slow down visual consumption, the artwork shifts its perceived depth and geometry as viewers move through the space, creating moiré fringe patterns that continuously transform with physical position."
+            ],
+            mainGallery: [
+              { index: 0, src: "https://picsum.photos/800/1000?random=1", alt: "Artwork 1", caption: "Refraction Array 01 — Acrylic & Custom Shader" },
+              { index: 1, src: "https://picsum.photos/800/1000?random=2", alt: "Artwork 2", caption: "Refraction Array 02 — Detail View of Surface Layer" },
+              { index: 2, src: "https://picsum.photos/800/1000?random=3", alt: "Artwork 3", caption: "Refraction Array 03 — Light Projection Phase" }
+            ],
+            archiveHeader: "Archive & Detail Documentation",
+            archiveGrid: [
+              { src: "https://picsum.photos/800/600?random=10", alt: "Detail 1", caption: "Wiring schematic & acrylic mount details" },
+              { src: "https://picsum.photos/800/600?random=11", alt: "Detail 2", caption: "Shader visual test output" }
+            ]
+          },
+          {
+            id: "project-2",
+            title: "02. Kinetic Formations",
+            description: [
+              "Kinetic Formations combines technical textile production with physical computing mechanisms to build dynamic, responsive surfaces.",
+              "Utilizing high-tension Tamm Estilo yarn stretched across custom canvas frames, the installation uses motorized stepper arrays to actuate structural waves across the surface in response to ambient movement."
+            ],
+            mainGallery: [
+              { index: 0, src: "https://picsum.photos/800/1000?random=4", alt: "Artwork 4", caption: "Kinetic Form 01 — Machine-Knitted Array" },
+              { index: 1, src: "https://picsum.photos/800/1000?random=5", alt: "Artwork 5", caption: "Kinetic Form 02 — Wave Motion Assembly Detail" },
+              { index: 2, src: "https://picsum.photos/800/1000?random=6", alt: "Artwork 6", caption: "Kinetic Form 03 — Structural Actuation Phase" }
+            ],
+            archiveHeader: "Fabrication & Technical Studies",
+            archiveGrid: [
+              { src: "https://picsum.photos/800/600?random=12", alt: "Detail 3", caption: "Machine-knitting tension tests" },
+              { src: "https://picsum.photos/800/600?random=13", alt: "Detail 4", caption: "Stepper motor array mounting rig" }
+            ]
+          }
+        ];
+      }
+
+      // Execute Loader
+      loadProjects();
+    });
+  </script>
+</body>
+</html>

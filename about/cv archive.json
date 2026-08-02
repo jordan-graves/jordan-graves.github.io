@@ -1,0 +1,355 @@
+{
+  "bio": ["Hi! I’m Jordan Oleson-Graves. I’m an artist, designer, and educator based in Atlanta, making work with code across all kinds of media, including jewelry, textiles, and interactive installations. I started my creative path at SCAD, earning a BFA in Motion Media Design. I originally thought I’d go on to design commercials and movie title sequences. That changed when I took a history of motion graphics class and discovered wonderful world of abstract animation. I realized I cared less about getting a commercial job and more about experimenting and making art. Along the way I explored fibers and physical making but didn’t yet have the tools to create what I wanted. After graduating, I felt lost and stuck until I started designing 3D printed jewelry. Building that business gave me the freedom and space to experiment without worrying about success.<br><br>That’s when I finally had time to learn how to code. It was slow at first with lots of failed experiments but eventually I started making the work I had imagined for years, from large LED installations to code-generated knitwear. I went on to earn an MS in Digital Media from Georgia Tech, where my research explored the relationship between crafting and computer science education, digital fabrication, and creative social interactions. Because coding changed my creative life, I now spend a lot of time teaching high school computer science so I can help students discover their own ideas and make them real. I’m currently pursuing my MFA in Painting at SCAD."
+  ],
+  "headshot": {
+    "src": "jordan graves knit pic.JPG",
+    "alt": "Portrait of Jordan Oleson-Graves"
+  },
+  "statement": [
+    "Curiosity drives my work. I grew up witnessing the shift from analog to digital technology, a transformation that abstracted previously visible processes into seamless interfaces. Old Cathode-Ray Tube (CRT) displays revealed their mechanics, you could view closely and see the individual red, green, and blue components blending into color. That tangibility has been lost in contemporary digital displays, making the underlying structure is hidden. Early in my career in Motion Graphics, my work shifted and aimed to make the digital tangible again, not by mimicking the screen but by redefining its logic through material and form. While my work always begins digitally, its final form incorporates materials including light-emitting diodes (LEDs), fibers, 3D-printed jewelry, and recently motors to create kinetic work.",
+
+"In my LED installations, I retain the fundamental building block of the individual pixel but break from the rigid rectangular grid of traditional digital displays. Instead, I arrange the pixels along undulating waves and in concentric circles, creating an alternative canvas to design animations with these new forms in mind. In my knitted works, each stitch represents a pixel. The process of knitting imposes the same qualities needed of early internet graphics. Graphics Interchange Format images (GIFs) use limited color palettes and pixel dimensions to reduce file size for faster transmission. My kinetic sculptures, like GIFs, produce looping animations.",
+
+"Parametric design and algorithm development allow me to navigate the uncertainty of the blank page and the process of starting something new. I begin with a basic grid structure, then incrementally introduce complexity, shaping the final form by modifying the values of each variable. This process mirrors the hands-on refinement of a ceramicist working on a wheel, slight adjustments that transform the final form. Working in this way produces countless variations that I curate and select to transform into physical materials.",
+
+"Printmaking is another way I explore variation within structured systems. Just as an algorithm can generate limitless iterations, printmaking allows me to discover these variations through layering multiple impressions and experimenting with linear and rotational offsets.",
+
+"My work resists the fleeting nature of screen-based imagery by bringing digital aesthetics into the physical world. Through light, movement, print, and textiles, I reimagine the structured logic of digital systems as something more fluid and organic. Whether replacing pixels with stitches, rearranging LED grids into waves and spirals, or using printmaking to generate variations from a single form, I embrace constraints to give digital aesthetics a physical presence."
+  ],
+  "cv": {
+  "name": "Jordan Oleson-Graves",
+  "bioDetails": {
+    "birthYear": "1990",
+    "birthPlace": "Atlanta, GA"
+  },
+  "education": [
+    {
+      "degree": "MFA Painting",
+      "institution": "Savannah College of Art and Design",
+      "year": "expected 2027"
+    },
+    {
+      "degree": "MS Digital Media",
+      "institution": "Georgia Institute of Technology",
+      "year": "2021"
+    },
+    {
+      "degree": "BFA Motion Media Design",
+      "institution": "Savannah College of Art and Design",
+      "year": "2012"
+    }
+  ],
+  "professionalExperience": [
+    {
+      "role": "Upper School Art and Science Teacher",
+      "organization": "Holy Innocents’ Episcopal School",
+      "period": "2020–present"
+    },
+    {
+      "role": "Graduate Research Assistant",
+      "organization": "Georgia Institute of Technology",
+      "period": "2019–2021"
+    },
+    {
+      "role": "Founder/Designer",
+      "organization": "Repeat Offfender",
+      "period": "2013–2019"
+    }
+  ],
+  "selectedExhibitions": [
+      {
+      "title": "Extremes",
+      "type": "Group Show",
+      "venue": "Avondale Arts Center",
+      "location": "Avondale Estates, GA",
+      "period": "July-August 2026"
+    },  {
+      "title": "illumine",
+      "type": "Group Show",
+      "venue": "Oakland Cemetery",
+      "location": "Atlanta, GA",
+      "period": "April 2026"
+    },  {
+      "title": "Fine Arts Showcase",
+      "type": "Group Show",
+      "venue": "SCAD Atlanta",
+      "location": "Atlanta, GA",
+      "period": "November 2025–June 2026"
+    },  {
+      "title": "Atlanta Art Faid",
+      "type": "Group Show",
+      "venue": "SCAD Art Sales",
+      "location": "Atlanta, GA",
+      "period": "October 2025"
+    },  {
+      "title": "SUBLIME",
+      "type": "Group Show",
+      "venue": "Atlanta Contemporary",
+      "location": "Atlanta, GA",
+      "period": "June–September 2025"
+    },{
+      "title": "SUBLIME",
+      "type": "Group Show",
+      "venue": "Atlanta Contemporary",
+      "location": "Atlanta, GA",
+      "period": "June–September 2025"
+    },
+    {
+      "title": "Fine Arts Showcase",
+      "type": "Group Show",
+      "venue": "SCAD Atlanta",
+      "location": "Atlanta, GA",
+      "period": "April–June 2025"
+    },
+    {
+      "title": "McNeese National Works on Paper Exhibition",
+      "type": "Group Show",
+      "venue": "McNeese State University",
+      "location": "Lake Charles, LA",
+      "period": "March–May 2025"
+    },
+    {
+      "title": "SCAD deFINE ART 2025 Painting and Photography Showcase",
+      "type": "Group Show",
+      "venue": "Alexander Hall",
+      "location": "Savannah, GA",
+      "period": "February–March 2025"
+    },
+    {
+      "title": "Sightlines",
+      "type": "Group Show",
+      "venue": "Gallery 85",
+      "location": "New York, NY",
+      "period": "September 2024–March 2025"
+    },
+    {
+      "title": "Interference",
+      "type": "Solo Exhibition",
+      "venue": "Westobou Gallery",
+      "location": "Augusta, GA",
+      "period": "June–August 2019"
+    }
+  ],
+  "museumExhibitions": [
+     {
+      "project": "Underwater Coloring Adventure",
+      "venue": "Santa Barbara Maritime Museum",
+      "period": "2026–present"
+    }, {
+      "project": "Community Garden",
+      "venue": "Children’s Museum of Pittsburgh",
+      "period": "2021–present"
+    },
+    {
+      "project": "Community Garden",
+      "venue": "Children’s Creativity Museum",
+      "location": "San Francisco, CA",
+      "period": "2022–present"
+    }
+  ],
+  "permanentPublicArt": [
+    {
+      "title": "light-reflect.io/n",
+      "location": "The HUB, Augusta, GA"
+    },
+    {
+      "title": "Gathering Light",
+      "location": "Holy Innocents’ Episcopal School, Atlanta, GA"
+    },
+    {
+      "title": "Portals",
+      "location": "Fulton County Digital Art Acquisition, Atlanta, GA"
+    }
+  ],
+  "temporaryPublicArt": [
+    {
+      "title": "5361",
+      "location": "The Shops Buckhead Atlanta, Atlanta, GA",
+      "period": "July 2017–February 2019"
+    },
+    {
+      "title": "5044",
+      "location": "TechSquare Labs, Atlanta, GA",
+      "period": "September 2017–October 2019"
+    }
+  ],
+  "publicArtCommissionFinalists": [
+    {
+      "project": "Hapeville Pedestrian Bridge",
+      "organization": "Dashboard Co-Op",
+      "location": "Hapeville, GA"
+    },
+    {
+      "project": "Woodruff Park",
+      "organization": "Atlanta Legacy Makers",
+      "location": "Atlanta, GA"
+    }
+  ],
+  "residencies": [
+    {
+      "organization": "Children’s Museum of Pittsburgh",
+      "location": "Virtual",
+      "year": "2021"
+    },
+    {
+      "organization": "Holy Innocents’ Episcopal School",
+      "location": "Atlanta, GA",
+      "year": "2019–2020"
+    },
+    {
+      "organization": "SCAD Alumni Atelier",
+      "location": "Savannah, GA",
+      "year": "2016"
+    }
+  ],
+  "workshopsTaught": [
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "June 2024"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2023"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2022"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "Jemicy School",
+      "location": "Owings Mills, MD",
+      "date": "March 2019"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "Salem Academy",
+      "location": "Winston-Salem, NC",
+      "date": "March 2019"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2018"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2017"
+    },
+    {
+      "title": "Intro to 3D Printing",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2016"
+    },
+    {
+      "title": "Intro to 3D Printing",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2015"
+    }
+  ],
+  "publications": {
+    "peerReviewedConferences": [
+      {
+        "authors": ["Victoria Mirecki", "Juliette Spitaels", "Karen Royer", "Jordan Graves", "Anne Sullivan", "Gillian Smith"],
+        "year": "2022",
+        "title": "“My Brain Does Not Function That Way”: Comparing Quilters’ Perceptions and Motivations Towards Computing and Quilting",
+        "venue": "Designing Interactive Systems Conference (DIS ’22)",
+        "location": "Virtual Event, Australia",
+        "publisher": "ACM, New York, NY, USA",
+        "pages": "9 pages",
+        "doi": "https://doi.org/10.1145/3532106.3533554"
+      },
+      {
+        "authors": ["Aditya Anupam", "Colin Stricklin", "Jordan Graves", "Kevin Tang", "Michael Vogel", "Marian Dominguez-Mirazo", "Janet Murray"],
+        "year": "2020",
+        "title": "Essential Workers: A Multiplayer Game for Enacting Patterns of Social Interdependency in a Pandemic",
+        "venue": "Extended Abstracts of the 2020 Annual Symposium on Computer-Human Interaction in Play (CHI PLAY '20)",
+        "publisher": "ACM, New York, NY, USA",
+        "pages": "173–177",
+        "doi": "https://doi.org/10.1145/3383668.3419863"
+      }
+    ],
+    "peerReviewedWorkshops": [
+      {
+        "authors": ["Jordan Graves", "Anne Sullivan"],
+        "year": "2020",
+        "title": "eLoominate: Tools for Casual Creation in Hybrid Craft",
+        "venue": "Joint Proceedings of the ICCC 2020 Workshops (ICCC-WS 2020)",
+        "location": "Coimbra (PT) / Online",
+        "link": "Read Paper"
+      }
+    ],
+    "peerReviewedDemos": [
+      {
+        "authors": ["Jordan Graves", "Karen Royer", "Gillian Smith", "Anne Sullivan"],
+        "year": "2021",
+        "title": "Procedural Patchwork: Community-Focused Generative Design for Quilting",
+        "venue": "Creativity and Cognition (C&C '21)",
+        "publisher": "ACM, New York, NY, USA",
+        "article": "Article 56",
+        "pages": "1–3",
+        "doi": "https://doi.org/10.1145/3450741.3466635"
+      },
+      {
+        "authors": ["Sara Milkes Espinosa", "Jordan Graves", "Jack Towery"],
+        "year": "2021",
+        "title": "What The Flock?: Fostering collaborative Active Breaks for Online Education",
+        "venue": "Extended Abstracts of the 2021 CHI Conference on Human Factors in Computing Systems",
+        "publisher": "ACM, New York, NY, USA",
+        "article": "Article 499",
+        "pages": "1–6",
+        "doi": "https://doi.org/10.1145/3411763.3451849"
+      },
+      {
+        "authors": ["Jordan Graves", "Brian Magerko"],
+        "year": "2020",
+        "title": "Community garden: designing for connectedness in online museum exhibits",
+        "venue": "Proceedings of the 2020 ACM Interaction Design and Children Conference: Extended Abstracts (IDC '20)",
+        "publisher": "ACM, New York, NY, USA",
+        "pages": "268–271",
+        "doi": "https://doi.org/10.1145/3397617.3402034"
+      }
+    ]
+  },
+  "otherDemonstrations": [
+    { "title": "Digital Media Demo Day", "venue": "Georgia Tech", "date": "April 2023" },
+    { "title": "GVU 30th Anniversary Installations", "venue": "Georgia Tech", "date": "November 2022" },
+    { "title": "GVU Demo Day", "venue": "Georgia Tech", "date": "November 2022" },
+    { "title": "STEM for All Video Showcase", "venue": "", "date": "May 2021" },
+    { "title": "GVU Demo Day", "venue": "Georgia Tech", "date": "October 2019" },
+    { "title": "Trunk Show", "venue": "SCAD FASH, Atlanta, GA", "date": "December 2018" },
+    { "title": "Trunk Show", "venue": "ShopSCAD, Savannah, GA", "date": "September 2018" },
+    { "title": "Trunk Show", "venue": "High Museum of Art Shop, Atlanta, GA", "date": "November 2017" }
+  ],
+  "projectAwards": [
+    {
+      "award": "Best Digital Media MS Project",
+      "institution": "Georgia Tech",
+      "date": "May 2021"
+    },
+    {
+      "award": "Most Potential for Further Development",
+      "project": "Essential Workers",
+      "event": "ComplexityJam",
+      "date": "June 2020"
+    },
+    {
+      "award": "Most Compelling Visual Message",
+      "project": "Sweater Weather",
+      "event": "Kent State Fashion Tech Hackathon",
+      "date": "January 2020"
+    }
+  ]
+}
+}

@@ -1,0 +1,249 @@
+{
+  "bio": ["I’m Jordan Oleson-Graves, an Atlanta-based artist, designer, and educator creating work with code. My journey began at SCAD with a BFA in Motion Media Design, where discovering abstract animation redirected my passion from commercial art toward open experimentation. After exploring physical craft and 3D printing, learning to code transformed my creative process, allowing me to bring years of ideas to life, from code-generated knitwear to responsive LED environments. Following an MS in Digital Media at Georgia Tech centered on craft and CS education, I now teach high school Computer Science to help students build their own ideas, while pursuing my MFA in Painting back at SCAD."],
+  "headshot": {
+    "src": "/assets/jordan graves knit pic.JPG",
+    "alt": "Portrait of Jordan Oleson-Graves"
+  },
+  "statement": [
+    "Curiosity drives my work, rooted in a time when growing up alongside technology made it easy to see how things actually worked. As a child with undiagnosed nearsightedness, I sat inches from the family television, just as entertained by the stories on screen as I was by watching distinct bands of red, green, and blue light blend together when I stepped back. Later, learning HTML and CSS happened almost by accident, a quiet byproduct of customizing early social media pages. Today, as digital tools progress into sleek interfaces and pervasive generative artificial intelligence, those underlying mechanics have been hidden, and modern technology no longer inspires that same casual curiosity. I choose to pull those computational foundations back into the light, celebrating a distinct artistic language born from early display limitations.",
+"My practice is entirely medium-agnostic. Every idea begins in code, but its physical form is chosen based on the experience it needs to create, whether through responsive LEDs, textiles, printmaking, or kinetic sculpture. Working with algorithmic rules, I treat my process as a modular playground, writing programs to explore a vast field of potential visual outcomes. I share this personal exploration across physical series that communicate how key variables change, digital co-creation tools that let others manipulate parameters themselves, and installations that respond dynamically to bodily movement. Ultimately, these systems invite viewers to step inside my process, offering a playful environment where they can share in my path of visual discovery." ],
+  "cv": {
+  "name": "Jordan Oleson-Graves",
+  "bioDetails": {
+    "birthYear": "1990",
+    "birthPlace": "Atlanta, GA"
+  },
+  "education": [
+    {
+      "degree": "MFA Painting",
+      "institution": "Savannah College of Art and Design",
+      "year": "expected 2027"
+    },
+    {
+      "degree": "MS Digital Media",
+      "institution": "Georgia Institute of Technology",
+      "year": "2021"
+    },
+    {
+      "degree": "BFA Motion Media Design",
+      "institution": "Savannah College of Art and Design",
+      "year": "2012"
+    }
+  ],
+  "professionalExperience": [
+    {
+      "role": "Upper School Art and Science Teacher",
+      "organization": "Holy Innocents’ Episcopal School",
+      "period": "2020–present"
+    },
+    {
+      "role": "Graduate Research Assistant",
+      "organization": "Georgia Institute of Technology",
+      "period": "2019–2021"
+    },
+    {
+      "role": "Founder/Designer",
+      "organization": "Repeat Offfender",
+      "period": "2013–2019"
+    }
+  ],
+  "selectedExhibitions": [
+      {
+      "title": "Extremes",
+      "type": "Group Show",
+      "venue": "Avondale Arts Center",
+      "location": "Avondale Estates, GA",
+      "period": "July-August 2026"
+    },  {
+      "title": "illumine",
+      "type": "Group Show",
+      "venue": "Oakland Cemetery",
+      "location": "Atlanta, GA",
+      "period": "April 2026"
+    },  {
+      "title": "Fine Arts Showcase",
+      "type": "Group Show",
+      "venue": "SCAD Atlanta",
+      "location": "Atlanta, GA",
+      "period": "November 2025–June 2026"
+    },  {
+      "title": "Atlanta Art Fair",
+      "type": "Group Show",
+      "venue": "SCAD Art Sales",
+      "location": "Atlanta, GA",
+      "period": "October 2025"
+    },  {
+      "title": "SUBLIME",
+      "type": "Group Show",
+      "venue": "Atlanta Contemporary",
+      "location": "Atlanta, GA",
+      "period": "June–September 2025"
+    },
+    {
+      "title": "Fine Arts Showcase",
+      "type": "Group Show",
+      "venue": "SCAD Atlanta",
+      "location": "Atlanta, GA",
+      "period": "April–June 2025"
+    },
+    {
+      "title": "McNeese National Works on Paper Exhibition",
+      "type": "Group Show",
+      "venue": "McNeese State University",
+      "location": "Lake Charles, LA",
+      "period": "March–May 2025"
+    },
+    {
+      "title": "SCAD deFINE ART 2025 Painting and Photography Showcase",
+      "type": "Group Show",
+      "venue": "Alexander Hall",
+      "location": "Savannah, GA",
+      "period": "February–March 2025"
+    },
+    {
+      "title": "Sightlines",
+      "type": "Group Show",
+      "venue": "Gallery 85",
+      "location": "New York, NY",
+      "period": "September 2024–March 2025"
+    },
+    {
+      "title": "Interference",
+      "type": "Solo Exhibition",
+      "venue": "Westobou Gallery",
+      "location": "Augusta, GA",
+      "period": "June–August 2019"
+    }
+  ],
+  "museumExhibitions": [
+     {
+      "project": "Underwater Coloring Adventure",
+      "venue": "Santa Barbara Maritime Museum",
+      "period": "2026–present"
+    }, {
+      "project": "Community Garden",
+      "venue": "Children’s Museum of Pittsburgh",
+      "period": "2021–present"
+    },
+    {
+      "project": "Community Garden",
+      "venue": "Children’s Creativity Museum",
+      "location": "San Francisco, CA",
+      "period": "2022–present"
+    }
+  ],
+  "permanentPublicArt": [
+    {
+      "title": "light-reflect.io/n",
+      "location": "The HUB, Augusta, GA"
+    },
+    {
+      "title": "Gathering Light",
+      "location": "Holy Innocents’ Episcopal School, Atlanta, GA"
+    }
+  ],
+  "temporaryPublicArt": [
+    {
+      "title": "5361",
+      "location": "The Shops Buckhead Atlanta, Atlanta, GA",
+      "period": "July 2017–February 2019"
+    },
+    {
+      "title": "5044",
+      "location": "TechSquare Labs, Atlanta, GA",
+      "period": "September 2017–October 2019"
+    }
+  ],
+  "residencies": [
+    {
+      "organization": "Children’s Museum of Pittsburgh",
+      "location": "Virtual",
+      "year": "2021"
+    },
+    {
+      "organization": "Holy Innocents’ Episcopal School",
+      "location": "Atlanta, GA",
+      "year": "2019–2020"
+    },
+    {
+      "organization": "SCAD Alumni Atelier",
+      "location": "Savannah, GA",
+      "year": "2016"
+    }
+  ],
+  "workshopsTaught": [
+    {
+      "title": "Motion Media: From Graphic Design to LED Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "June 2026"
+    },
+    {
+      "title": "Motion Media: From Graphic Design to LED Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2025"
+    },
+    {
+      "title": "Motion Media: From Graphic Design to LED Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "June 2024"
+    },
+    {
+      "title": "STEAM: From Graphic Design to LED Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2023"
+    },
+    {
+      "title": "STEAM: Digital Fabrication and LED Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2022"
+    }, 
+    {
+      "title": "STEAM: Coding Interactive Abstract Music Video",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2022"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "Jemicy School",
+      "location": "Owings Mills, MD",
+      "date": "March 2019"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "Salem Academy",
+      "location": "Winston-Salem, NC",
+      "date": "March 2019"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2018"
+    },
+    {
+      "title": "Coding for Art",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2017"
+    },
+    {
+      "title": "Intro to 3D Printing",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2016"
+    },
+    {
+      "title": "Intro to 3D Printing",
+      "venue": "SCAD Educator Forum",
+      "location": "Savannah, GA",
+      "date": "July 2015"
+    }
+  ]
+}
+}

@@ -1,267 +1,971 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Jordan Graves</title>
-  <link rel="stylesheet" href="https://use.typekit.net/xgj1wyx.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Jordan Oleson-Graves</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-  <link rel="stylesheet" type="text/css" href="../style1.css">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hanken Grotesk Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
+  <style>
+    /* ==========================================================================
+       1. Global Resets & Design Tokens
+       ========================================================================== */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --text-muted: #666666;
+      --border-color: #e5e5e5;
+      
+      /* Vibrant Alternating Header Colors */
+      --header-red-bg: repeating-linear-gradient(
+        -85deg,
+        #E63946,
+        #E63946 10px,
+        #C92A3700 10px,
+        #C92A3700 20px
+      );
 
+      --header-blue-bg: repeating-linear-gradient(
+        -85deg,
+        #0357cd,
+        #0357cd 10px,
+        #044eb600 10px,
+        #044eb600 20px
+      );
+
+      --header-black-bg: repeating-linear-gradient(
+        -85deg,
+        #000000,
+        #000000 10px,
+        #044eb600 10px,
+        #044eb600 20px
+      );
+
+      --header-red-bg-small: repeating-linear-gradient(-85deg, #E63946, #E63946 5px, #C92A3700 5px, #C92A3700 10px);
+      --header-blue-bg-small: repeating-linear-gradient(-85deg, #0357cd, #0357cd 5px, #044eb600 5px, #044eb600 10px);
+      --header-black-bg-small: repeating-linear-gradient(-85deg, #000000, #000000 5px, #044eb600 5px, #044eb600 10px);
+
+      --header-text-light: #ffffff;
+      --nav-height: 55px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--text-color);
+      line-height: 1.5;
+      overflow-x: hidden;
+      background-color: white;
+      
+      /* Flex layout to stretch elements vertically */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      display: block;
+      pointer-events: none;
+    }
+
+    #bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, #039c8a 30%, rgb(0, 0, 98) 50%, rgb(255, 98, 98) 70%);
+      -webkit-mask-image: url("lines.png");
+      mask-image: url("lines.png");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       2. Sticky Navigation Bar
+       ========================================================================== */
+    nav.sticky-nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      z-index: 1000;
+      background-color: black;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      font-size: clamp(1rem, 1.4vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    nav a {
+      font-size: clamp(1rem, 1.4vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 3px;
+      color: white;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Size SVG relative to cap-height and prevent layout shifts */
+nav a.nav-cart-link svg {
+  display: block;
+  width: auto;
+  /* Matches cap height of Hanken Grotesk text links */
+  height: 0.9em; 
+  fill: currentColor;
+  /* Slight optical adjustment to seat centered with capital letters */
+  transform: translateY(-0.05em); 
+}
+
+/* Thicken the icon path lines */
+nav a.nav-cart-link svg path {
+  stroke: currentColor;
+  stroke-width: 0.75px; /* Adjust between 0.5px and 1.2px to dial in boldness */
+  stroke-linejoin: round;
+}
+
+#projectInfoWrapper {
+  margin-inline: 10vw;
+}
+
+    /* ==========================================================================
+       3. Main Layout & Accordion Sections
+       ========================================================================== */
+    main#about {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .about-section {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      width: 100%;
+    }
+
+    .about-info {
+      width: 100%;
+      z-index: 10;
+      color: var(--header-text-light);
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .about-info:hover {
+      opacity: 0.95;
+    }
+
+    .about-info-sticky {
+      padding: 1.1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .about-section[data-theme="red"] .about-info { background: var(--header-red-bg); }
+    .about-section[data-theme="blue"] .about-info { background: var(--header-blue-bg); }
+    .about-section[data-theme="black"] .about-info { background: var(--header-black-bg); }
+
+    .about-info h2 {
+      font-size: clamp(1.2rem, 1.8vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background-color: white;
+      color: black;
+      padding: 4px 12px;
+      width: fit-content;
+      margin: 0;
+    }
+
+.accordion-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 50%;
+  /* Slower rotation matching container speed */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+    /* Relative Wrapper to Hold Scroll Gradient Fade Overlay */
+    .about-content-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    /* White Gradient Scroll Cue Fade at Bottom of Section */
+    .about-content-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.95) 100%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+
+    .about-section.expanded .about-content-wrapper.has-scroll::after {
+      opacity: 1;
+    }
+
+    .about-section.expanded .about-content-wrapper.scrolled-bottom::after {
+      opacity: 0;
+    }
+
+  /* Accordion Content States & Scroll Container */
+.about-content-container {
+  width: 100%;
+  max-height: 0;
+  overflow-y: hidden;
+  opacity: 0;
+  padding: 0 5%;
+  background-color: #ffffff;
+  /* Slower, smooth collapse transition when closing */
+  transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              padding 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.4s ease 0s;
+}
+
+/* Cap height to 55vh and enable scrolling */
+.about-section.expanded .about-content-container {
+  max-height: 55vh;
+  overflow-y: auto;
+  opacity: 1;
+  padding: 2.5rem 5%;
+  /* Slower, smooth expand transition when opening */
+  transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              padding 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.5s ease 0.2s;
+}
+
+    /* Custom Scrollbar */
+    .about-content-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    .about-content-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .about-content-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 3px;
+    }
+    .about-content-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .about-section.expanded .accordion-toggle-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Section Specific Stylings */
+    .bio-wrapper {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .bio-headshot img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .bio-text {
+      font-size: clamp(1.05rem, 1.25vw, 1.35rem);
+      line-height: 1.7;
+      color: var(--text-color);
+    }
+
+    .statement-text p {
+      font-size: clamp(1.05rem, 1.25vw, 1.3rem);
+      line-height: 1.75;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      max-width: 90ch;
+    }
+
+    .statement-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* CV Layout */
+    .cv-group {
+      margin-bottom: 2.5rem;
+    }
+
+    .cv-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .cv-group-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid black;
+      padding-bottom: 0.4rem;
+    }
+
+    .cv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cv-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: baseline;
+    }
+
+    .cv-item-main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cv-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .cv-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .cv-period {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ==========================================================================
+       4. Full-Height Site Footer
+       ========================================================================== */
+    footer.site-footer {
+      flex: 1; /* Takes up all remaining vertical space */
+      padding: 2.5rem 5%;
+      background-color: #000000;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1.5rem;
+      color: white;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+    }
+
+    .footer-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-link {
+      font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+      font-weight: 500;
+      border-bottom: 1px solid white;
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .footer-link:hover { opacity: 0.6; }
+
+    /* ==========================================================================
+       5. Responsive Breakpoints
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .bio-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        height: -webkit-fill-available;
+        z-index: -1;
+        display: block;
+        background-blend-mode: lighten;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        pointer-events: none;
+      }
+
+      #bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgb(3, 156, 138) 30%, rgb(0, 0, 98) 50%, rgb(255, 98, 98) 70%);
+        -webkit-mask-image: url("lines2.png");
+        mask-image: url("lines2.png");
+      }
+
+      nav ul {
+        gap: 0.85rem;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+      }
+
+      .about-info-sticky {
+        padding: 0.9rem 5%;
+      }
+
+      .about-info h2 {
+        font-size: clamp(1rem, 3.5vw, 1.3rem);
+      }
+
+      .accordion-toggle-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 1.1rem;
+      }
+
+      .about-section.expanded .about-content-container {
+        padding: 1.5rem 5%;
+        max-height: 50vh;
+      }
+
+      .cv-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .cv-period {
+        text-align: left;
+      }
+
+      /* Mobile layout adjustments */
+      footer.site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem 5%;
+         justify-content: flex-start;
+      }
+
+      .footer-links {
+        gap: 1.25rem;
+        width: 100%;
+      }
+
+      .about-section[data-theme="red"] .about-info { background: var(--header-red-bg-small); }
+      .about-section[data-theme="blue"] .about-info { background: var(--header-blue-bg-small); }
+      .about-section[data-theme="black"] .about-info { background: var(--header-black-bg-small); }
+    }
+  </style>
 </head>
+<body>
+  <div id="bg"></div>
 
-<body >
-  <main>
-  </main>
-  <script src="../sketch1.js"></script>
-  <script src="../script1.js"></script>
-  <div id="website">
+  <!-- Sticky Navigation Bar -->
+<nav class="sticky-nav">
+  <div class="nav-logo"><a href="/">JORDAN OLESON-GRAVES</a></div>
+  <ul>
+    <li><a href="/">Work</a></li>
+    <li><a href="/about" class="active">About</a></li>
+    <li><a href="/shop" >Shop</a></li>
+    <li>
+      <a href="../shop#!/~/cart" class="nav-cart-link" aria-label="Shopping Cart">
+        <svg viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M1 5v13.006c0 .548.446.994.994.994h12.012c.548 0 .994-.446.994-.994V5H1zm15-1v14.006c0 1.1-.895 1.994-1.994 1.994H1.994C.894 20 0 19.105 0 18.006V4h16z"
+              fill="currentColor" fill-rule="nonzero"></path>
+            <path
+              d="M5 7s-.005.5-.504.5C3.996 7.5 4 7 4 7V4c0-2.21 1.79-4 4-4s4 1.79 4 4v3s-.002.5-.5.5S11 7 11 7V4c0-1.657-1.343-3-3-3S5 2.343 5 4v3z"
+              fill="currentColor"></path>
+          </g>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>
 
-    <div id="menubar" onload="loadMenu();">
-      <div id="title">
-        <a style=font-weight:600 href="/#opening">Jordan Oleson-Graves</a>
-      </div>
-      <div id="buttons">
-        <a href="../">Home</a>
-        <a href="../#contact">About</a>
-        <a href="../shop">Shop</a>
-        <a href="../shop#!/~/cart" style="position: relative;vertical-align: baseline;top:3px;"><span class=""><svg
-              width="16" height="50%" viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" fill-rule="evenodd">
-                <path
-                  d="M1 5v13.006c0 .548.446.994.994.994h12.012c.548 0 .994-.446.994-.994V5H1zm15-1v14.006c0 1.1-.895 1.994-1.994 1.994H1.994C.894 20 0 19.105 0 18.006V4h16z"
-                  fill="currentColor" fill-rule="nonzero"></path>
-                <path
-                  d="M5 7s-.005.5-.504.5C3.996 7.5 4 7 4 7V4c0-2.21 1.79-4 4-4s4 1.79 4 4v3s-.002.5-.5.5S11 7 11 7V4c0-1.657-1.343-3-3-3S5 2.343 5 4v3z"
-                  fill="currentColor"></path>
-              </g>
-            </svg></span><!----></a>
-      </div>
+  <!-- Main Dynamic About Target -->
+  <main id="about"></main>
+
+  <!-- Site Footer taking remaining space -->
+  <footer class="site-footer" id="contact">
+    <span class="footer-label">Get in Touch</span>
+    <div class="footer-links">
+      <a href="mailto:jordan@jordangrav.es" class="footer-link">jordan@jordangrav.es</a>
+      <a href="https://instagram.com/jordanolesongraves" target="_blank" rel="noopener" class="footer-link">@jordanolesongraves</a>
     </div>
-    <div id="top">
+  </footer>
 
-    </div>
-    
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
 
-    <div id="work" >
+  async function loadAboutData() {
+    try {
+      const response = await fetch('/about/cv.json');
+      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+      const data = await response.json();
+      renderAbout(data);
+    } catch (error) {
+      console.warn('Fetching cv.json directly failed. Loading embedded dataset.', error);
+      // Ensure fallback or fallback caller is present if needed
+    }
+  }
 
-      <div id="project3" class="projects" style="padding-top: 20px;">
+  function renderAbout(data) {
+    const main = document.getElementById('about');
 
-        <div class="info reveal active">
-          <h1>Bio</h1>
-          <p>Hi! I’m Jordan Oleson-Graves. I’m an artist and designer based in Atlanta, making work with code across all kinds of media, including jewelry, textiles, and interactive installations.
-            I started my creative path at SCAD, earning a BFA in Motion Media Design. I originally thought I’d go on to design commercials and movie title sequences. That changed when I took a history of motion graphics class and discovered wonderful world of abstract animation. I realized I cared less about getting a commercial job and more about experimenting and making art. Along the way I explored fibers and physical making but didn’t yet have the tools to create what I wanted. After graduating, I felt lost and stuck until I started designing 3D printed jewelry. Building that business gave me the freedom and space to experiment without worrying about success.</p>
-
+    // Helper to render section blocks cleanly
+    const renderCvGroup = (title, items, formatFn) => {
+      if (!items || !items.length) return '';
+      return `
+        <div class="cv-group">
+          <div class="cv-group-title">${title}</div>
+          <div class="cv-list">
+            ${items.map(formatFn).join('')}
+          </div>
         </div>
-        <div class="preview reveal active">
-          <img src="../jordan graves knit pic.JPG">
+      `;
+    };
+
+    // Flatten nested publications object into a single iterable list
+    const publicationsList = data.cv?.publications ? [
+      ...(data.cv.publications.peerReviewedConferences || []),
+      ...(data.cv.publications.peerReviewedWorkshops || []),
+      ...(data.cv.publications.peerReviewedDemos || [])
+    ] : [];
+
+    main.innerHTML = `
+      <!-- SECTION 1: BIO & HEADSHOT -->
+      <section class="about-section expanded" data-theme="red" data-index="0">
+        <div class="about-info" role="button" aria-expanded="true" tabindex="0">
+          <div class="about-info-sticky">
+            <h2>Biography</h2>
+            <span class="accordion-toggle-icon" aria-hidden="true">+</span>
+          </div>
         </div>
-
-      </div>
-
-
-<div id="project6" class="projects" style="padding-top: 0px;">
-
-<div class="info reveal  active" style="width:100%">
-<p>That’s when I finally had time to learn how to code. It was slow at first with lots of failed experiments but eventually I started making the work I had imagined for years, from large LED installations to code-generated knitwear. I went on to earn an MS in Digital Media from Georgia Tech, where my research explored the relationship between crafting and computer science education, digital fabrication, and creative social interactions. Because coding changed my creative life, I now spend a lot of time teaching high school computer science so I can help students discover their own ideas and make them real. I’m currently pursuing my MFA in Painting at SCAD.
-     </p>
-     
-</div>
-     </div>
-      <svg id="transition1" height="72px" width="100vw" class="transitions">
-        <pattern id="pattern-circles1" x="0" y="0" width="1582px" height="72px" patternUnits="userSpaceOnUse">
-          <path fill="#f7e4cf" d="">
-        </pattern>
-        <rect x="0" y="0" width="500vw" height="100%" fill="url(#pattern-circles1)"></rect>
-
-      </svg>
-      <div id="project1" class="projects" >
-
-        <div class="info reveal active" style="width: 100%">
-          <h1>Artist Statement</h1>
-          <p style="">Curiosity drives my work. I grew up witnessing the shift from analog to digital technology, a transformation that abstracted previously visible processes into seamless interfaces. Old Cathode-Ray Tube (CRT) displays revealed their mechanics, you could view closely and see the individual red, green, and blue components blending into color. That tangibility has been lost in contemporary digital displays, making the underlying structure is hidden. Early in my career in Motion Graphics, my work shifted and aimed to make the digital tangible again, not by mimicking the screen but by redefining its logic through material and form. While my work always begins digitally, its final form incorporates materials including light-emitting diodes (LEDs), fibers, 3D-printed jewelry, and recently motors to create kinetic work. 
-            <br><br>In my LED installations, I retain the fundamental building block of the individual pixel but break from the rigid rectangular grid of traditional digital displays. Instead, I arrange the pixels along undulating waves and in concentric circles, creating an alternative canvas to design animations with these new forms in mind. In my knitted works, each stitch represents a pixel. The process of knitting imposes the same qualities needed of early internet graphics. Graphics Interchange Format images (GIFs) use limited color palettes and pixel dimensions to reduce file size for faster transmission. My kinetic sculptures, like GIFs, produce looping animations. 
-            <br><br>Parametric design and algorithm development allow me to navigate the uncertainty of the blank page and the process of starting something new. I begin with a basic grid structure, then incrementally introduce complexity, shaping the final form by modifying the values of each variable. This process mirrors the hands-on refinement of a ceramicist working on a wheel, slight adjustments that transform the final form. Working in this way produces countless variations that I curate and select to transform into physical materials. 
-            <br><br> Printmaking is another way I explore variation within structured systems. Just as an algorithm can generate limitless iterations, printmaking allows me to discover these variations through layering multiple impressions and experimenting with linear and rotational offsets. 
-            <br><br>My work resists the fleeting nature of screen-based imagery by bringing digital aesthetics into the physical world. Through light, movement, print, and textiles, I reimagine the structured logic of digital systems as something more fluid and organic. Whether replacing pixels with stitches, rearranging LED grids into waves and spirals, or using printmaking to generate variations from a single form, I embrace constraints to give digital aesthetics a physical presence. 
-             </p>
-
-      
-          
+        <div class="about-content-wrapper">
+          <div class="about-content-container">
+            <div class="bio-wrapper">
+              <div class="bio-text">
+                ${Array.isArray(data.bio) 
+                  ? data.bio.map(p => `<p>${p}</p>`).join('') 
+                  : `<p>${data.bio || ''}</p>`}
+              </div>
+              ${data.headshot ? `
+                <div class="bio-headshot">
+                  <img src="${data.headshot.src}" alt="${data.headshot.alt}" />
+                </div>
+              ` : ''}
+            </div>
+          </div>
         </div>
-      
+      </section>
 
-      </div>
+      <!-- SECTION 2: STATEMENT -->
+      <section class="about-section" data-theme="blue" data-index="1">
+        <div class="about-info" role="button" aria-expanded="false" tabindex="0">
+          <div class="about-info-sticky">
+            <h2>Artist Statement</h2>
+            <span class="accordion-toggle-icon" aria-hidden="true">+</span>
+          </div>
+        </div>
+        <div class="about-content-wrapper">
+          <div class="about-content-container">
+            <div class="statement-text">
+              ${Array.isArray(data.statement) 
+                ? data.statement.map(p => `<p>${p}</p>`).join('') 
+                : `<p>${data.statement || ''}</p>`}
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <svg id="transition2" height="72px" width="100vw" class="transitions">
-        <pattern id="pattern-circles2" x="0" y="0" width="1582px" height="72px" patternUnits="userSpaceOnUse">
-          <path fill="#3478e7" d="">
-        </pattern>
-        <rect x="0" y="0" width="500vw" height="100%" fill="url(#pattern-circles2)"></rect>
+      <!-- SECTION 3: CURRICULUM VITAE -->
+      <section class="about-section" data-theme="black" data-index="2">
+        <div class="about-info" role="button" aria-expanded="false" tabindex="0">
+          <div class="about-info-sticky">
+            <h2>Curriculum Vitae</h2>
+            <span class="accordion-toggle-icon" aria-hidden="true">+</span>
+          </div>
+        </div>
+        <div class="about-content-wrapper">
+          <div class="about-content-container">
+            <div class="cv-container">
+              
+              <!-- Education -->
+              ${renderCvGroup('Education', data.cv?.education, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.degree}</span>
+                    <span class="cv-sub">${item.institution}</span>
+                  </div>
+                  <span class="cv-period">${item.year}</span>
+                </div>
+              `)}
 
-      </svg>
-      <div id="project2" class="projects">
+              <!-- Professional Experience -->
+              ${renderCvGroup('Professional Experience', data.cv?.professionalExperience, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.role}</span>
+                    <span class="cv-sub">${item.organization}</span>
+                  </div>
+                  <span class="cv-period">${item.period}</span>
+                </div>
+              `)}
 
-        <div class="info reveal  active" style="width: 100%">
-          <style>ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+              <!-- Selected Exhibitions -->
+              ${renderCvGroup('Selected Exhibitions', data.cv?.selectedExhibitions, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.title} ${item.type ? `(${item.type})` : ''}</span>
+                    <span class="cv-sub">${item.venue}${item.location ? `, ${item.location}` : ''}</span>
+                  </div>
+                  <span class="cv-period">${item.period}</span>
+                </div>
+              `)}
+
+              <!-- Museum Exhibitions -->
+              ${renderCvGroup('Museum Exhibitions', data.cv?.museumExhibitions, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.project}</span>
+                    <span class="cv-sub">${item.venue}${item.location ? `, ${item.location}` : ''}</span>
+                  </div>
+                  <span class="cv-period">${item.period}</span>
+                </div>
+              `)}
+
+              <!-- Permanent Public Art -->
+              ${renderCvGroup('Permanent Public Art and Commissions', data.cv?.permanentPublicArt, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.title}</span>
+                    <span class="cv-sub">${item.location}</span>
+                  </div>
+                </div>
+              `)}
+
+              <!-- Temporary Public Art -->
+              ${renderCvGroup('Temporary Public Art', data.cv?.temporaryPublicArt, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.title}</span>
+                    <span class="cv-sub">${item.location}</span>
+                  </div>
+                  <span class="cv-period">${item.period}</span>
+                </div>
+              `)}
+
+              <!-- Public Art Commission Finalists -->
+              ${renderCvGroup('Public Art Commission Finalists', data.cv?.publicArtCommissionFinalists, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.project}</span>
+                    <span class="cv-sub">${item.organization}${item.location ? `, ${item.location}` : ''}</span>
+                  </div>
+                </div>
+              `)}
+
+              <!-- Artist Residencies -->
+              ${renderCvGroup('Artist Residencies', data.cv?.residencies, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.organization}</span>
+                    <span class="cv-sub">${item.location}</span>
+                  </div>
+                  <span class="cv-period">${item.year}</span>
+                </div>
+              `)}
+
+              <!-- Workshops Taught -->
+              ${renderCvGroup('Workshops Taught', data.cv?.workshopsTaught, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.title}</span>
+                    <span class="cv-sub">${item.venue}${item.location ? `, ${item.location}` : ''}</span>
+                  </div>
+                  <span class="cv-period">${item.date}</span>
+                </div>
+              `)}
+
+              <!-- Peer-Reviewed Publications -->
+              ${renderCvGroup('Publications', publicationsList, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.title}</span>
+                    <span class="cv-sub">
+                      ${item.authors ? item.authors.join(', ') + '. ' : ''}
+                      <em>${item.venue}</em>${item.location ? `, ${item.location}` : ''}.
+                      ${item.doi ? `<a href="${item.doi}" target="_blank" rel="noopener" style="text-decoration:underline;">[DOI]</a>` : ''}
+                    </span>
+                  </div>
+                  <span class="cv-period">${item.year}</span>
+                </div>
+              `)}
+
+              <!-- Demonstrations -->
+              ${renderCvGroup('Demonstrations & Presentations', data.cv?.otherDemonstrations, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.title}</span>
+                    <span class="cv-sub">${item.venue}</span>
+                  </div>
+                  <span class="cv-period">${item.date}</span>
+                </div>
+              `)}
+
+              <!-- Project Awards -->
+              ${renderCvGroup('Awards & Honors', data.cv?.projectAwards, item => `
+                <div class="cv-item">
+                  <div class="cv-item-main">
+                    <span class="cv-title">${item.award}</span>
+                    <span class="cv-sub">${item.project ? `${item.project} — ` : ''}${item.institution || item.event}</span>
+                  </div>
+                  <span class="cv-period">${item.date}</span>
+                </div>
+              `)}
+
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+
+    attachAccordionListeners();
+    setupScrollDetectors();
+  }
+
+
+      function attachAccordionListeners() {
+        const headers = document.querySelectorAll('.about-info');
+        const sections = Array.from(document.querySelectorAll('.about-section'));
+
+        headers.forEach((header, index) => {
+          const toggleSection = () => {
+            const currentSection = sections[index];
+            const isCurrentlyExpanded = currentSection.classList.contains('expanded');
+
+            let targetIndex;
+
+            if (isCurrentlyExpanded) {
+              targetIndex = (index + 1) % sections.length;
+            } else {
+              targetIndex = index;
+            }
+
+            sections.forEach((sec, idx) => {
+              const secHeader = sec.querySelector('.about-info');
+              if (idx === targetIndex) {
+                sec.classList.add('expanded');
+                if (secHeader) secHeader.setAttribute('aria-expanded', 'true');
+              } else {
+                sec.classList.remove('expanded');
+                if (secHeader) secHeader.setAttribute('aria-expanded', 'false');
+              }
+            });
+
+            setTimeout(checkScrollStates, 100);
+          };
+
+          header.addEventListener('click', toggleSection);
+
+          header.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleSection();
+            }
+          });
+        });
+      }
+
+      function setupScrollDetectors() {
+        const containers = document.querySelectorAll('.about-content-container');
+
+        containers.forEach(container => {
+          const wrapper = container.closest('.about-content-wrapper');
+
+          container.addEventListener('scroll', () => {
+            if (!wrapper) return;
+            const isAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 10;
+            if (isAtBottom) {
+              wrapper.classList.add('scrolled-bottom');
+            } else {
+              wrapper.classList.remove('scrolled-bottom');
+            }
+          });
+        });
+
+        window.addEventListener('resize', checkScrollStates);
+        checkScrollStates();
+      }
+
+      function checkScrollStates() {
+        const containers = document.querySelectorAll('.about-content-container');
+        containers.forEach(container => {
+          const wrapper = container.closest('.about-content-wrapper');
+          if (!wrapper) return;
+
+          const hasScrollableContent = container.scrollHeight > container.clientHeight;
+          if (hasScrollableContent) {
+            wrapper.classList.add('has-scroll');
+          } else {
+            wrapper.classList.remove('has-scroll');
           }
-          li {
-           padding-block: 5px; 
-          }</style>
-          <h1>CV</h1>
-          <p>Jordan Oleson-Graves<br>b. 1990, Atlanta, GA</p>
-          
-          <h3>Education</h3>
-<ul>
-  <li><strong>MFA Painting</strong> — Savannah College of Art and Design, expected 2027</li>
-  <li><strong>MS Digital Media</strong> — Georgia Institute of Technology, 2021</li>
-  <li><strong>BFA Motion Media Design</strong> — Savannah College of Art and Design, 2012</li>
-</ul>
 
-<h3>Selected Professional Experience</h3>
-<ul>
-  <li><strong>Upper School Art and Science Teacher</strong> — Holy Innocents’ Episcopal School, 2020–present</li>
-  <li><strong>Graduate Research Assistant</strong> — Georgia Institute of Technology, 2019–2021</li>
-  <li><strong>Founder/Designer</strong> — Repeat Offfender, 2013–2019</li>
-</ul>
+          const isAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 10;
+          if (isAtBottom) {
+            wrapper.classList.add('scrolled-bottom');
+          } else {
+            wrapper.classList.remove('scrolled-bottom');
+          }
+        });
+      }
 
-<h3>Selected Exhibitions</h3>
-<ul>
-  <li><strong>SUBLIME</strong> <em>(Juried Group Show)</em> — Atlanta Contemporary, Atlanta, GA, June–September 2025 (upcoming)</li>
-  <li><strong>Fine Arts Showcase</strong> <em>(Juried Group Show)</em> — SCAD Atlanta, Atlanta, GA, April–June 2025</li>
-  <li><strong>McNeese National Works on Paper Exhibition</strong> <em>(Juried Group Show)</em> — McNeese State University, Lake Charles, LA, March–May 2025</li>
-  <li><strong>SCAD deFINE ART 2025 Painting and Photography Showcase</strong> <em>(Juried Group Show)</em> — Alexander Hall, Savannah, GA, February–March 2025</li>
-  <li><strong>Sightlines</strong> <em>(Juried Group Show)</em> — Gallery 85, New York, NY, September 2024–March 2025</li>
-  <li><strong>HIES Faculty Show</strong> <em>(Group Show)</em> — Holy Innocents’ Episcopal School, Atlanta, GA, August–September 2024</li>
-  <li><strong>Interference</strong> <em>(Solo Exhibition)</em> — Westobou Gallery, Augusta, GA, June–August 2019</li>
-</ul>
+      function getFallbackData() {
+        return {
+          "bio": "Jordan Oleson-Graves is an artist, designer, and educator based in Atlanta, GA. Working across interactive digital installations, physical computing, and technical textiles, their practice explores the intersections of algorithmic systems, material perception, and viewer agency.",
+          "headshot": {
+            "src": "https://picsum.photos/800/1000?random=99",
+            "alt": "Portrait of Jordan Oleson-Graves"
+          },
+          "statement": [
+            "My studio practice focuses on creating physical and digital structures that slow down the consumption of visual information. By layering tactile media—such as machine-knitted textiles, custom acrylic arrays, and responsive hardware—with algorithmic logic, I invite viewers into active engagement rather than passive observation.",
+            "Through moiré patterns, phase-shifted wave motions, and sensor-driven environments, the work responds directly to spatial presence, emphasizing play, perception, and human-computer interaction."
+          ],
+          "cv": {
+            "education": [
+              { "degree": "MFA Painting", "institution": "Savannah College of Art and Design", "year": "expected 2027" },
+              { "degree": "MS Digital Media", "institution": "Georgia Institute of Technology", "year": "2021" },
+              { "degree": "BFA Motion Media Design", "institution": "Savannah College of Art and Design", "year": "2012" }
+            ],
+            "professionalExperience": [
+              { "role": "Upper School Art and Science Teacher", "organization": "Holy Innocents’ Episcopal School", "period": "2020–present" },
+              { "role": "Graduate Research Assistant", "organization": "Georgia Institute of Technology", "period": "2019–2021" },
+              { "role": "Founder/Designer", "organization": "Repeat Offfender", "period": "2013–2019" }
+            ],
+            "selectedExhibitions": [
+              { "title": "SUBLIME", "type": "Juried Group Show", "venue": "Atlanta Contemporary", "location": "Atlanta, GA", "period": "June–September 2025" },
+              { "title": "Fine Arts Showcase", "type": "Juried Group Show", "venue": "SCAD Atlanta", "location": "Atlanta, GA", "period": "April–June 2025" }
+            ]
+          }
+        };
+      }
 
-<h3>Museum Exhibitions</h3>
-<ul>
-  <li><strong>Community Garden</strong> — Children’s Museum of Pittsburgh (2021–present)</li>
-  <li><strong>Community Garden</strong> — Children’s Creativity Museum, San Francisco, CA (2022–present)</li>
-</ul>
-
-<h3>Permanent Public Art</h3>
-<ul>
-  <li><strong>light-reflect.io/n</strong> — The HUB, Augusta, GA</li>
-  <li><strong>Gathering Light</strong> — Holy Innocents’ Episcopal School, Atlanta, GA</li>
-  <li><strong>Portals</strong> — Fulton County Digital Art Acquisition, Atlanta, GA</li>
-</ul>
-
-<h3>Temporary Public Art</h3>
-<ul>
-  <li><strong>5361</strong> — The Shops Buckhead Atlanta, Atlanta, GA, July 2017–February 2019</li>
-  <li><strong>5044</strong> — TechSquare Labs, Atlanta, GA, September 2017–October 2019</li>
-</ul>
-
-<h3>Public Art Commission Finalists</h3>
-<ul>
-  <li><strong>Hapeville Pedestrian Bridge</strong> — Dashboard Co-Op, Hapeville, GA</li>
-  <li><strong>Woodruff Park</strong> — Atlanta Legacy Makers, Atlanta, GA</li>
-</ul>
-
-<h3>Selected Residencies</h3>
-<ul>
-  <li><strong>Children’s Museum of Pittsburgh</strong> — Virtual, 2021</li>
-  <li><strong>Holy Innocents’ Episcopal School</strong> — Atlanta, GA, 2019–2020</li>
-  <li><strong>SCAD Alumni Atelier</strong> — Savannah, GA, 2016</li>
-</ul>
-
-<h3>Workshops Taught</h3>
-<ul>
-  <li><strong>Coding for Art</strong> — SCAD Educator Forum, Savannah, GA, June 2024</li>
-  <li><strong>Coding for Art</strong> — SCAD Educator Forum, Savannah, GA, July 2023</li>
-  <li><strong>Coding for Art</strong> — SCAD Educator Forum, Savannah, GA, July 2022</li>
-  <li><strong>Coding for Art</strong> — Jemicy School, Owings Mills, MD, March 2019</li>
-  <li><strong>Coding for Art</strong> — Salem Academy, Winston-Salem, NC, March 2019</li>
-  <li><strong>Coding for Art</strong> — SCAD Educator Forum, Savannah, GA, July 2018</li>
-  <li><strong>Coding for Art</strong> — SCAD Educator Forum, Savannah, GA, July 2017</li>
-  <li><strong>Intro to 3D Printing</strong> — SCAD Educator Forum, Savannah, GA, July 2016</li>
-  <li><strong>Intro to 3D Printing</strong> — SCAD Educator Forum, Savannah, GA, July 2015</li>
-</ul>
-
-<h3>Peer-Reviewed Conference Publications</h3>
-<ul>
-  <li>Victoria Mirecki, Juliette Spitaels, Karen Royer, Jordan Graves, Anne Sullivan, and Gillian Smith. 2022. “My Brain Does Not Function That Way”: Comparing Quilters’ Perceptions and Motivations Towards Computing and Quilting. In <em>Designing Interactive Systems Conference (DIS ’22)</em>, June 13–17, 2022, Virtual Event, Australia. ACM, New York, NY, USA, 9 pages. <a href="https://doi.org/10.1145/3532106.3533554">https://doi.org/10.1145/3532106.3533554</a></li>
-  <li>Aditya Anupam, Colin Stricklin, Jordan Graves, Kevin Tang, Michael Vogel, Marian Dominguez-Mirazo, and Janet Murray. 2020. Essential Workers: A Multiplayer Game for Enacting Patterns of Social Interdependency in a Pandemic. In <em>Extended Abstracts of the 2020 Annual Symposium on Computer-Human Interaction in Play (CHI PLAY '20)</em>. ACM, New York, NY, USA, 173–177. <a href="https://doi.org/10.1145/3383668.3419863">https://doi.org/10.1145/3383668.3419863</a></li>
-</ul>
-
-<h3>Peer-Reviewed Workshop Publications</h3>
-<ul>
-  <li>Jordan Graves and Anne Sullivan. 2020. eLoominate: Tools for Casual Creation in Hybrid Craft. <em>Joint Proceedings of the ICCC 2020 Workshops (ICCC-WS 2020)</em>, September 7–11 2020, Coimbra (PT) / Online. <a href="https://mkremins.github.io/casual-creators-workshop/papers/ICCC20_paper_194.pdf">Read Paper</a></li>
-</ul>
-
-<h3>Peer-Reviewed Demo Publications</h3>
-<ul>
-  <li>Jordan Graves, Karen Royer, Gillian Smith, and Anne Sullivan. 2021. Procedural Patchwork: Community-Focused Generative Design for Quilting. In <em>Creativity and Cognition (C&C '21)</em>. ACM, New York, NY, USA, Article 56, 1–3. <a href="https://doi.org/10.1145/3450741.3466635">https://doi.org/10.1145/3450741.3466635</a></li>
-  <li>Sara Milkes Espinosa, Jordan Graves, and Jack Towery. 2021. What The Flock?: Fostering collaborative Active Breaks for Online Education. In <em>Extended Abstracts of the 2021 CHI Conference on Human Factors in Computing Systems</em>. ACM, New York, NY, USA, Article 499, 1–6. <a href="https://doi.org/10.1145/3411763.3451849">https://doi.org/10.1145/3411763.3451849</a></li>
-  <li>Jordan Graves and Brian Magerko. 2020. Community garden: designing for connectedness in online museum exhibits. In <em>Proceedings of the 2020 ACM Interaction Design and Children Conference: Extended Abstracts (IDC '20)</em>. ACM, New York, NY, USA, 268–271. <a href="https://doi.org/10.1145/3397617.3402034">https://doi.org/10.1145/3397617.3402034</a></li>
-</ul>
-
-<h3>Other Demonstrations</h3>
-<ul>
-  <li><strong>Digital Media Demo Day</strong> — Georgia Tech, April 2023</li>
-  <li><strong>GVU 30th Anniversary Installations</strong> — Georgia Tech, November 2022</li>
-  <li><strong>GVU Demo Day</strong> — Georgia Tech, November 2022</li>
-  <li><strong>STEM for All Video Showcase</strong> — May 2021</li>
-  <li><strong>GVU Demo Day</strong> — Georgia Tech, October 2019</li>
-  <li><strong>Trunk Show</strong> — SCAD FASH, Atlanta, GA, December 2018</li>
-  <li><strong>Trunk Show</strong> — ShopSCAD, Savannah, GA, September 2018</li>
-  <li><strong>Trunk Show</strong> — High Museum of Art Shop, Atlanta, GA, November 2017</li>
-</ul>
-
-<h3>Project Awards</h3>
-<ul>
-  <li><strong>Best Digital Media MS Project</strong> — Georgia Tech, May 2021</li>
-  <li><strong>Most Potential for Further Development</strong> — Essential Workers, ComplexityJam, June 2020</li>
-  <li><strong>Most Compelling Visual Message</strong> — Sweater Weather, Kent State Fashion Tech Hackathon, January 2020</li>
-</ul>
-
-         
-
-          
-        </div>
-
-      </div>
-
-      <svg id="transition3" height="72px" width="100vw" class="transitions">
-        <pattern id="pattern-circles3" x="0" y="0" width="1582px" height="72px" patternUnits="userSpaceOnUse">
-          <path fill="#eb594f" d="">
-        </pattern>
-        <rect x="0" y="0" width="500vw" height="100%" fill="url(#pattern-circles3)"></rect>
-
-      </svg>
-
-
-
-
-      
-
-
-    </div>
-
-
-
-    <div id="contact">
-  
-      <br><br>
-      <div id="links" style="justify-content: space-around;width:100%">
-        <a href="mailto:jordan@jordangrav.es"> Email Me</a> <a
-          target="_blank" href="https://www.instagram.com/jordanolesongraves">Instagram</a> <a target="_blank"
-          href="https://www.linkedin.com/in/jordandaniellegraves/">LinkedIn</a> 
-      </div>
-    </div>
-
-
-  </div>
-
+      loadAboutData();
+    });
+  </script>
 </body>
-
 </html>

@@ -1,0 +1,531 @@
+[
+  {
+    "id": "interlaced",
+    "title": "Interlaced",
+    "description": [
+      "The <i>Interlaced</i> series connects modern algorithmic design to its foundational lineage, the textile loom, which served as the structural precursor to early computing memory and binary systems. By utilizing low-resolution grids and strict sampling thresholds, the work isolates the underlying grammar of computation and allows it to dictate the textile's composition. Forcing fluid curves onto this low-resolution grid generates spatial friction. The resulting moiré patterns, pixelated checkerboards, and parabolic stars are the visual signatures of aliasing, the distortion that occurs when a machine resolves continuous math within a finite structure. ",
+"Produced by hand on a vintage Passap E6000 knitting machine, the textiles rely on manual labor to realize digital logic. Individual pixel color values are transmitted to the machine as text strings of 0s, 1s, 2s, and 3s, requiring the carriage to be pulled across the needle bed line by line to render the composition."
+],
+   "mainGallery": [
+      {
+        "index": 0,
+        "src": "/assets/large knit 1.webp",
+        "alt": "Small Knit 1",
+        "caption": "<i>Interlaced v2.2</i><br>2026<br>Knit Acrylic Yarn <br>78\"x78\""
+      },
+      {
+       "index": 1,
+        "src": "/assets/large knit 2.webp",
+        "alt": "Small Knit 2",
+        "caption": "<i>Interlaced v2.1</i><br>2026<br>Knit Acrylic Yarn <br>78\"x78\""
+      },
+      {
+       "index": 3,
+        "src": "/assets/small knit series.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced</i> Series<br>2026"
+      }
+    ],
+    "archiveHeader": "Additional Works",
+    "archiveGrid": [
+          {
+            "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 5.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.1</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      },
+        {
+            "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 4.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.2</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      },
+        {
+            "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 3.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.3</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      },
+       {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 2.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.4</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      },
+       {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 1.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.5</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 6.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.6</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 7.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.7</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 8.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.8</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 9.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.9</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 15.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.10</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 14.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.11</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 13.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.12</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 12.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.13</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 11.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.14</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }, {
+        "type": "image",
+       "index": 3,
+        "src": "/assets/small knit 10.webp",
+        "alt": "Small Knit 3",
+        "caption": "<i>Interlaced v1.15</i><br>2026<br>Knit Acrylic Yarn <br>20\"x20\""
+      }
+    ]
+  },
+  {
+    "id": "static-moire",
+    "title": "Static Moiré",
+    "description": [
+"The <i>Static Moiré</i> series explores visual interference created entirely through the viewer's presence. Built from distinctly separate, layered surfaces held at a spatial distance, the works generate dynamic moiré patterns as a spectator moves through space. Operating without motors or electronics, the object's physical stillness turns human movement into the catalyst for change.",
+
+"By decoupling motion from the artwork itself, the experience shifts entirely to how the layers align from different angles and distances. Viewers are invited to explore the piece dynamically, where every step, shift in perspective, or change in proximity uncovers new optical configurations within the stationary layers."
+],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "/assets/static moire 10.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Static Moiré v1.15</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""
+      },
+       {
+        "index": 1,
+        "src": "/assets/static moire 7.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.19</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      },
+       {
+        "index": 2,
+        "src": "/assets/static moire 6.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.21</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      }
+    ],
+    "archiveHeader": "Additional Works",
+    "archiveGrid": [
+      {
+        "type": "image",
+        "index": 0,
+        "src": "/assets/static moire 1.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Static Moiré v1.24</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""
+      },
+       {
+        "type": "image",
+        "index": 1,
+        "src": "/assets/static moire 2.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.22</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      
+},
+       {
+        "type": "image",
+        "index": 2,
+        "src": "/assets/static moire 3.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.16</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      
+},  {
+    "type": "image",
+        "index": 0,
+        "src": "/assets/static moire 4.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Static Moiré v1.20</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""
+      },
+       {
+        "type": "image",
+        "index": 1,
+        "src": "/assets/static moire 5.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.23</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      
+},
+       {
+        "type": "image",
+        "index": 2,
+        "src": "/assets/static moire 8.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.17</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      
+},
+  {
+    "type": "image",
+        "index": 2,
+        "src": "/assets/static moire 9.webp",
+        "alt": "Static Form 01",
+ "caption": "<i>Static Moiré v1.18</i><br>2026<br>Vinyl on Plexiglas<br>9\"x9\""      
+}
+       
+    ]
+  },
+  {
+    "id": "kinetic-moire",
+    "title": "Kinetic Moiré",
+    "description": [
+"The <i>Kinetic Moiré</i> series is the result from five years of experimentation with physical motion and optical interference. Composed of layered, rotating discs painted with spiraling patterns, the works generate continuously shifting waves and forms. As the physical layers spin against one another, moiré patterns emerge, evolve, and dissolve across the moving surfaces.",
+"Parametric design is used to previsualize potential interference outcomes and generate files for digital fabrication. Translating the digital work into physical materials allows the optical experience to react directly to human presence, making the final visual outcome entirely dependent on the perspective of the viewer."],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "/assets/kinetic 3.webp",
+        "alt": "Kinetic Moiré v2.1",
+        "caption": "<i>Kinetic Moiré v2.1</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>26\" x 26\""
+      },
+      {
+        "index": 1,
+        "src": "/assets/kinetic 1.webp",
+        "alt": "Kinetic Moiré v2.7",
+        "caption": "<i>Kinetic Moiré v2.7</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>35\" x 35\""
+      },
+      {
+        "index": 2,
+        "src": "/assets/kinetic 6.webp",
+        "alt": "Kinetic Moiré v2.2",
+        "caption": "<i>Kinetic Moiré v2.2</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>26\" x 26\""
+      }
+    
+    ],
+"featuredMedia": [
+      {
+        "type": "video",
+        "src": "https://stream.mux.com/bWNNTWdTaLJb01InBBW6702PrbsqWtw2bLMTr6DgAvXyg.m3u8?min_resolution=1080p&muted=true",
+        "caption": "Kinetic Moire Series<br>2024"
+      }
+    ], 
+
+    "archiveHeader": "Additional Works in Series",
+    "archiveGrid": [
+     {
+        "type": "image",
+        "src": "/assets/kinetic 11.webp",
+        "alt": "Kinetic Moiré v2.4",
+        "caption": "<i>Kinetic Moiré v2.4</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>15\" x 15\""
+      },
+      {
+        "type": "image",
+        "src": "/assets/kinetic 5.webp",
+        "alt": "Kinetic Moiré v2.5",
+        "caption": "<i>Kinetic Moiré v2.5</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>15\" x 15\""
+      },
+        {
+        "type": "image",
+        "src": "/assets/kinetic 4.webp",
+        "alt": "Kinetic Moiré v2.6",
+        "caption": "<i>Kinetic Moiré v2.6</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>15\" x 15\""
+      },
+      {
+        "type": "image",
+        "src": "/assets/kinetic 7.webp",
+        "alt": "Kinetic Moiré v2.8",
+        "caption": "<i>Kinetic Moiré v2.8</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>35\" x 35\""
+      },
+      {
+        "type": "image",
+        "src": "/assets/kinetic 8.webp",
+        "alt": "Kinetic Moiré v2.9",
+        "caption": "<i>Kinetic Moiré v2.9</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>15\" x 15\""
+      },  {
+        "type": "image",
+        "src": "/assets/kinetic 10.webp",
+        "alt": "Kinetic Moiré v2.10",
+        "caption": "<i>Kinetic Moiré v2.10</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>26\" x 26\""
+      },
+      {
+        "type": "image",
+        "src": "/assets/kinetic 9.webp",
+        "alt": "Kinetic Moiré v2.11",
+        "caption": "<i>Kinetic Moiré v2.11</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>26\" x 26\""
+      },
+      {
+        "type": "image",
+        "src": "/assets/kinetic 2.webp",
+        "alt": "Kinetic Moiré v2.12",
+        "caption": "<i>Kinetic Moiré v2.12</i><br>2025<br>Acrylic Paint on Plexiglas, Wood, Motor, Power Supply<br>15\" x 15\""
+      }
+    ]
+  },
+  {
+    "id": "potential-moire",
+    "title": "Potential Moiré",
+    "description": [
+"The <i>Potential Moiré</i> series extends an ongoing investigation of interference into an installation-based format. Rather than presenting moiré as a self-contained object, these works suspend single acrylic sheets within prepared environments, generating optical interference through spatial relationships and viewer movement.",
+"While interaction is currently limited to spatial movement, the work points toward future iterations featuring modular components built for physical manipulation. Shaped by bodily engagement and discovery, these interactive moments invite viewers to actively participate in shaping the visual experience."    ],
+    "mainGallery": [
+       {
+        "index": 1,
+        "src": "/assets/potential more.webp",
+        "alt": "Potential Moiré",
+        "caption": "<i>Potential Moiré</i><br>2026"
+      },  {
+        "type": "video",
+        "index": 1,
+        "poster": "",
+        "sources": [
+          { "src": "https://stream.mux.com/czxVKPUXCsC6M9BtIgJaa7vxXlz9HUJRx00EY0100stUZA.m3u8?min_resolution=1080p&muted=true" }
+        ],
+        "caption": "<i>Potential Moiré</i><br>2026"
+      }
+    ],
+    "archiveHeader": "Mock-ups",
+    "archiveGrid": [
+      {
+        "type": "video",
+        "index": 1,
+        "poster": "",
+        "sources": [
+          { "src": "https://stream.mux.com/Z2mouiWau71TJTn9KTI8mbKBiAagI1eNZCCpArNfG9I.m3u8?min_resolution=1080p&muted=true" }
+        ],
+        "caption": "<i>Potential Moiré</i><br>2026"
+      },      {
+        "type": "image",
+        "index": 0,
+        "src": "/assets/mock up copy.webp",
+        "alt": "Potential Moiré",
+        "caption": "<i>Potential Moiré Mock-up</i><br>2026<br>UV Ink on Plexiglas on Prepared Wall"
+      }
+    ]
+  },
+  {
+    "id": "interference",
+    "title": "Interference",
+    "description": [
+"In the Interference series, printmaking serves as a method for exploring variation within structured systems. Algorithmic processes and parametric design help navigate the initial uncertainty of creation, beginning with a simple spiral and incrementally introducing complexity. This approach mirrors the physical refinement of a ceramicist at the wheel, where subtle adjustments dramatically alter the final form. Through code, endless variations are generated, which are then curated and translated into physical prints.",
+"Rather than pursuing a single resolved image, the work emphasizes iteration and selection. By layering multiple impressions of a single matrix with linear and rotational offsets, printmaking becomes a tactile space for discovering interference and resonance. The resulting prints bridge computational precision and the unpredictable nuances of physical process, a dynamic where structure and chance remain in constant negotiation." ],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "/assets/Interference R2.Y1.B0.15.0 Sold copy.webp",
+        "alt": "Interference R2.Y1.B0.15.0",
+        "caption": "<i>Interference R2.Y1.B0.15.0</i><br>2024<br>Woodcut Monoprint<br>17\" x 17.75\""
+      },
+        {
+        "index": 0,
+        "src": "/assets/Interference R0.Y2.15.0 copy.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Interference R0.Y2.15.0</i><br>2024<br>Woodcut Monoprint<br>16.75\" x 17.5\""
+      },
+        {
+        "index": 0,
+        "src": "/assets/Interference R1.G1.B2.B1.28.0.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Interference R1.G1.B2.B1.28.0</i><br>2024<br>Woodcut Monoprint<br>30\" x 31\""
+      }
+    ],
+    "archiveHeader": "Additional Works",
+    "archiveGrid": [
+     {
+        "index": 0,
+        "src": "/assets/Interference R2.G2.B2.B0.28.0 copy.webp",
+        "alt": "Interference R2.G2.B2.B0.28.0",
+        "caption": "<i>Interference R2.G2.B2.B0.28.0</i><br>2024<br>Woodcut Monoprint<br>30\" x 31\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R2.G2.B1.B3.28.0.webp",
+        "alt": "Interference R2.G2.B1.B3.28.0",
+        "caption": "<i>Interference R2.G2.B1.B3.28.0</i><br>2024<br>Woodcut Monoprint<br>30\" x 31\""
+      },
+        {
+        "index": 0,
+        "src": "/assets/Interference R1.G1.B2.B1.28.0.webp",
+        "alt": "Interference R1.G1.B2.B1.28.0",
+        "caption": "<i>Interference R1.G1.B2.B1.28.0</i><br>2024<br>Woodcut Monoprint<br>30\" x 31\""
+      },
+         {
+        "index": 0,
+        "src": "/assets/Interference R3.Y3.B1.15.0  Sold copy.webp",
+        "alt": "Interference R3.Y3.B1.15.0",
+        "caption": "<i>Interference R3.Y3.B1.15.0</i><br>2024<br>Woodcut Monoprint<br>17\" x 17.75\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R1.Y1.B2.15.0 SAS copy.webp",
+        "alt": "Interference R1.Y1.B2.15.0",
+        "caption": "<i>Interference R1.Y1.B2.15.0</i><br>2024<br>Woodcut Monoprint<br>17\" x 17.75\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R1.Y1.B0.15.0 copy.webp",
+        "alt": "Interference R1.Y1.B0.15.0",
+        "caption": "<i>Interference R1.Y1.B0.15.0</i><br>2024<br>Woodcut Monoprint<br>17\" x 17.75\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R0.Y0.B2.15.0 SAS copy.webp",
+        "alt": "Interference R0.Y0.B2.15.0",
+        "caption": "<i>Interference R0.Y0.B2.15.0</i><br>2024<br>Woodcut Monoprint<br>17\" x 17.75\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R0.Y0.B3.15.0  Sold copy.webp",
+        "alt": "Interference R0.Y0.B3.15.0",
+        "caption": "<i>Interference R0.Y0.B3.15.0</i><br>2024<br>Woodcut Monoprint<br>17\" x 17.75\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R3.Y0.15.0 SAS copy.webp",
+        "alt": "Interference R3.Y0.15.0",
+        "caption": "<i>Interference R3.Y0.15.0</i><br>2024<br>Woodcut Monoprint<br>16.75\" x 17.5\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R2.Y0.15.0 SAS copy.webp",
+        "alt": "Interference R2.Y0.15.0",
+        "caption": "<i>Interference R2.Y0.15.0</i><br>2024<br>Woodcut Monoprint<br>16.75\" x 17.5\""
+      },
+       {
+        "index": 0,
+        "src": "/assets/Interference R0.Y3.15.0 copy.webp",
+        "alt": "Interference R0.Y3.15.0",
+        "caption": "<i>Interference R0.Y3.15.0</i><br>2024<br>Woodcut Monoprint<br>16.75\" x 17.5\""
+      }
+    ]
+  },{
+    "id": "light-works",
+    "title": "Light Works",
+    "description": [
+       ],
+    "featuredMedia": [
+      {
+        "type": "video",
+        "src": "https://stream.mux.com/pyCLzEth3jlKXLXY5i6nzS3kGdbLZ37y3nOLQgALqCc.m3u8?min_resolution=1080p&muted=true",
+        "caption": "Constructing <i>light-reflect.io/n</i><br>2022"
+      },
+        {
+        "type": "video",
+        "src": "https://stream.mux.com/QOetNS8jXd01OO7LjRHxbSq7EFu00jzg401rKkGE1bIGx4.m3u8?min_resolution=1080p&muted=true",
+        "caption": "<i>Gathering Light</i> with the Coding for Art class at Holy Innocents' Episcopal School<br>2019"
+      }
+
+    ],   
+"mainGallery": [
+      {
+        "index": 0,
+        "src": "/assets/augusta.webp",
+        "alt": "Static Form 01",
+        "caption": "HUB for Community Innovation Augusta<br>2022"
+      },
+        {
+        "index": 0,
+        "src": "/assets/illumine2026.webp",
+        "alt": "Static Form 01",
+        "caption": "Oakland Cemetery<br>2026"
+      },
+        {
+        "index": 0,
+        "src": "/assets/scadartsales.webp",
+        "alt": "Static Form 01",
+        "caption": "Atlanta Art Fair<br>2025"
+      }
+    ],
+    
+    "archiveHeader": " ",
+    "archiveGrid": [
+     
+         {
+        "type": "image",
+        "src": "/assets/5391.JPG",
+        "caption": "<i>5391</i> at The Shops Buckhead, Atlanta, GA<br>2017"
+      },
+    
+         {
+        "type": "image",
+        "src": "/assets/gathering light.jpg",
+        "caption": "<i>Gathering Light</i> at Holy Innocents' Episcopal School, Atlanta, GA<br>2019"
+      },{
+        "type": "image",
+        "src": "/assets/interference.png",
+        "caption": "<i>5622</i> at Westobou Gallery, Augusta, GA<br>2019"
+      }, {
+        "type": "image",
+        "src": "/assets/5044.jpeg",
+        "caption": "<i>5044</i> at Tech Square Labs, Atlanta, GA<br>2017"
+      }
+    ]
+  },
+   {
+    "id": "interactive",
+    "title": "Interactive Exhibition Design",
+    "description": [
+"<i>Community Garden</i> is a participatory digital artwork where visitors draw virtual flowers using their phones via a website:  <a target='_blank' href='https://communitygarden.jordangraves.com'>https://communitygarden.jordangraves.com</a>. These flowers appear in real-time on the installation displays and website, allowing people across many locations add to the collection and connect to one another through this shared experience, a living, evolving ecosystem shaped by collective creativity.  Initially developed for the Children’s Museum of Pittsburgh, the project has since been exhibited in various iterations including at Georgia Tech, Oakland Cemetery, and the Children’s Creativity Museum in San Francisco.",
+"For inquires about licensing <i>Community Garden</i> or developing new exhibits, please email <a href='mailto:jordan@jordangrav.es'>jordan@jordangrav.es</a>"],
+    "mainGallery": [
+      {
+        "index": 0,
+        "src": "/assets/cg1.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Community Garden</i> at Children's Creativity Museum<br>2022"
+      },
+        {
+        "index": 1,
+        "src": "/assets/cg2.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Community Garden</i> at Children's Creativity Museum<br>2022"
+      },
+        {
+        "index": 2,
+        "src": "/assets/cg3.webp",
+        "alt": "Static Form 01",
+        "caption": "<i>Community Garden</i> at Georgia Tech<br>2022"
+      }
+    ],
+    "featuredMedia": [
+      {
+        "type": "video",
+        "src": "https://stream.mux.com/33JnidneQxC00UXioQUwHbv00VdRWPK69NlcQ4JbVuhoE.m3u8?min_resolution=1080p&muted=true",
+        "caption": "<i>Community Garden</i> at Georgia Tech<br>2022"
+      }
+    ], 
+    "archiveHeader": " ",
+    "archiveGrid": [
+     
+    ]
+  }
+  
+]

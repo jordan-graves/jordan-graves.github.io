@@ -30,6 +30,7 @@ function preload() {
 
 }
 
+/*
 function setup() {
   // 1. Create Canvas and place it in the designated container
     console.log(width);
@@ -88,6 +89,7 @@ function setup() {
 
   setTimeout(checkUI,500);
 }
+*/
 
 /**
  * Creates color buttons and appends them to a specified HTML parent element.

@@ -1,0 +1,1079 @@
+/* ==========================================================================
+       1. Global Resets & Design Tokens
+       ========================================================================== */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --text-muted: #666666;
+      --border-color: #e5e5e5;
+      
+      /* Vibrant Alternating Header Colors */
+      --header-red-bg: repeating-linear-gradient(
+        -85deg,
+        #E63946,
+        #E63946 10px,
+        transparent 10px,
+        transparent 20px
+      );
+
+      --header-blue-bg: repeating-linear-gradient(
+        -85deg,
+        #0357cd,
+        #0357cd 10px,
+      transparent 10px,
+        transparent 20px
+      );
+
+      --header-red-bg-small: repeating-linear-gradient(
+        -85deg,
+        #E63946,
+        #E63946 5px,
+       transparent 5px,
+        transparent 10px
+      );
+
+      --header-blue-bg-small: repeating-linear-gradient(
+        -85deg,
+        #0357cd,
+        #0357cd 5px,
+        transparent 5px,
+        transparent 10px
+      );
+
+      --header-teal-bg: repeating-linear-gradient(
+        -85deg,
+        #039c8a,
+        #039c8a 10px,
+        #C92A3700 10px,
+        #C92A3700 20px
+      );
+
+      --header-black-bg: repeating-linear-gradient(
+        -85deg,
+        #000000,
+        #000000 10px,
+        #044eb600 10px,
+        #044eb600 20px
+      );
+
+      --header-teal-bg-small: repeating-linear-gradient(
+        -85deg,
+        #039c8a,
+        #039c8a 5px,
+        #C92A3700 5px,
+        #C92A3700 10px
+      );
+
+      --header-black-bg-small: repeating-linear-gradient(
+        -85deg,
+        #000000,
+        #000000 5px,
+        #044eb600 5px,
+        #044eb600 10px
+      );
+
+      --header-text-light: #ffffff;
+      
+      --nav-height: 55px;
+      --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--text-color);
+      line-height: 1.45;
+      overflow-x: hidden;
+      background-color: white;
+    }
+
+    #bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      height: -webkit-fill-available;
+      z-index: -1;
+      display: block;
+      pointer-events: none;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+
+    #bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, #039c8a 30%, rgb(0, 0, 98) 50%, rgb(255, 98, 98) 70%);
+      -webkit-mask-image: url("lines.png");
+      mask-image: url("lines.png");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       2. Sticky Navigation Bar
+       ========================================================================== */
+    nav.sticky-nav {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      z-index: 1000;
+      background-color: black;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+    }
+
+    .nav-logo {
+      font-size: clamp(1rem, 1.4vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    nav a {
+      font-size: clamp(1rem, 1.4vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 3px;
+      color: white;
+        display: inline-flex;
+  align-items: center;
+  justify-content: center;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav ul li {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Size SVG relative to cap-height and prevent layout shifts */
+nav a.nav-cart-link svg {
+  display: block;
+  width: auto;
+  /* Matches cap height of Hanken Grotesk text links */
+  height: 0.9em; 
+  fill: currentColor;
+  /* Slight optical adjustment to seat centered with capital letters */
+  transform: translateY(-0.05em); 
+}
+
+/* Thicken the icon path lines */
+nav a.nav-cart-link svg path {
+  stroke: currentColor;
+  stroke-width: 0.75px; /* Adjust between 0.5px and 1.2px to dial in boldness */
+  stroke-linejoin: round;
+}
+
+#projectInfoWrapper {
+  margin-inline: 10vw;
+}
+
+.nav-item-has-submenu {
+  position: relative;
+}
+
+/* Submenu: Left-aligned to 'Work', stretches to the right screen edge */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  
+  /* Calculates remaining width from 'Work' link to right edge of viewport */
+  width: calc(100vw - 100% - 2rem); 
+  min-width: 260px;
+  max-width: 380px; /* Cap so it doesn't get unnaturally wide on ultra-wide screens */
+  
+  background-color: rgba(18, 18, 18, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  
+  padding: 0.35rem 0;
+  margin-top: 0.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+
+.submenu li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Left-aligned, compact single-line links */
+.submenu-link {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 1.25rem; /* Tight vertical padding fits all 8 items easily */
+  font-size: 0.82rem;
+  line-height: 1.2;
+  color: #ccc;
+  text-decoration: none;
+  text-align: left; /* Left-aligned text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.submenu-link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* DESKTOP HOVER */
+@media (min-width: 769px) {
+  .nav-item-has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE CLICK */
+@media (max-width: 768px) {
+  .submenu {
+    width: calc(100vw - 3rem);
+    max-width: none;
+  }
+
+  .nav-item-has-submenu.mobile-open .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure sticky nav doesn't clip dropdowns */
+.sticky-nav,
+.sticky-nav ul {
+  overflow: visible !important;
+}
+
+
+/* Mobile Dropdown Styling */
+@media (max-width: 768px) {
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: -1rem; /* Shifts left slightly to align flush with screen padding */
+    width: calc(55vw - 2rem); /* Full screen width minus margin padding */
+    min-width: 0;
+    max-width: none; /* Removes any cap limiting the box width */
+    box-sizing: border-box;
+  }
+
+  /* Multi-line wrapping with comfortable spacing */
+  .submenu-link {
+    white-space: normal;
+    word-break: break-word;
+    padding: 0.65rem 1.25rem;
+    line-height: 1.35;
+    font-size: 0.88rem;
+  }
+  /* Force display when mobile-open is toggled */
+  .nav-item-has-submenu.mobile-open .submenu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+}
+    /* ==========================================================================
+       3. Main Content Layout
+       ========================================================================== */
+
+       /* 1. Ensure the container reserves space and maintains standard layout flow */
+main#work {
+  min-height: 70vh;
+  width: 100%;
+}
+
+/* 2. Target ONLY the loading state wrapper for flex centering */
+.loading-state {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  background-color: #ffffff;
+  animation: fadeIn 2s linear forwards;
+}
+
+/* 3. Spinner animation */
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #111111;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.loading-text {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+    .project-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      border-bottom: 1px solid gray; 
+      padding: 0;
+      min-height: 70vh;
+      position: relative;
+      scroll-margin-top: 20px; /* Reduced to eliminate the extra 20px gap */
+    }
+
+    .project-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 25%;
+      z-index: 10;
+      color: var(--header-text-light);
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .project-info-sticky {
+      position: sticky;
+      top: var(--nav-height);
+      padding: 4rem 3rem 4rem 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .project-section[data-theme="red"] .project-info {
+      background: var(--header-red-bg);
+    }
+
+    .project-section[data-theme="blue"] .project-info {
+      background: var(--header-blue-bg);
+    }
+
+    .project-section[data-theme="teal"] .project-info {
+      background: var(--header-teal-bg);
+    }
+
+    .project-section[data-theme="black"] .project-info {
+      background: var(--header-black-bg);
+    }
+
+    .project-info h2 {
+      font-size: clamp(2.0rem, 2.5vw, 4.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background-color: white;
+      color: black;
+      padding: 5px;
+      width: fit-content;
+    }
+
+    .view-series-trigger {
+      display: inline-block;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      align-self: flex-start;
+      margin-top: 0.5rem;
+      max-width: 100%;
+    }
+
+    .view-series-trigger:hover {
+      opacity: 0.8;
+    }
+
+    /* Expand Prompt with Fluid Clamp Sizing */
+    .expand-prompt {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 0.3em 0.5em;
+      font-size: clamp(0.875rem, 1.5vw + 0.5rem, 1.35rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      line-height: 1.2;
+      text-decoration: underline;
+      text-decoration-color: #000000;
+      text-underline-offset: 3px;
+      margin: 0;
+      display: inline-block;
+      max-width: 100%;
+      box-sizing: border-box;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    .project-gallery-container {
+      width: 75%;
+      margin-left: 25%;
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+    }
+
+    .project-gallery-wrapper {
+      width: 100%;
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: w-resize; 
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 3rem;
+    }
+
+    .project-gallery-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .project-gallery-track {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      padding-left: 3rem;
+      padding-right: 5%;
+    }
+
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 500px;
+      background-color: #ffffff;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      scroll-snap-align: start;
+    }
+
+    .gallery-item.loaded {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .gallery-item-image-wrapper {
+      width: 100%;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+    }
+
+    .gallery-item img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    .gallery-item-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      text-align: left;
+      width: 100%;
+      letter-spacing: 0.01em;
+    }
+
+    .carousel-end-link {
+      flex: 0 0 auto;
+      cursor: pointer;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      padding-right: 1.5rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .carousel-end-link:hover {
+      opacity: 0.7;
+    }
+
+    .gallery-spacer {
+      flex: 0 0 50vw;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       4. Expanded Vertical Layout State
+       ========================================================================== */
+    .project-section.expanded .project-gallery-wrapper {
+      overflow-x: visible;
+      overflow-y: visible;
+      cursor: default !important;
+      scroll-snap-type: none;
+      scroll-padding-left: 0;
+    }
+
+    .project-section.expanded .project-gallery-track {
+      flex-direction: column;
+      gap: 4rem;
+      width: 100%;
+      align-items: flex-start;
+      padding-left: 3rem;
+      padding-right: 5%;
+    }
+
+    .project-section.expanded .gallery-item {
+      width: 100%;
+      transform: none;
+      scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+    }
+
+    .project-section.expanded .carousel-end-link {
+      display: none !important;
+    }
+
+    .project-section.expanded .gallery-item-image-wrapper {
+   height: 60vh; /* Keeps height identical to preview mode */
+  max-height: 60vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+    }
+
+    .project-section.expanded .gallery-item-image-wrapper video,
+.project-section.expanded .gallery-item-image-wrapper video-player,
+.project-section.expanded .gallery-item-image-wrapper mux-video {
+  max-height: 60vh;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Shows full video frame without overflow */
+}
+
+    .project-section.expanded .gallery-item img {
+      width: 100%;
+      height: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .project-section.expanded .gallery-spacer {
+      display: none;
+    }
+
+    .series-long-description a {
+      text-decoration: underline;
+    }
+    .series-expansion {
+      width: 75%;
+      margin-left: 25%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.7s var(--transition-smooth), opacity 0.5s var(--transition-smooth), padding 0.5s ease;
+      background-color: #ffffff;
+      padding: 0 5% 0 3rem;
+    }
+
+   .project-section.expanded .series-expansion {
+  max-height: none; /* Allows all 15+ images to display fully */
+  opacity: 1;
+  padding: 3.5rem 5% 4.5rem 3rem;
+  border-top: 1px solid var(--border-color);
+  overflow: visible; /* Prevents vertical clipping */
+}
+
+    .series-expansion-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      background-color: #ffffff;
+    }
+
+    .series-long-description p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .extra-images-header {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .extra-images-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .grid-item {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background-color: #ffffff;
+    }
+
+.grid-item-media {
+  width: 100%;
+  max-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain; /* Shows full photo without cropping top/bottom */
+}
+
+/* Ensure Video.js players fit inside the expanded grid cards */
+.grid-item .video-js {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+    .grid-item-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .video-js .vjs-poster {
+  display: none !important;
+}
+
+.video-js video {
+  object-fit: contain;
+}
+
+video-player.custom-video-player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+video {
+      background: #ffffff !important;
+}
+
+video-minimal-skin, 
+mux-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: #ffffff !important;
+  border: 0px;
+}
+
+/* Ensure native videos strictly fit their parent containers */
+/* Flexible, non-cropping video sizing that matches gallery images */
+.portfolio-video {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain; /* Scales down to fit without cropping any edges */
+  display: block;
+  border: 0;
+  outline: none;
+  background-color: transparent; /* Or #000 if letterboxing is preferred */
+}
+
+/* Ensure video parent wrappers maintain layout structure */
+/* Parent wrappers enforce max-height and center scaled media */
+.gallery-item-image-wrapper,
+.featured-media-item,
+.grid-item-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 70vh; /* Adjust this value to match your image max-height limit */
+}
+
+/* ✅ FIXED */
+.featured-media-item {
+  width: 100%;
+  height: auto;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #000000;
+  line-height: 0;
+}
+
+.featured-media-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* Changed from cover to contain */
+}
+
+/* Optional: Hide WebKit picture-in-picture button for cleaner controls */
+video::-webkit-media-controls-picture-in-picture-button {
+  display: none !important;
+}
+
+
+/* Full-Width Featured Media inside Expanded Section */
+.series-expansion .project-featured-media {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.featured-media-item {
+  width: 100%;
+  position: relative;
+  border-radius: 4px;
+  background-color: #000;
+  border-radius: 20px;
+}
+
+.featured-media-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.featured-media-item video-player {
+  display: block;
+  width: 100%;
+}
+
+.featured-media-item video-minimal-skin,
+.featured-media-item mux-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.featured-item-caption {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.featured-media-item {
+  width: 100%;
+  height: auto; /* Let content dictate height */
+  overflow: hidden;
+  line-height: 0; /* Prevents text line-height space from leaking under media */
+}
+
+.featured-media-item video-player.custom-video-player {
+  width: 100%;
+  height: auto;
+}
+
+.featured-media-item mux-video,
+.featured-media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces the video stream to fill the entire box without letterboxing */
+}
+    /* ==========================================================================
+       5. Footer Section
+       ========================================================================== */
+    footer.site-footer {
+      padding: 5rem 5% 4rem 5%;
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      color: white;
+    }
+
+    .footer-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .footer-link {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid white;
+      padding-bottom: 4px;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.6;
+    }
+
+    /* ==========================================================================
+       6. Mobile Layout & Nav Adjustments
+       ========================================================================== */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 0.85rem;
+      }
+
+      #bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        height: -webkit-fill-available;
+        z-index: -1;
+        display: block;
+        background-blend-mode: lighten;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        pointer-events: none;
+      }
+
+      #bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgb(3, 156, 138) 30%, rgb(0, 0, 98) 50%, rgb(255, 98, 98) 70%);
+        -webkit-mask-image: url("lines2.png");
+        mask-image: url("lines2.png");
+      }
+
+      nav a {
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+      }
+
+      .project-section {
+        flex-direction: column;
+      }
+
+      .project-info {
+        position: sticky;
+        top: var(--nav-height);
+        width: 100%;
+        height: auto;
+        z-index: 20;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .project-info-sticky {
+        padding: 1.25rem 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .project-info h2 {
+        font-size: clamp(1.1rem, 4vw, 1.6rem);
+        margin: 0;
+      }
+
+      .expand-prompt {
+        padding: 0.25em 0.4em;
+      }
+
+      .project-gallery-container {
+        width: 100%;
+        margin-left: 0;
+        padding: 2rem 0;
+      }
+
+      .project-gallery-wrapper {
+        scroll-padding-left: 5%;
+      }
+
+      .project-gallery-track {
+        gap: 1.25rem;
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .gallery-item {
+        width: 75vw;
+        box-sizing: border-box;
+      }
+
+      .gallery-item-image-wrapper {
+        height: 50vh;
+        width: 100%;
+      }
+
+      .gallery-item img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Mobile Expanded Mode Reset */
+      .project-section.expanded .project-gallery-track {
+        padding-left: 5%;
+        padding-right: 5%;
+        gap: 2.5rem;
+      }
+
+      .project-section.expanded .gallery-item {
+        width: 100%;
+      }
+
+      .series-expansion {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 5%;
+      }
+
+      .project-section.expanded .series-expansion {
+        padding: 2.5rem 5% 3.5rem 5%;
+      }
+
+      .extra-images-grid {
+        grid-template-columns: 1fr;
+      }
+
+        footer.site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem 5%;
+         justify-content: flex-start;
+      }
+
+     .footer-links {
+        gap: 1.25rem;
+        width: 100%;
+      }
+
+      .project-section[data-theme="red"] .project-info {
+        background: var(--header-red-bg-small);
+      }
+
+      .project-section[data-theme="blue"] .project-info {
+        background: var(--header-blue-bg-small);
+      }
+
+      .project-section[data-theme="teal"] .project-info {
+        background: var(--header-teal-bg-small);
+      }
+
+      .project-section[data-theme="black"] .project-info {
+        background: var(--header-black-bg-small);
+      }
+    }
+
+    @supports (-webkit-touch-callout: none) {
+      body {
+        background-attachment: scroll;
+      }
+    }

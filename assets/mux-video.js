@@ -1,0 +1,2 @@
+import{t as e}from"../media-attach-mixin-fxTvOznd.js";import{t}from"../google-cast-Bu0vTqaq.js";import{l as n}from"../constants-Bnj-5J6p.js";import{a as r,n as i}from"../media-host-Iax915Df.js";import{t as a}from"../hls-js-DOmNUHiM.js";import{t as o}from"../mux-data-BFrn2Nv5.js";var s=class extends e(r(`video`,a)){constructor(){super(),i(this.host,new o({playerSoftwareName:`mux-video`})),i(this.host,new t)}};n(class extends s{static{this.tagName=`mux-video`}});
+//# sourceMappingURL=mux-video.js.map
