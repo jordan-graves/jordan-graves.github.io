@@ -9,7 +9,6 @@
   <link rel="shortcut icon" href="/assets/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
 
-  <!-- Hanken Grotesk Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -19,15 +18,12 @@
 <body>
   <div id="bg"></div>
 
-  <!-- Sticky Navigation Bar -->
   <nav class="sticky-nav">
     <div class="nav-logo"><a href="/">JORDAN OLESON-GRAVES</a></div>
     <ul>
-      <!-- Work Item with Submenu -->
       <li class="nav-item-has-submenu">
         <a href="/" class="active">Work </a>
         <ul class="submenu" id="work-submenu">
-          <!-- JS will automatically insert <li> links here -->
         </ul>
       </li>
       <li><a href="/about">About</a></li>
@@ -49,7 +45,6 @@
     </ul>
   </nav>
 
-  <!-- Dynamic Content Target -->
   <main id="work">
     <div class="loading-state">
       <div class="spinner"></div>
@@ -57,7 +52,6 @@
     </div>
   </main>
 
-  <!-- Site Footer -->
   <footer class="site-footer" id="contact">
     <span class="footer-label">Get in Touch</span>
     <div class="footer-links">
@@ -67,7 +61,6 @@
     
   </footer>
 
-  <!-- JavaScript Rendering & Interactions -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
 
@@ -75,10 +68,8 @@
     const workLink = workNavItem?.querySelector('a');
 
     if (workNavItem && workLink) {
-      // Intercept click on 'Work' for small screens
       workLink.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
-          // If submenu is NOT open, prevent navigating to /#work and open it
           if (!workNavItem.classList.contains('mobile-open')) {
             e.preventDefault();
             e.stopPropagation();
@@ -87,7 +78,6 @@
         }
       });
 
-      // Close menu when tapping anywhere outside
       document.addEventListener('click', (e) => {
         if (!workNavItem.contains(e.target)) {
           workNavItem.classList.remove('mobile-open');
@@ -95,9 +85,6 @@
       });
     }
 
-    // ==========================================================================
-    // Parallax Background Math
-    // ==========================================================================
     window.addEventListener('scroll', () => {
       const bg = document.getElementById('bg');
       if (!bg) return;
@@ -112,14 +99,10 @@
       bg.style.transform = `translate3d(${translateX}px, 0, 0)`;
     });
 
-    // SVG Navigation Cursors
     const leftArrowSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M20 6 L10 16 L20 26' stroke='%23111111' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>`;
     const rightArrowSVG = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path d='M12 6 L22 16 L12 26' stroke='%23111111' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>`;
 
-    // ==========================================================================
-    // 1. JSON Data Loader & Dynamic DOM Builder
-    // ==========================================================================
-    async function loadProjects() {
+     async function loadProjects() {
       try {
         const response = await fetch('/assets/projects.json');
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
@@ -296,13 +279,7 @@
       });
     }
 
-    // ==========================================================================
-    // 2. Interactive Logic
-    // ==========================================================================
-   // ==========================================================================
-    // 2. Interactive Logic
-    // ==========================================================================
-    function initializeGalleryInteractions() {
+  function initializeGalleryInteractions() {
 
       const toggleSeries = (section) => {
         if (!section) return;
@@ -311,20 +288,16 @@
         const navHeight = document.querySelector('.sticky-nav')?.offsetHeight || 70;
 
         if (isOpening) {
-          // 1. Find any currently open section
           const currentlyOpen = document.querySelector('.project-section.expanded');
 
           if (currentlyOpen && currentlyOpen !== section) {
-            // Close the old section first
             currentlyOpen.classList.remove('expanded');
             currentlyOpen.querySelectorAll('.expand-prompt').forEach(p => p.textContent = 'View Series +');
           }
 
-          // 2. Expand the target section
           section.classList.add('expanded');
           section.querySelectorAll('.expand-prompt').forEach(p => p.textContent = 'Close Series −');
 
-          // 3. Wait 1 frame for the DOM layout height change to settle, then compute exact coordinates
           requestAnimationFrame(() => {
             const elementTop = section.getBoundingClientRect().top + window.pageYOffset;
             const targetPosition = elementTop - navHeight - 15;
@@ -336,7 +309,6 @@
           });
 
         } else {
-          // Closing current section: scroll smoothly to top of header
           section.classList.remove('expanded');
           section.querySelectorAll('.expand-prompt').forEach(p => p.textContent = 'View Series +');
 
@@ -374,7 +346,7 @@
   link.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const section = link.closest('.project-section'); // Fixed: replaced 'trigger' with 'link'
+    const section = link.closest('.project-section'); 
     toggleSeries(section);
   });
 });
