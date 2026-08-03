@@ -134,6 +134,7 @@
 "By decoupling motion from the artwork itself, the experience shifts entirely to how the layers align from different angles and distances. Viewers are invited to explore the piece dynamically, where every step, shift in perspective, or change in proximity uncovers new optical configurations within the stationary layers."
 ],
     "mainGallery": [
+
       {
         "index": 0,
         "src": "/assets/static moire 10.webp",
@@ -153,6 +154,11 @@
     ],
     "archiveHeader": "Additional Works",
     "archiveGrid": [
+       {
+        "type": "video",
+        "src": "https://stream.mux.com/JeuJhpj01d2Ir3VszPfb4f6rOoa02sqnHD8GfdiVjMAAg.m3u8?min_resolution=1080p&muted=true",
+        "caption": "From the <i>Static Moiré</i> Series<br>2025"
+      },
       {
         "type": "image",
         "index": 0,
