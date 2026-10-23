@@ -622,20 +622,18 @@ function draw() {
     }
 
     // Run Sketch in Sandboxed Iframe
-    function runSketch() {
+     function runSketch() {
       const userCode = editor.getValue();
       const iframe = document.getElementById('previewIframe');
       const placeholder = document.getElementById('canvasPlaceholder');
       const dot = document.getElementById('canvasStatusDot');
-
-      const endScriptTag = '</' + 'script>';
 
       // Embedded p5.js sandbox HTML wrapper
       const srcDoc = `
         <!DOCTYPE html>
         <html>
         <head>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js">${endScriptTag}
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"><\/script>
           <style>
             html, body {
               margin: 0;
@@ -658,16 +656,13 @@ function draw() {
         </head>
         <body>
           <script>
-            window.onerror = function(msg, url, line) {
-              document.body.innerHTML = '<pre style="color:#f43f5e; padding:16px; font-family:monospace; font-size:12px; white-space:pre-wrap;">Error [Line ' + line + ']: ' + msg + '${endScriptTag}';
-              return true;
-            };
             try {
               ${userCode}
             } catch (err) {
-              document.body.innerHTML = '<pre style="color:#f43f5e; padding:16px; font-family:monospace; font-size:12px; white-space:pre-wrap;">' + err.toString() + '${endScriptTag}';
+              console.error(err);
+              document.body.innerHTML = '<pre style="color:#f43f5e; padding:16px; font-family:monospace; font-size:12px; white-space:pre-wrap;">' + err.toString() + '</pre>';
             }
-          ${endScriptTag}
+          <\/script>
         </body>
         </html>
       `;
