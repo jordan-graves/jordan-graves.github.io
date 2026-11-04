@@ -37,7 +37,7 @@ let colorHistory = [];
 // Cart & Pricing Data
 let cart = [];
 
-let controlsDiv;
+let controlsDiv, shopPanelDiv;
 let activePopoverIndex = null; // Track open popover
 
 // Form input references
@@ -101,9 +101,17 @@ async function setup() {
 
   updatePathFills();
 
-  // 2. Control Panel Container
+  // 2. Control Panel Container (Top-Left overlay when viewing a section)
   controlsDiv = createDiv();
   controlsDiv.parent(stageWrapper);
+
+  // 3. Persistent Shop / Cart Panel Container (Always stays below canvas)
+  shopPanelDiv = createDiv();
+  shopPanelDiv.parent(stageWrapper);
+  shopPanelDiv.style('position', 'absolute');
+  shopPanelDiv.style('top', '384px');
+  shopPanelDiv.style('left', '0');
+  shopPanelDiv.style('width', '708px');
 
   renderUI();
 }
@@ -130,20 +138,21 @@ function toggleLabels() {
   renderUI();
 }
 
-// Randomize colors ensuring NO repeats ONLY across the first 15 paths (0-4, 5-9, 10-14)
+// Randomizer: randomizes either the active section or all sections if on home view
 function randomizeSectionColors() {
   colorHistory.push([...pathColors]);
 
-  let ranges = [
-    [0, 5],   // Left Section
-    [5, 10],  // Center Section
-    [10, 15]  // Right Section
-  ];
+  let rangesToRand = [];
+  if (currentView === 'home') {
+    rangesToRand = [[0, 5], [5, 10], [10, 15]];
+  } else {
+    rangesToRand = [[sections[currentView].start, sections[currentView].end]];
+  }
 
-  ranges.forEach(range => {
+  rangesToRand.forEach(range => {
     let shuffled = [...palette].sort(() => Math.random() - 0.5);
     for (let i = range[0], j = 0; i < range[1]; i++, j++) {
-      pathColors[i] = shuffled[j].hex;
+      pathColors[i] = shuffled[j % palette.length].hex;
     }
   });
 
@@ -212,10 +221,12 @@ function renderUI() {
   let savedEmail = emailInput ? emailInput.value() : '';
 
   controlsDiv.html('');
+  shopPanelDiv.html('');
 
   if (currentView === 'home') {
     svgContainer.style('height', '368px');
 
+    // Controls container sits right above the shop panel on home view
     controlsDiv.style('position', 'absolute');
     controlsDiv.style('top', '384px');
     controlsDiv.style('left', '0');
@@ -227,10 +238,14 @@ function renderUI() {
     controlsDiv.style('border-radius', '0');
     controlsDiv.style('box-shadow', 'none');
 
-    renderHomeDashboard(savedName, savedEmail);
+    // Shift shop panel down to accommodate home navigation/randomize bar
+    shopPanelDiv.style('top', '444px');
+
+    renderHomeDashboardTools();
   } else {
     svgContainer.style('height', '736px');
 
+    // Top-left overlay when viewing a section
     controlsDiv.style('position', 'absolute');
     controlsDiv.style('top', '12px');
     controlsDiv.style('left', '12px');
@@ -242,21 +257,20 @@ function renderUI() {
     controlsDiv.style('border-radius', '10px');
     controlsDiv.style('box-shadow', '0 4px 16px rgba(0,0,0,0.25)');
 
+    // Shop panel sits below the expanded SVG (736px + 12px margin = 748px)
+    shopPanelDiv.style('top', '760px');
+
     renderSectionControls(sections[currentView]);
   }
+
+  // Render persistent shopping & cart panel below
+  renderShopPanel(savedName, savedEmail);
 }
 
-// Home Dashboard
-function renderHomeDashboard(savedName, savedEmail) {
-  let mainContainer = createDiv();
-  mainContainer.parent(controlsDiv);
-  mainContainer.style('display', 'flex');
-  mainContainer.style('flex-direction', 'column');
-  mainContainer.style('gap', '12px');
-
-  // 1. Navigation & Randomizer Row
+// Home Navigation & Randomizer Toolbar
+function renderHomeDashboardTools() {
   let topTools = createDiv();
-  topTools.parent(mainContainer);
+  topTools.parent(controlsDiv);
   topTools.style('display', 'flex');
   topTools.style('gap', '8px');
   topTools.style('align-items', 'center');
@@ -331,10 +345,12 @@ function renderHomeDashboard(savedName, savedEmail) {
   labelToggleBtn.style('border-radius', '6px');
   labelToggleBtn.style('cursor', 'pointer');
   labelToggleBtn.mousePressed(() => toggleLabels());
+}
 
-  // 2. Purchasing & Cart Split Panel
+// Persistent Shopping & Cart Panel (Always visible below canvas)
+function renderShopPanel(savedName, savedEmail) {
   let shopPanel = createDiv();
-  shopPanel.parent(mainContainer);
+  shopPanel.parent(shopPanelDiv);
   shopPanel.style('display', 'flex');
   shopPanel.style('gap', '12px');
   shopPanel.style('background', '#ffffff');
@@ -541,7 +557,6 @@ function renderHomeDashboard(savedName, savedEmail) {
 
 // Zoomed Section Overlay Controls (1/4 Width Top-Left)
 function renderSectionControls(sectionConfig) {
-  // Navigation & Toggle Header Row
   let navRow = createDiv();
   navRow.parent(controlsDiv);
   navRow.style('display', 'flex');
@@ -565,11 +580,44 @@ function renderSectionControls(sectionConfig) {
     setView('home');
   });
 
+  // Randomize Button for Active Section
+  let randBtn = createButton('🎲 Randomize Section');
+  randBtn.parent(controlsDiv);
+  randBtn.style('width', '100%');
+  randBtn.style('padding', '6px 4px');
+  randBtn.style('margin-bottom', '6px');
+  randBtn.style('font-size', '11px');
+  randBtn.style('font-weight', 'bold');
+  randBtn.style('background', '#8250DF');
+  randBtn.style('color', '#FFFFFF');
+  randBtn.style('border', 'none');
+  randBtn.style('border-radius', '6px');
+  randBtn.style('cursor', 'pointer');
+  randBtn.mousePressed(() => randomizeSectionColors());
+
+  // Undo Button
+  let undoBtn = createButton('↩ Undo');
+  undoBtn.parent(controlsDiv);
+  undoBtn.style('width', '100%');
+  undoBtn.style('padding', '6px 4px');
+  undoBtn.style('margin-bottom', '8px');
+  undoBtn.style('font-size', '11px');
+  undoBtn.style('font-weight', 'bold');
+  undoBtn.style('background', colorHistory.length > 0 ? '#34495E' : '#bdc3c7');
+  undoBtn.style('color', '#FFFFFF');
+  undoBtn.style('border', 'none');
+  undoBtn.style('border-radius', '6px');
+  undoBtn.style('cursor', colorHistory.length > 0 ? 'pointer' : 'default');
+  if (colorHistory.length > 0) {
+    undoBtn.mousePressed(() => undoColorRandomize());
+  }
+
   // Labels Toggle Button in Section Menu Bar
-  let labelToggleBtn = createButton(showLabels ? '🏷️ Labels' : '🏷️ Hidden');
-  labelToggleBtn.parent(navRow);
-  labelToggleBtn.style('flex', '1');
+  let labelToggleBtn = createButton(showLabels ? '🏷️ Labels: ON' : '🏷️ Labels: OFF');
+  labelToggleBtn.parent(controlsDiv);
+  labelToggleBtn.style('width', '100%');
   labelToggleBtn.style('padding', '6px 4px');
+  labelToggleBtn.style('margin-bottom', '10px');
   labelToggleBtn.style('font-size', '11px');
   labelToggleBtn.style('font-weight', 'bold');
   labelToggleBtn.style('background', showLabels ? '#298D70' : '#E74C3C');
