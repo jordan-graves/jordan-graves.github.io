@@ -207,7 +207,50 @@ function removeFromCart(index) {
   renderUI();
 }
 
-function submitOrder() {
+// function submitOrder() {
+//   // Force keyboard dismissal immediately on iOS/iPadOS
+//   if (nameInput) nameInput.elt.blur();
+//   if (emailInput) emailInput.elt.blur();
+//   if (document.activeElement) document.activeElement.blur();
+
+//   if (cart.length === 0) {
+//     console.log('Order submission failed: Cart is empty.');
+//     return;
+//   }
+
+//   let customerName = nameInput ? nameInput.value().trim() : '';
+//   let customerEmail = emailInput ? emailInput.value().trim() : '';
+
+//   if (!customerName || !customerEmail) {
+//     console.log('Order submission failed: Missing name or email.');
+//     return;
+//   }
+
+//   let totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+
+//   let orderPayload = {
+//     customer: {
+//       name: customerName,
+//       email: customerEmail
+//     },
+//     items: [...cart],
+//     total: totalPrice,
+//     pathColors: [...pathColors],
+//     labelsEnabled: showLabels,
+//     createdAt: new Date().toISOString()
+//   };
+
+//   console.log('=== ARTBOARD STUDIO ORDER LOGGED ===', orderPayload);
+
+//   // Clear cart and customer details
+//   cart = [];
+//   if (nameInput) nameInput.value('');
+//   if (emailInput) emailInput.value('');
+
+//   renderUI();
+// }
+
+async function submitOrder() {
   // Force keyboard dismissal immediately on iOS/iPadOS
   if (nameInput) nameInput.elt.blur();
   if (emailInput) emailInput.elt.blur();
@@ -240,14 +283,22 @@ function submitOrder() {
     createdAt: new Date().toISOString()
   };
 
-  console.log('=== ARTBOARD STUDIO ORDER LOGGED ===', orderPayload);
+  try {
+    // Push new order to 'orders' node in Firebase Realtime Database
+    const newOrderRef = db.ref('orders').push();
+    await newOrderRef.set(orderPayload);
 
-  // Clear cart and customer details
-  cart = [];
-  if (nameInput) nameInput.value('');
-  if (emailInput) emailInput.value('');
+    console.log('=== ORDER SAVED TO FIREBASE ===', newOrderRef.key, orderPayload);
 
-  renderUI();
+    // Clear cart and customer details
+    cart = [];
+    if (nameInput) nameInput.value('');
+    if (emailInput) emailInput.value('');
+
+    renderUI();
+  } catch (error) {
+    console.error('Firebase order submission failed:', error);
+  }
 }
 
 function renderUI() {

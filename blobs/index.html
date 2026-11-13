@@ -5,7 +5,25 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
     
-    
+    <!-- Firebase Compat SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAOYc1p4Qrd_ermeKSYEkGkny_y-qFvNy0",
+    authDomain: "blobs-commissions.firebaseapp.com",
+    databaseURL: "https://blobs-commissions-default-rtdb.firebaseio.com",
+    projectId: "blobs-commissions",
+    storageBucket: "blobs-commissions.firebasestorage.app",
+    messagingSenderId: "159693294323",
+    appId: "1:159693294323:web:37524cc5dfa480cf55c586",
+    measurementId: "G-762Y3PS3QJ"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
     
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
