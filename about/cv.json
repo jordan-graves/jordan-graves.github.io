@@ -48,7 +48,25 @@
     }
   ],
   "selectedExhibitions": [
-      {
+     {
+      "title": "Fine Arts Showcase",
+      "type": "Group Show-Featured Artist",
+      "venue": "SCAD Atlanta",
+      "location": "Atlanta, GA",
+      "period": "November 2026–June 2027"
+    },   {
+      "title": "Small Town Small Works",
+      "type": "Group Show",
+      "venue": "Reeves House Visual Arts Center",
+      "location": "Woodstock, GA",
+      "period": "November 2026–January 2027"
+    },    {
+      "title": "Honeycomb III",
+      "type": "Group Show",
+      "venue": "Pollinator Arts Space",
+      "location": "Atlanta, GA",
+      "period": "November 2026–December 2026"
+    },   {
       "title": "Extremes",
       "type": "Group Show",
       "venue": "Avondale Arts Center",
