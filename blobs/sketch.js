@@ -1,6 +1,7 @@
 let svgContainer;
 let pathGroups = [];
 let rawSvg;
+let stageWrapper;
 
 // View state: 'home', 'left', 'center', 'right'
 let currentView = 'home';
@@ -44,36 +45,50 @@ let activePopoverIndex = null; // Track open popover
 // Persistent Form input references
 let nameInput, emailInput;
 
+function isMobileView() {
+  return windowWidth < 650;
+}
+
 async function setup() {
-  // Prevent mobile double-tap / gesture zoom
+  noCanvas(); // Using pure responsive DOM layout with matching background
+
+  // Prevent mobile double-tap zoom & lock body background
   let mobileFixStyle = document.createElement('style');
   mobileFixStyle.innerHTML = `
+    * {
+      box-sizing: border-box;
+    }
     html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #1e4638;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       touch-action: manipulation;
       -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
     }
   `;
   document.head.appendChild(mobileFixStyle);
 
-  createCanvas(820, 1350);
-
-  // Outer Wrapper
-  let stageWrapper = createDiv();
-  stageWrapper.position(30, 40);
-  stageWrapper.style('position', 'absolute');
-  stageWrapper.style('width', '760px');
+  // Outer Responsive Wrapper
+  stageWrapper = createDiv();
+  stageWrapper.style('position', 'relative');
+  stageWrapper.style('width', '100%');
+  stageWrapper.style('max-width', '820px');
+  stageWrapper.style('margin', '0 auto');
+  stageWrapper.style('display', 'flex');
+  stageWrapper.style('flex-direction', 'column');
 
   // 1. Container for SVG Graphic
   svgContainer = createDiv();
   svgContainer.parent(stageWrapper);
-  svgContainer.style('width', '760px');
-  svgContainer.style('height', '397px'); // Base height for home view
+  svgContainer.style('width', '100%');
   svgContainer.style('display', 'flex');
   svgContainer.style('justify-content', 'center');
   svgContainer.style('align-items', 'center');
   svgContainer.style('background', '#ffffff');
   svgContainer.style('border-radius', '12px');
-  svgContainer.style('box-shadow', '0 4px 14px rgba(0,0,0,0.08)');
+  svgContainer.style('box-shadow', '0 4px 14px rgba(0,0,0,0.12)');
   svgContainer.style('overflow', 'hidden');
   svgContainer.style('transition', 'height 0.25s ease');
 
@@ -95,13 +110,14 @@ async function setup() {
   // Select all SVG paths in DOM order
   pathGroups = selectAll('path', svgContainer);
 
-
-  pathColors = [palette[3].hex,palette[2].hex,palette[4].hex,palette[1].hex,palette[0].hex,
-palette[3].hex,palette[0].hex,palette[5].hex,palette[2].hex,palette[4].hex,
-palette[6].hex,palette[5].hex,palette[4].hex,palette[1].hex,palette[2].hex ];
+  pathColors = [
+    palette[3].hex, palette[2].hex, palette[4].hex, palette[1].hex, palette[0].hex,
+    palette[3].hex, palette[0].hex, palette[5].hex, palette[2].hex, palette[4].hex,
+    palette[6].hex, palette[5].hex, palette[4].hex, palette[1].hex, palette[2].hex
+  ];
 
   // Generate individual purchasing items for total paths
-  const basePrices = [900, 1200, 1200,1200,1200,900,600,900,1200,1200,600,1200,1200,900,600,900,1200,900,900,1200];
+  const basePrices = [900, 1200, 1200, 1200, 1200, 900, 600, 900, 1200, 1200, 600, 1200, 1200, 900, 600, 900, 1200, 900, 900, 1200];
   for (let i = 0; i < 20; i++) {
     individualPieces.push({
       id: i + 1,
@@ -116,32 +132,31 @@ palette[6].hex,palette[5].hex,palette[4].hex,palette[1].hex,palette[2].hex ];
   controlsDiv = createDiv();
   controlsDiv.parent(stageWrapper);
 
-  // 3. Persistent Shop / Cart Panel Container (Always stays below canvas)
+  // 3. Persistent Shop / Cart Panel Container
   shopPanelDiv = createDiv();
   shopPanelDiv.parent(stageWrapper);
-  shopPanelDiv.style('position', 'absolute');
-  shopPanelDiv.style('top', '413px');
-  shopPanelDiv.style('left', '0');
-  shopPanelDiv.style('width', '760px');
+  shopPanelDiv.style('width', '100%');
 
   // Create input fields once globally so they persist across re-renders
   nameInput = createInput('');
   nameInput.attribute('placeholder', 'Your Name');
   nameInput.style('width', '100%');
-  nameInput.style('padding', '6px');
-  nameInput.style('font-size', '12px');
+  nameInput.style('padding', '8px');
   nameInput.style('border', '1px solid #ccc');
-  nameInput.style('border-radius', '4px');
+  nameInput.style('border-radius', '6px');
 
   emailInput = createInput('');
   emailInput.attribute('placeholder', 'Your Email Address');
   emailInput.style('width', '100%');
-  emailInput.style('padding', '6px');
-  emailInput.style('font-size', '12px');
+  emailInput.style('padding', '8px');
   emailInput.style('border', '1px solid #ccc');
-  emailInput.style('border-radius', '4px');
+  emailInput.style('border-radius', '6px');
 
   renderUI();
+}
+
+function windowResized() {
+  setView(currentView);
 }
 
 function updatePathFills() {
@@ -166,7 +181,6 @@ function toggleLabels() {
   renderUI();
 }
 
-// Randomizer: randomizes either the active section or all sections if on home view
 function randomizeSectionColors() {
   colorHistory.push([...pathColors]);
 
@@ -188,7 +202,6 @@ function randomizeSectionColors() {
   renderUI();
 }
 
-// Undo last randomization step
 function undoColorRandomize() {
   if (colorHistory.length > 0) {
     pathColors = colorHistory.pop();
@@ -207,51 +220,7 @@ function removeFromCart(index) {
   renderUI();
 }
 
-// function submitOrder() {
-//   // Force keyboard dismissal immediately on iOS/iPadOS
-//   if (nameInput) nameInput.elt.blur();
-//   if (emailInput) emailInput.elt.blur();
-//   if (document.activeElement) document.activeElement.blur();
-
-//   if (cart.length === 0) {
-//     console.log('Order submission failed: Cart is empty.');
-//     return;
-//   }
-
-//   let customerName = nameInput ? nameInput.value().trim() : '';
-//   let customerEmail = emailInput ? emailInput.value().trim() : '';
-
-//   if (!customerName || !customerEmail) {
-//     console.log('Order submission failed: Missing name or email.');
-//     return;
-//   }
-
-//   let totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
-
-//   let orderPayload = {
-//     customer: {
-//       name: customerName,
-//       email: customerEmail
-//     },
-//     items: [...cart],
-//     total: totalPrice,
-//     pathColors: [...pathColors],
-//     labelsEnabled: showLabels,
-//     createdAt: new Date().toISOString()
-//   };
-
-//   console.log('=== ARTBOARD STUDIO ORDER LOGGED ===', orderPayload);
-
-//   // Clear cart and customer details
-//   cart = [];
-//   if (nameInput) nameInput.value('');
-//   if (emailInput) emailInput.value('');
-
-//   renderUI();
-// }
-
 async function submitOrder() {
-  // Force keyboard dismissal immediately on iOS/iPadOS
   if (nameInput) nameInput.elt.blur();
   if (emailInput) emailInput.elt.blur();
   if (document.activeElement) document.activeElement.blur();
@@ -284,13 +253,11 @@ async function submitOrder() {
   };
 
   try {
-    // Push new order to 'orders' node in Firebase Realtime Database
     const newOrderRef = db.ref('orders').push();
     await newOrderRef.set(orderPayload);
 
     console.log('=== ORDER SAVED TO FIREBASE ===', newOrderRef.key, orderPayload);
 
-    // Clear cart and customer details
     cart = [];
     if (nameInput) nameInput.value('');
     if (emailInput) emailInput.value('');
@@ -302,16 +269,30 @@ async function submitOrder() {
 }
 
 function renderUI() {
+  const mobile = isMobileView();
+  const pad = mobile ? 12 : 30;
+  const contentWidth = min(windowWidth - pad * 2, 760);
+
+  stageWrapper.style('padding', mobile ? '12px 12px 32px 12px' : '40px 30px');
+  stageWrapper.style('gap', mobile ? '12px' : '16px');
+
+  // Prevent iOS auto-zoom on focus by keeping font-size >= 16px on phones
+  const inputFontSize = mobile ? '16px' : '12px';
+  nameInput.style('font-size', inputFontSize);
+  emailInput.style('font-size', inputFontSize);
+
   controlsDiv.html('');
   shopPanelDiv.html('');
 
   if (currentView === 'home') {
-    svgContainer.style('height', '397px');
+    // Maintain exact 24 : 12.5 aspect ratio
+    let homeHeight = Math.round(contentWidth * (825 / 1584));
+    svgContainer.style('height', `${homeHeight}px`);
 
-    controlsDiv.style('position', 'absolute');
-    controlsDiv.style('top', '413px');
-    controlsDiv.style('left', '0');
-    controlsDiv.style('width', '760px');
+    controlsDiv.style('position', 'relative');
+    controlsDiv.style('top', 'auto');
+    controlsDiv.style('left', 'auto');
+    controlsDiv.style('width', '100%');
     controlsDiv.style('z-index', '1');
     controlsDiv.style('background', 'transparent');
     controlsDiv.style('backdrop-filter', 'none');
@@ -319,63 +300,78 @@ function renderUI() {
     controlsDiv.style('border-radius', '0');
     controlsDiv.style('box-shadow', 'none');
 
-    shopPanelDiv.style('top', '505px');
-
-    renderHomeDashboardTools();
+    renderHomeDashboardTools(mobile);
   } else {
-    svgContainer.style('height', '736px');
+    if (mobile) {
+      // Condensed zoomed height for phone so controls fit comfortably below
+      let zoomedMobileHeight = Math.min(Math.round(contentWidth * 1.15), 420);
+      svgContainer.style('height', `${zoomedMobileHeight}px`);
 
-    controlsDiv.style('position', 'absolute');
-    controlsDiv.style('top', '12px');
-    controlsDiv.style('left', '12px');
-    controlsDiv.style('width', '222px');
-    controlsDiv.style('z-index', '10');
-    controlsDiv.style('background', 'rgba(30, 70, 56, 0.94)');
-    controlsDiv.style('backdrop-filter', 'blur(6px)');
-    controlsDiv.style('padding', '13px');
-    controlsDiv.style('border-radius', '12px');
-    controlsDiv.style('box-shadow', '0 4px 16px rgba(0,0,0,0.25)');
+      // Dock controls cleanly below the artwork on phones
+      controlsDiv.style('position', 'relative');
+      controlsDiv.style('top', 'auto');
+      controlsDiv.style('left', 'auto');
+      controlsDiv.style('width', '100%');
+      controlsDiv.style('z-index', '10');
+      controlsDiv.style('background', 'rgba(22, 54, 43, 0.96)');
+      controlsDiv.style('backdrop-filter', 'none');
+      controlsDiv.style('padding', '12px');
+      controlsDiv.style('border-radius', '12px');
+      controlsDiv.style('box-shadow', '0 4px 12px rgba(0,0,0,0.2)');
+    } else {
+      // Desktop / iPad floating overlay
+      svgContainer.style('height', '736px');
 
-    shopPanelDiv.style('top', '760px');
+      controlsDiv.style('position', 'absolute');
+      controlsDiv.style('top', '52px');
+      controlsDiv.style('left', '42px');
+      controlsDiv.style('width', '222px');
+      controlsDiv.style('z-index', '10');
+      controlsDiv.style('background', 'rgba(30, 70, 56, 0.94)');
+      controlsDiv.style('backdrop-filter', 'blur(6px)');
+      controlsDiv.style('padding', '13px');
+      controlsDiv.style('border-radius', '12px');
+      controlsDiv.style('box-shadow', '0 4px 16px rgba(0,0,0,0.25)');
+    }
 
-    renderSectionControls(sections[currentView]);
+    renderSectionControls(sections[currentView], mobile);
   }
 
-  renderShopPanel();
+  renderShopPanel(mobile);
 }
 
-// Home Navigation & Tools Toolbar (Two Rows with Spaced Section Buttons)
-function renderHomeDashboardTools() {
+// Home Navigation & Tools Toolbar
+function renderHomeDashboardTools(mobile) {
   let container = createDiv();
   container.parent(controlsDiv);
   container.style('display', 'flex');
   container.style('flex-direction', 'column');
   container.style('gap', '8px');
 
-  // Top Row: Spaced Section View Buttons without 'Section:' label
+  // Top Row: Section View Buttons
   let row1 = createDiv();
   row1.parent(container);
   row1.style('display', 'flex');
   row1.style('justify-content', 'space-between');
-  row1.style('gap', '8px');
+  row1.style('gap', mobile ? '6px' : '8px');
   row1.style('width', '100%');
 
   const sectionKeys = [
-    { key: 'left', label: 'View Left Section' },
-    { key: 'center', label: 'View Center Section' },
-    { key: 'right', label: 'View Right Section' }
+    { key: 'left', label: mobile ? 'Left Section' : 'View Left Section' },
+    { key: 'center', label: mobile ? 'Center Section' : 'View Center Section' },
+    { key: 'right', label: mobile ? 'Right Section' : 'View Right Section' }
   ];
 
   sectionKeys.forEach(sec => {
     let btn = createButton(sec.label);
     btn.parent(row1);
     btn.style('flex', '1');
-    btn.style('padding', '8px 4px');
-    btn.style('font-size', '12px');
+    btn.style('padding', mobile ? '9px 4px' : '8px 4px');
+    btn.style('font-size', mobile ? '12px' : '12px');
     btn.style('font-weight', 'bold');
     btn.style('background', '#1e4638');
     btn.style('color', '#FFFFFF');
-    btn.style('border', '1px solid rgba(255,255,255,0.2)');
+    btn.style('border', '1px solid rgba(255,255,255,0.25)');
     btn.style('border-radius', '6px');
     btn.style('cursor', 'pointer');
     btn.style('text-align', 'center');
@@ -386,15 +382,15 @@ function renderHomeDashboardTools() {
   let row2 = createDiv();
   row2.parent(container);
   row2.style('display', 'flex');
-  row2.style('gap', '8px');
+  row2.style('flex-wrap', mobile ? 'wrap' : 'nowrap');
+  row2.style('gap', mobile ? '6px' : '8px');
   row2.style('align-items', 'center');
-  
 
   let randBtn = createButton('Randomize');
   randBtn.parent(row2);
   randBtn.style('flex', '1');
-  randBtn.style('padding', '6px 12px');
-  randBtn.style('font-size', '13px');
+  randBtn.style('padding', mobile ? '8px 10px' : '6px 12px');
+  randBtn.style('font-size', mobile ? '12px' : '13px');
   randBtn.style('font-weight', 'bold');
   randBtn.style('background', '#298d70');
   randBtn.style('color', '#FFFFFF');
@@ -403,30 +399,33 @@ function renderHomeDashboardTools() {
   randBtn.style('cursor', 'pointer');
   randBtn.mousePressed(() => randomizeSectionColors());
 
-
   let undoBtn = createButton('Undo');
   undoBtn.parent(row2);
-  undoBtn.style('flex', '1');
-  undoBtn.style('padding', '6px 12px');
-  undoBtn.style('font-size', '13px');
+  undoBtn.style('flex', mobile ? '0.6' : '1');
+  undoBtn.style('padding', mobile ? '8px 10px' : '6px 12px');
+  undoBtn.style('font-size', mobile ? '12px' : '13px');
   undoBtn.style('font-weight', 'bold');
   undoBtn.style('background', colorHistory.length > 0 ? '#356554' : '#1a2f26');
   undoBtn.style('color', '#FFFFFF');
   undoBtn.style('border', '1px solid rgba(255,255,255,0.2)');
   undoBtn.style('border-radius', '6px');
   undoBtn.style('cursor', colorHistory.length > 0 ? 'pointer' : 'default');
-  
+
   undoBtn.mousePressed(() => {
     if (colorHistory.length > 0) {
       undoColorRandomize();
     }
   });
 
-  let labelToggleBtn = createButton(showLabels ? 'Hide Individual Labels' : 'Show Individual Labels');
+  let labelToggleBtn = createButton(
+    mobile
+      ? (showLabels ? 'Labels: ON' : 'Labels: OFF')
+      : (showLabels ? 'Hide Individual Labels' : 'Show Individual Labels')
+  );
   labelToggleBtn.parent(row2);
   labelToggleBtn.style('flex', '1');
-  labelToggleBtn.style('padding', '6px 12px');
-  labelToggleBtn.style('font-size', '13px');
+  labelToggleBtn.style('padding', mobile ? '8px 10px' : '6px 12px');
+  labelToggleBtn.style('font-size', mobile ? '12px' : '13px');
   labelToggleBtn.style('font-weight', 'bold');
   labelToggleBtn.style('background', showLabels ? '#298d70' : '#1e4638');
   labelToggleBtn.style('color', '#FFFFFF');
@@ -437,17 +436,18 @@ function renderHomeDashboardTools() {
 }
 
 // Persistent Shopping & Cart Panel
-function renderShopPanel() {
+function renderShopPanel(mobile) {
   let shopPanel = createDiv();
   shopPanel.parent(shopPanelDiv);
   shopPanel.style('display', 'flex');
-  shopPanel.style('gap', '14px');
+  shopPanel.style('flex-direction', mobile ? 'column' : 'row');
+  shopPanel.style('gap', mobile ? '16px' : '14px');
   shopPanel.style('background', '#ffffff');
-  shopPanel.style('padding', '16px');
+  shopPanel.style('padding', mobile ? '14px' : '16px');
   shopPanel.style('border-radius', '12px');
   shopPanel.style('box-shadow', '0 2px 10px rgba(0,0,0,0.06)');
 
-  // Left Column: Purchase Options
+  // Left / Top Column: Purchase Options
   let optionsCol = createDiv();
   optionsCol.parent(shopPanel);
   optionsCol.style('flex', '1.3');
@@ -457,20 +457,20 @@ function renderShopPanel() {
 
   let storeTitle = createP('Purchase Sections w/ 10ft Custom Wallpaper');
   storeTitle.parent(optionsCol);
-  storeTitle.style('font-size', '15px');
+  storeTitle.style('font-size', mobile ? '14px' : '15px');
   storeTitle.style('font-weight', 'bold');
   storeTitle.style('color', '#1e4638');
   storeTitle.style('margin', '0 0 2px 0');
 
   let pkgRow = createDiv();
   pkgRow.parent(optionsCol);
-  pkgRow.style('display', 'flex');
+  pkgRow.style('display', 'grid');
+  pkgRow.style('grid-template-columns', mobile ? 'repeat(2, 1fr)' : '1.2fr 1fr 1fr 1fr');
   pkgRow.style('gap', '6px');
 
   let fullBtn = createButton('Full Design $15,000');
   fullBtn.parent(pkgRow);
-  fullBtn.style('flex', '1.2');
-  fullBtn.style('padding', '8px 6px');
+  fullBtn.style('padding', '9px 6px');
   fullBtn.style('font-size', '12px');
   fullBtn.style('font-weight', 'bold');
   fullBtn.style('background', '#298d70');
@@ -483,8 +483,7 @@ function renderShopPanel() {
   ['Left', 'Center', 'Right'].forEach(secName => {
     let sBtn = createButton(`${secName} Section $6000`);
     sBtn.parent(pkgRow);
-    sBtn.style('flex', '1');
-    sBtn.style('padding', '8px 6px');
+    sBtn.style('padding', '9px 6px');
     sBtn.style('font-size', '12px');
     sBtn.style('font-weight', 'bold');
     sBtn.style('background', '#1e4638');
@@ -504,7 +503,7 @@ function renderShopPanel() {
 
   let piecesListDiv = createDiv();
   piecesListDiv.parent(optionsCol);
-  piecesListDiv.style('max-height', currentView === 'home' ? '180px' : '120px');
+  piecesListDiv.style('max-height', mobile ? '155px' : (currentView === 'home' ? '180px' : '120px'));
   piecesListDiv.style('overflow-y', 'auto');
   piecesListDiv.style('border', '1px solid #e0e0e0');
   piecesListDiv.style('border-radius', '6px');
@@ -520,7 +519,7 @@ function renderShopPanel() {
     pRow.style('justify-content', 'space-between');
     pRow.style('align-items', 'center');
     pRow.style('background', '#f9f9f9');
-    pRow.style('padding', '4px 8px');
+    pRow.style('padding', mobile ? '6px 8px' : '4px 8px');
     pRow.style('border-radius', '4px');
 
     let pLabel = createP(`${piece.name} — $${piece.price}`);
@@ -531,8 +530,9 @@ function renderShopPanel() {
 
     let addBtn = createButton('+ Add');
     addBtn.parent(pRow);
-    addBtn.style('padding', '3px 8px');
+    addBtn.style('padding', mobile ? '5px 10px' : '3px 8px');
     addBtn.style('font-size', '11px');
+    addBtn.style('font-weight', 'bold');
     addBtn.style('background', '#1e4638');
     addBtn.style('color', '#fff');
     addBtn.style('border', 'none');
@@ -541,29 +541,34 @@ function renderShopPanel() {
     addBtn.mousePressed(() => addToCart({ name: piece.name, price: piece.price }));
   });
 
-  // Right Column: Cart & Customer Info
+  // Right / Bottom Column: Cart & Customer Info
   let cartCol = createDiv();
   cartCol.parent(shopPanel);
   cartCol.style('flex', '1');
   cartCol.style('display', 'flex');
   cartCol.style('flex-direction', 'column');
-  cartCol.style('border-left', '1px solid #eee');
-  cartCol.style('padding-left', '14px');
-  cartCol.style('gap', '6px');
+  if (mobile) {
+    cartCol.style('border-top', '1px solid #eee');
+    cartCol.style('padding-top', '14px');
+  } else {
+    cartCol.style('border-left', '1px solid #eee');
+    cartCol.style('padding-left', '14px');
+  }
+  cartCol.style('gap', '8px');
 
   let cartTitle = createP(`Cart (${cart.length})`);
   cartTitle.parent(cartCol);
   cartTitle.style('font-size', '15px');
   cartTitle.style('font-weight', 'bold');
   cartTitle.style('color', '#1e4638');
-  cartTitle.style('margin', '0 0 2px 0');
+  cartTitle.style('margin', '0');
 
   let cartItemsDiv = createDiv();
   cartItemsDiv.parent(cartCol);
   cartItemsDiv.style('display', 'flex');
   cartItemsDiv.style('flex-direction', 'column');
   cartItemsDiv.style('gap', '4px');
-  cartItemsDiv.style('max-height', '110px');
+  cartItemsDiv.style('max-height', mobile ? '130px' : '110px');
   cartItemsDiv.style('overflow-y', 'auto');
 
   if (cart.length === 0) {
@@ -582,7 +587,7 @@ function renderShopPanel() {
       itemRow.style('align-items', 'center');
       itemRow.style('font-size', '12px');
       itemRow.style('background', '#f4f6f8');
-      itemRow.style('padding', '3px 6px');
+      itemRow.style('padding', '5px 8px');
       itemRow.style('border-radius', '4px');
 
       let desc = createP(`${item.name} ($${item.price})`);
@@ -599,28 +604,29 @@ function renderShopPanel() {
       remBtn.style('border', 'none');
       remBtn.style('color', '#298d70');
       remBtn.style('font-weight', 'bold');
+      remBtn.style('font-size', '14px');
       remBtn.style('cursor', 'pointer');
       remBtn.mousePressed(() => removeFromCart(idx));
     });
   }
 
   let totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
-  
+
   let totalLabel = createP(`Total: $${totalPrice.toLocaleString()}`);
   totalLabel.parent(cartCol);
-  totalLabel.style('font-size', '14px');
+  totalLabel.style('font-size', '15px');
   totalLabel.style('font-weight', 'bold');
   totalLabel.style('color', '#1e4638');
   totalLabel.style('margin', '2px 0');
 
-  // Re-attach persistent input elements to avoid DOM recreation bugs on mobile
+  // Re-attach persistent input elements
   nameInput.parent(cartCol);
   emailInput.parent(cartCol);
 
   let submitOrderBtn = createButton('Submit Request for Commission');
   submitOrderBtn.parent(cartCol);
   submitOrderBtn.style('width', '100%');
-  submitOrderBtn.style('padding', '8px');
+  submitOrderBtn.style('padding', mobile ? '11px' : '8px');
   submitOrderBtn.style('font-size', '13px');
   submitOrderBtn.style('font-weight', 'bold');
   submitOrderBtn.style('background', '#298d70');
@@ -631,8 +637,8 @@ function renderShopPanel() {
   submitOrderBtn.mousePressed(() => submitOrder());
 }
 
-// Zoomed Section Overlay Controls
-function renderSectionControls(sectionConfig) {
+// Zoomed Section Controls (Floating on Desktop/iPad, Docked & Condensed on Phone)
+function renderSectionControls(sectionConfig, mobile) {
   let navRow = createDiv();
   navRow.parent(controlsDiv);
   navRow.style('display', 'flex');
@@ -641,8 +647,8 @@ function renderSectionControls(sectionConfig) {
 
   let fullBtn = createButton('Home');
   fullBtn.parent(navRow);
-  fullBtn.style('flex', '1.2');
-  fullBtn.style('padding', '6px 4px');
+  fullBtn.style('flex', '1');
+  fullBtn.style('padding', mobile ? '8px 4px' : '6px 4px');
   fullBtn.style('font-size', '12px');
   fullBtn.style('font-weight', 'bold');
   fullBtn.style('background', '#ffffff');
@@ -664,8 +670,9 @@ function renderSectionControls(sectionConfig) {
   switchTargets.forEach(t => {
     let tBtn = createButton(t.label);
     tBtn.parent(navRow);
-    tBtn.style('width', '55px');
-    tBtn.style('padding', '6px 0');
+    tBtn.style('flex', mobile ? '1' : 'none');
+    if (!mobile) tBtn.style('width', '55px');
+    tBtn.style('padding', mobile ? '8px 0' : '6px 0');
     tBtn.style('font-size', '12px');
     tBtn.style('font-weight', 'bold');
     tBtn.style('background', currentView === t.key ? '#298d70' : '#1e4638');
@@ -679,11 +686,18 @@ function renderSectionControls(sectionConfig) {
     });
   });
 
-  let randBtn = createButton('Randomize Section');
-  randBtn.parent(controlsDiv);
-  randBtn.style('width', '100%');
+  // Action buttons wrapper (Horizontal row on mobile, stacked on desktop overlay)
+  let actionGroup = createDiv();
+  actionGroup.parent(controlsDiv);
+  actionGroup.style('display', 'flex');
+  actionGroup.style('flex-direction', mobile ? 'row' : 'column');
+  actionGroup.style('gap', '6px');
+  actionGroup.style('margin-bottom', '10px');
+
+  let randBtn = createButton(mobile ? 'Randomize' : 'Randomize Section');
+  randBtn.parent(actionGroup);
+  randBtn.style('flex', '1');
   randBtn.style('padding', '7px 5px');
-  randBtn.style('margin-bottom', '6px');
   randBtn.style('font-size', '12px');
   randBtn.style('font-weight', 'bold');
   randBtn.style('background', '#298d70');
@@ -694,10 +708,9 @@ function renderSectionControls(sectionConfig) {
   randBtn.mousePressed(() => randomizeSectionColors());
 
   let undoBtn = createButton('Undo');
-  undoBtn.parent(controlsDiv);
-  undoBtn.style('width', '100%');
+  undoBtn.parent(actionGroup);
+  undoBtn.style('flex', mobile ? '0.6' : '1');
   undoBtn.style('padding', '7px 5px');
-  undoBtn.style('margin-bottom', '6px');
   undoBtn.style('font-size', '12px');
   undoBtn.style('font-weight', 'bold');
   undoBtn.style('background', colorHistory.length > 0 ? '#356554' : '#1a2f26');
@@ -709,11 +722,14 @@ function renderSectionControls(sectionConfig) {
     undoBtn.mousePressed(() => undoColorRandomize());
   }
 
-  let labelToggleBtn = createButton(showLabels ? 'Hide Individual Labels' : 'Show Individual Labels');
-  labelToggleBtn.parent(controlsDiv);
-  labelToggleBtn.style('width', '100%');
+  let labelToggleBtn = createButton(
+    mobile
+      ? (showLabels ? 'Labels: ON' : 'Labels: OFF')
+      : (showLabels ? 'Hide Individual Labels' : 'Show Individual Labels')
+  );
+  labelToggleBtn.parent(actionGroup);
+  labelToggleBtn.style('flex', '1');
   labelToggleBtn.style('padding', '7px 5px');
-  labelToggleBtn.style('margin-bottom', '10px');
   labelToggleBtn.style('font-size', '12px');
   labelToggleBtn.style('font-weight', 'bold');
   labelToggleBtn.style('background', showLabels ? '#298d70' : '#1e4638');
@@ -728,15 +744,21 @@ function renderSectionControls(sectionConfig) {
   title.style('font-size', '13px');
   title.style('font-weight', 'bold');
   title.style('color', '#ffffff');
-  title.style('margin', '0 0 10px 0');
+  title.style('margin', '0 0 8px 0');
   title.style('line-height', '1.3');
 
-  let l = ["Background Color","Blob Color 1","Blob Color 2","Stripe Color 1","Stripe Color 2"]
+  let l = ['Background Color', 'Blob Color 1', 'Blob Color 2', 'Stripe Color 1', 'Stripe Color 2'];
+
+  let rowsContainer = createDiv();
+  rowsContainer.parent(controlsDiv);
+  rowsContainer.style('display', 'flex');
+  rowsContainer.style('flex-direction', 'column');
+  rowsContainer.style('gap', '6px');
+
   for (let pIndex = sectionConfig.start; pIndex < sectionConfig.end; pIndex++) {
     let rowWrapper = createDiv();
-    rowWrapper.parent(controlsDiv);
+    rowWrapper.parent(rowsContainer);
     rowWrapper.style('position', 'relative');
-    rowWrapper.style('margin-bottom', '8px');
 
     let row = createDiv();
     row.parent(rowWrapper);
@@ -744,10 +766,10 @@ function renderSectionControls(sectionConfig) {
     row.style('align-items', 'center');
     row.style('justify-content', 'space-between');
     row.style('background', 'rgba(255, 255, 255, 0.12)');
-    row.style('padding', '5px 10px');
+    row.style('padding', mobile ? '7px 10px' : '5px 10px');
     row.style('border-radius', '6px');
 
-    let rowLabel = createP(l[pIndex%5]);
+    let rowLabel = createP(l[pIndex % 5]);
     rowLabel.parent(row);
     rowLabel.style('font-size', '13px');
     rowLabel.style('font-weight', 'bold');
@@ -760,7 +782,7 @@ function renderSectionControls(sectionConfig) {
       <span style="display:inline-block; width:16px; height:16px; background-color:${activeHex}; border-radius:50%; border:1px solid rgba(255,255,255,0.8); vertical-align:middle;"></span> ▾
     `);
     colorPill.parent(row);
-    colorPill.style('padding', '3px 8px');
+    colorPill.style('padding', '4px 10px');
     colorPill.style('background', 'rgba(255, 255, 255, 0.2)');
     colorPill.style('border', 'none');
     colorPill.style('border-radius', '12px');
@@ -777,27 +799,40 @@ function renderSectionControls(sectionConfig) {
     if (activePopoverIndex === pIndex) {
       let popover = createDiv();
       popover.parent(rowWrapper);
-      popover.style('position', 'absolute');
-      popover.style('left', '100%');
-      popover.style('top', '0');
-      popover.style('margin-left', '10px');
-      popover.style('z-index', '100');
-      popover.style('background', '#ffffff');
-      popover.style('padding', '8px');
-      popover.style('border-radius', '8px');
-      popover.style('box-shadow', '0 4px 14px rgba(0,0,0,0.25)');
-      popover.style('display', 'grid');
-      popover.style('grid-template-columns', 'repeat(3, 1fr)');
-      popover.style('gap', '6px');
+
+      if (mobile) {
+        // Inline drawer below the row on mobile so swatches stay inside screen bounds
+        popover.style('margin-top', '6px');
+        popover.style('background', '#ffffff');
+        popover.style('padding', '8px');
+        popover.style('border-radius', '8px');
+        popover.style('display', 'flex');
+        popover.style('justify-content', 'space-around');
+        popover.style('gap', '6px');
+      } else {
+        // Side floating popover on desktop/iPad
+        popover.style('position', 'absolute');
+        popover.style('left', '100%');
+        popover.style('top', '0');
+        popover.style('margin-left', '10px');
+        popover.style('z-index', '100');
+        popover.style('background', '#ffffff');
+        popover.style('padding', '8px');
+        popover.style('border-radius', '8px');
+        popover.style('box-shadow', '0 4px 14px rgba(0,0,0,0.25)');
+        popover.style('display', 'grid');
+        popover.style('grid-template-columns', 'repeat(3, 1fr)');
+        popover.style('gap', '6px');
+      }
 
       palette.forEach(color => {
         let isSelected = (color.hex === pathColors[pIndex]);
         let swatch = createButton('');
         swatch.parent(popover);
-        swatch.size(32, 32);
+        swatch.size(mobile ? 34 : 32, mobile ? 34 : 32);
         swatch.style('background-color', color.hex);
-        swatch.style('border', isSelected ? '3px solid #1e4638' : 'none');
-        swatch.style('border-radius', '4px');
+        swatch.style('border', isSelected ? '3px solid #1e4638' : '1px solid rgba(0,0,0,0.15)');
+        swatch.style('border-radius', '6px');
         swatch.style('cursor', 'pointer');
 
         swatch.mousePressed(() => {
@@ -811,7 +846,7 @@ function renderSectionControls(sectionConfig) {
   }
 }
 
-// Adjust SVG ViewBox with +20px right shift adjustment
+// Adjust SVG ViewBox proportionally across devices
 function setView(viewKey) {
   currentView = viewKey;
 
@@ -829,8 +864,11 @@ function setView(viewKey) {
     if (viewKey === 'center') offsetX += sliceWidth;
     if (viewKey === 'right') offsetX += sliceWidth * 2;
 
-    let shiftAdjustment = (60 + 20) * (originalViewBox.width / 760);
-    offsetX -= shiftAdjustment;
+    // Only apply the right-shift offset on desktop/iPad where controls float on the left
+    if (!isMobileView()) {
+      let shiftAdjustment = 80 * (originalViewBox.width / 760);
+      offsetX -= shiftAdjustment;
+    }
 
     rawSvg.attribute(
       'viewBox',
@@ -839,8 +877,4 @@ function setView(viewKey) {
   }
 
   renderUI();
-}
-
-function draw() {
-  background('#1e4638');
 }
