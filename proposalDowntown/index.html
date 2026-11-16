@@ -100,28 +100,29 @@
 
     <!-- Model Selection Buttons -->
     <div class="model-switcher">
-        <button class="switch-btn active" onclick="switchModel(this, 'windows.glb', 'windows.usdz', '45deg 75deg 105%')">
-            Small Corners
+        <button class="switch-btn active" onclick="switchModel(this, 'windowSmall.glb', 'windowSmall.usdz', '45deg 75deg 105%')">
+            Small Panels
         </button>
-        <button class="switch-btn" onclick="switchModel(this, 'Untitled2.glb', 'Untitled2.usdz', '45deg 75deg 105%')">
-            Large Corners
+        <button class="switch-btn" onclick="switchModel(this, 'windowLarge.glb', 'windowLarge.usdz', '45deg 75deg 105%')">
+            Large Panels
         </button>
-        <button class="switch-btn" onclick="switchModel(this, 'Untitled3.glb', 'Untitled3.usdz', '45deg 75deg 105%')">
-            Mixed Corners
+        <button class="switch-btn" onclick="switchModel(this, 'windowMixed.glb', 'windowMixed.usdz', '45deg 75deg 105%')">
+            Mixed Panels
         </button>
     </div>
 
     <!-- The Model Viewer Component -->
     <model-viewer 
         id="viewer"
-        src="windows.glb" 
-        ios-src="windows.usdz"
+        src="windowSmall.glb" 
+        ios-src="windowSmall.usdz"
         ar 
         ar-modes="webxr scene-viewer quick-look" 
         camera-controls 
         touch-action="pan-y"
         camera-orbit="45deg 95deg 105%"
         alt="A 3D model viewed in AR"
+        
         shadow-intensity="1">
         
         <button slot="ar-button" id="ar-button">
