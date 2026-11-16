@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Model Viewer Switcher</title>
+    <title>Potential Moiré Series - Healey Building Proposal</title>
     
     <!-- 1. Import the <model-viewer> library -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
@@ -14,30 +14,103 @@
             padding: 0;
             width: 100vw;
             height: 100vh;
-            font-family: sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f4f4f9;
+            color: #202124;
+            overflow: hidden;
         }
 
-        /* 2. Style the viewer container */
+        /* Responsive Layout Container (CSS Grid) */
+        .app-container {
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            /* Mobile default: Viewer on top (55vh), text panel in bottom half (45vh) */
+            grid-template-columns: 1fr;
+            grid-template-rows: 55vh 45vh;
+        }
+
+        /* 2. Style the Details Panel */
+        .details-panel {
+            grid-row: 2;
+            background: #ffffff;
+            padding: 24px 32px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .details-panel h1 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #1a73e8;
+            font-weight: 600;
+        }
+
+        .details-panel h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #5f6368;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .details-panel p, .details-panel li {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #3c4043;
+        }
+
+        .details-panel ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #1967d2;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        /* 3. Viewer Wrapper */
+        .viewer-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            grid-row: 1;
+        }
+
         model-viewer {
             width: 100%;
             height: 100%;
+            background-color: #ffffff; /* Ensures consistent background across devices */
             --poster-color: transparent;
         }
 
-        /* 3. Style the model switcher controls */
+        /* 4. Style the model switcher controls */
         .model-switcher {
             position: absolute;
-            top: 24px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 8px;
-            background-color: rgba(255, 255, 255, 0.9);
+            gap: 6px;
+            background-color: rgba(255, 255, 255, 0.92);
             padding: 6px;
             border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
             z-index: 999;
+            backdrop-filter: blur(4px);
+            max-width: 90%;
+            overflow-x: auto;
         }
 
         .switch-btn {
@@ -46,10 +119,10 @@
             border-radius: 6px;
             color: #3c4043;
             cursor: pointer;
-            font-family: sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 6px 12px;
+            white-space: nowrap;
             transition: background-color 0.2s, color 0.2s;
         }
 
@@ -58,78 +131,131 @@
         }
 
         .switch-btn.active {
-            background-color: #4285f4;
+            background-color: #1a73e8;
             color: #ffffff;
         }
 
-        /* 4. Style the custom AR button */
+        /* 5. Style the custom AR button */
         #ar-button {
             background-color: #ffffff;
             border-radius: 4px;
             border: none;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-            color: #4285f4;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+            color: #1a73e8;
             display: block;
-            font-family: sans-serif;
             font-size: 14px;
             font-weight: 500;
-            height: 42px;
-            line-height: 42px;
+            height: 40px;
+            line-height: 40px;
             padding: 0 16px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 32px;
+            bottom: 24px;
             z-index: 999;
+            cursor: pointer;
         }
 
         #ar-button:active {
             background-color: #f1f3f4;
         }
 
-        #ar-button:focus {
-            outline: none;
+        #ar-button:focus-visible {
+            outline: 2px solid #1a73e8;
         }
 
-        #ar-button:focus-visible {
-            outline: 1px solid #4285f4;
+        /* --- DESKTOP LAYOUT (768px and wider) --- */
+        @media (min-width: 768px) {
+            .app-container {
+                /* Sidebar on the left (420px), Viewer takes the rest */
+                grid-template-columns: 420px 1fr;
+                grid-template-rows: 1fr;
+            }
+
+            .details-panel {
+                grid-row: 1;
+                grid-column: 1;
+                border-top: none;
+                border-right: 1px solid #e0e0e0;
+                box-shadow: 4px 0 12px rgba(0, 0, 0, 0.03);
+            }
+
+            .viewer-wrapper {
+                grid-row: 1;
+                grid-column: 2;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Model Selection Buttons -->
-    <div class="model-switcher">
-        <button class="switch-btn active" onclick="switchModel(this, 'windowSmall.glb', 'windowSmall.usdz', '45deg 75deg 105%')">
-            Small Panels
-        </button>
-        <button class="switch-btn" onclick="switchModel(this, 'windowLarge.glb', 'windowLarge.usdz', '45deg 75deg 105%')">
-            Large Panels
-        </button>
-        <button class="switch-btn" onclick="switchModel(this, 'windowMixed.glb', 'windowMixed.usdz', '45deg 75deg 105%')">
-            Mixed Panels
-        </button>
-    </div>
+    <div class="app-container">
+        
+        <!-- Details / Text Panel -->
+        <div class="details-panel">
+                        <h1>Jordan Oleson-Graves</h1>
+            <h2>Proposal: Potential Moiré Series</h2>
+            <p><strong>Site:</strong> Healey Building </p>
+            
+            <h2>Concept & Structure</h2>
+            <p>This site-specific installation consists of 30" or 15" plywood panels joined at 90-degree angles. The structures are oriented with their hypotenuse base facing the windows, placed directly onto existing window trim with additional supports under each corner (maximum depth of 24").</p>
+            
+            <h2>Window Graphics & Optics</h2>
+            <p>The window glass features overlaid graphics designed to produce dynamic animating interference as viewers walk past. Depending on final direction, execution will utilize cut vinyl or printed window cling.</p>
+            
+            <h2>Design Variations</h2>
+            <ul>
+                <li><strong>Glass Patterns:</strong> Due to vinyl cutter alignment constraints on long vertical runs, alternative patterns feature segmented color blocks and negative space holes to highlight the optical mechanism.</li>
+                <li><strong>Rectangular vs. Organic:</strong> The window graphics could be rectangular formats or organic contours.</li>
+            </ul>
 
-    <!-- The Model Viewer Component -->
-    <model-viewer 
-        id="viewer"
-        src="windowSmall.glb" 
-        ios-src="windowSmall.usdz"
-        ar 
-        ar-modes="webxr scene-viewer quick-look" 
-        camera-controls 
-        touch-action="pan-y"
-        camera-orbit="45deg 95deg 105%"
-        alt="A 3D model viewed in AR"
-        
-        shadow-intensity="1">
-        
-        <button slot="ar-button" id="ar-button">
-            👋 View in your space
-        </button>
-        
-    </model-viewer>
+            <h2>Project Timeline</h2>
+            <p>Current models serve to communicate construction techniques and material interaction. Exact colors and patterns will be refined following initial direction approval.</p>
+              <ul>
+                <li><strong>Finalize Compositions:</strong> Week of 11/23 </li>
+                <li><strong>Tentative Install:</strong> 12/13-12/16</li>
+            </ul>
+        </div>
+
+        <!-- Viewer Container & Controls -->
+        <div class="viewer-wrapper">
+            <!-- Model Selection Buttons -->
+            <div class="model-switcher">
+                <button class="switch-btn active" onclick="switchModel(this, 'windowSmall.glb', 'windowSmall.usdz', '45deg 75deg 105%')">
+                    Small Panels
+                </button>
+                <button class="switch-btn" onclick="switchModel(this, 'windowLarge.glb', 'windowLarge.usdz', '45deg 75deg 105%')">
+                    Large Panels
+                </button>
+                <button class="switch-btn" onclick="switchModel(this, 'windowMixed.glb', 'windowMixed.usdz', '45deg 75deg 105%')">
+                    Mixed Panels
+                </button>
+                <button class="switch-btn" onclick="switchModel(this, 'windowsOpenings.glb', 'windowsOpenings.usdz', '0deg 90deg 105%')">
+                    Alternative Glass Patterns
+                </button>
+            </div>
+
+            <!-- The Model Viewer Component -->
+            <model-viewer 
+                id="viewer"
+                src="windowSmall.glb" 
+                ios-src="windowSmall.usdz"
+                ar 
+                ar-modes="webxr scene-viewer quick-look" 
+                camera-controls 
+                touch-action="pan-y"
+                camera-orbit="45deg 95deg 105%"
+                alt="Potential Moiré 3D Model Proposal"
+                shadow-intensity="1">
+                
+                <button slot="ar-button" id="ar-button">
+                    👋 View in your space
+                </button>
+                
+            </model-viewer>
+        </div>
+
+    </div>
 
     <script>
         const viewer = document.getElementById('viewer');
